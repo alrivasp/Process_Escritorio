@@ -191,7 +191,7 @@
             // pictureBox1
             // 
             this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.pictureBox1.Image = global::Process_APP_Desk.Properties.Resources._348_filter;
+            this.pictureBox1.Image = global::Process_APP_Desk.Properties.Resources._135_search;
             this.pictureBox1.Location = new System.Drawing.Point(416, 17);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(27, 25);
