@@ -13,9 +13,26 @@ namespace Process_APP_Desk
 {
     public partial class PantallaMenuPrincipal : Form
     {
+        string nombres;
+        string apellidos;
+        string perfil;
         public PantallaMenuPrincipal()
         {
             InitializeComponent();
+            //Estas lineas eliminan los parpadeos del formulario o controles en la interfaz grafica (Pero no en un 100%)
+            this.SetStyle(ControlStyles.ResizeRedraw, true);
+            this.DoubleBuffered = true;
+        }
+
+        public PantallaMenuPrincipal(string _nombres, string _apellidos, string _perfil)
+        {
+            InitializeComponent();
+            nombres = _nombres;
+            apellidos = _apellidos;
+            perfil = _perfil;
+            lblApellidos.Text = apellidos;
+            lblNombres.Text = nombres;
+            lblPerfil.Text = perfil;
             //Estas lineas eliminan los parpadeos del formulario o controles en la interfaz grafica (Pero no en un 100%)
             this.SetStyle(ControlStyles.ResizeRedraw, true);
             this.DoubleBuffered = true;

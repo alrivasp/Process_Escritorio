@@ -12,6 +12,7 @@ namespace Process_APP_Desk
 {
     public partial class PantallaCarga : Form
     {
+        string nombreCorto;
         public PantallaCarga()
         {
             InitializeComponent();
@@ -19,7 +20,18 @@ namespace Process_APP_Desk
             this.SetStyle(ControlStyles.ResizeRedraw, true);
             this.DoubleBuffered = true;
         }
-        
+
+        public PantallaCarga(string _nombreCorto)
+        {
+            InitializeComponent();
+            nombreCorto = _nombreCorto;
+            lblUser.Text = nombreCorto;
+            //Estas lineas eliminan los parpadeos del formulario o controles en la interfaz grafica (Pero no en un 100%)
+            this.SetStyle(ControlStyles.ResizeRedraw, true);
+            this.DoubleBuffered = true;
+        }
+
+
         private void Timer1_Tick(object sender, EventArgs e)
         {
             if (this.Opacity < 1) this.Opacity += 0.05;
