@@ -57,6 +57,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Connected Services\ServiceProcess_Comuna\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Connected Services\ServiceProcess_Cuenta\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -67,12 +72,27 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Connected Services\ServiceProcess_Provincia\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Connected Services\ServiceProcess_Region\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Connected Services\ServiceProcess_Rol\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
     <Compile Include="Connected Services\ServiceProcess_Usuario\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Connected Services\ServiceProcess_Validadores\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -179,6 +199,10 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="Connected Services\ServiceProcess_Comuna\Process_APP_Desk.ServiceProcess_Comuna.Comuna.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceProcess_Comuna\Process_Comuna.wsdl" />
     <None Include="Connected Services\ServiceProcess_Cuenta\Process_APP_Desk.ServiceProcess_Cuenta.Cuenta.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
@@ -187,6 +211,14 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\ServiceProcess_Empresa\Process_Empresa.wsdl" />
+    <None Include="Connected Services\ServiceProcess_Provincia\Process_APP_Desk.ServiceProcess_Provincia.Provincia.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceProcess_Provincia\Process_Provincia.wsdl" />
+    <None Include="Connected Services\ServiceProcess_Region\Process_APP_Desk.ServiceProcess_Region.Region.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceProcess_Region\Process_Region.wsdl" />
     <None Include="Connected Services\ServiceProcess_Rol\Process_APP_Desk.ServiceProcess_Rol.Rol.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
@@ -195,6 +227,7 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\ServiceProcess_Usuario\Process_Usuario.wsdl" />
+    <None Include="Connected Services\ServiceProcess_Validadores\Process_Validadores.wsdl" />
     <None Include="packages.config" />
     <None Include="Properties\DataSources\System.Data.DataSet.datasource" />
     <None Include="Properties\Settings.settings">
@@ -284,10 +317,14 @@
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
+    <WCFMetadataStorage Include="Connected Services\ServiceProcess_Comuna\" />
     <WCFMetadataStorage Include="Connected Services\ServiceProcess_Cuenta\" />
     <WCFMetadataStorage Include="Connected Services\ServiceProcess_Empresa\" />
+    <WCFMetadataStorage Include="Connected Services\ServiceProcess_Provincia\" />
+    <WCFMetadataStorage Include="Connected Services\ServiceProcess_Region\" />
     <WCFMetadataStorage Include="Connected Services\ServiceProcess_Rol\" />
     <WCFMetadataStorage Include="Connected Services\ServiceProcess_Usuario\" />
+    <WCFMetadataStorage Include="Connected Services\ServiceProcess_Validadores\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Connected Services\ServiceProcess_Empresa\Process_Empresa.disco" />
@@ -345,6 +382,66 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Connected Services\ServiceProcess_Rol\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\ServiceProcess_Region\Process_Region.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\ServiceProcess_Region\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\ServiceProcess_Region\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\ServiceProcess_Region\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\ServiceProcess_Provincia\Process_Provincia.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\ServiceProcess_Provincia\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\ServiceProcess_Provincia\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\ServiceProcess_Provincia\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\ServiceProcess_Comuna\Process_Comuna.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\ServiceProcess_Comuna\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\ServiceProcess_Comuna\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\ServiceProcess_Comuna\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\ServiceProcess_Validadores\Process_Validadores.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\ServiceProcess_Validadores\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\ServiceProcess_Validadores\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\ServiceProcess_Validadores\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>

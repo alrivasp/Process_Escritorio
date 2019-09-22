@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="numeroValidacionService">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="num" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="numeroValidacionServiceResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="numeroValidacionServiceResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="rutValidacionService">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="rut" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="rutValidacionServiceResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="rutValidacionServiceResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="boolean" type="s:boolean" />
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="numeroValidacionServiceSoapIn">
+    <wsdl:part name="parameters" element="tns:numeroValidacionService" />
+  </wsdl:message>
+  <wsdl:message name="numeroValidacionServiceSoapOut">
+    <wsdl:part name="parameters" element="tns:numeroValidacionServiceResponse" />
+  </wsdl:message>
+  <wsdl:message name="rutValidacionServiceSoapIn">
+    <wsdl:part name="parameters" element="tns:rutValidacionService" />
+  </wsdl:message>
+  <wsdl:message name="rutValidacionServiceSoapOut">
+    <wsdl:part name="parameters" element="tns:rutValidacionServiceResponse" />
+  </wsdl:message>
+  <wsdl:message name="numeroValidacionServiceHttpGetIn">
+    <wsdl:part name="num" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="numeroValidacionServiceHttpGetOut">
+    <wsdl:part name="Body" element="tns:boolean" />
+  </wsdl:message>
+  <wsdl:message name="rutValidacionServiceHttpGetIn">
+    <wsdl:part name="rut" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="rutValidacionServiceHttpGetOut">
+    <wsdl:part name="Body" element="tns:boolean" />
+  </wsdl:message>
+  <wsdl:message name="numeroValidacionServiceHttpPostIn">
+    <wsdl:part name="num" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="numeroValidacionServiceHttpPostOut">
+    <wsdl:part name="Body" element="tns:boolean" />
+  </wsdl:message>
+  <wsdl:message name="rutValidacionServiceHttpPostIn">
+    <wsdl:part name="rut" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="rutValidacionServiceHttpPostOut">
+    <wsdl:part name="Body" element="tns:boolean" />
+  </wsdl:message>
+  <wsdl:portType name="Process_ValidadoresSoap">
+    <wsdl:operation name="numeroValidacionService">
+      <wsdl:input message="tns:numeroValidacionServiceSoapIn" />
+      <wsdl:output message="tns:numeroValidacionServiceSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="rutValidacionService">
+      <wsdl:input message="tns:rutValidacionServiceSoapIn" />
+      <wsdl:output message="tns:rutValidacionServiceSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="Process_ValidadoresHttpGet">
+    <wsdl:operation name="numeroValidacionService">
+      <wsdl:input message="tns:numeroValidacionServiceHttpGetIn" />
+      <wsdl:output message="tns:numeroValidacionServiceHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="rutValidacionService">
+      <wsdl:input message="tns:rutValidacionServiceHttpGetIn" />
+      <wsdl:output message="tns:rutValidacionServiceHttpGetOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="Process_ValidadoresHttpPost">
+    <wsdl:operation name="numeroValidacionService">
+      <wsdl:input message="tns:numeroValidacionServiceHttpPostIn" />
+      <wsdl:output message="tns:numeroValidacionServiceHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="rutValidacionService">
+      <wsdl:input message="tns:rutValidacionServiceHttpPostIn" />
+      <wsdl:output message="tns:rutValidacionServiceHttpPostOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="Process_ValidadoresSoap" type="tns:Process_ValidadoresSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="numeroValidacionService">
+      <soap:operation soapAction="http://tempuri.org/numeroValidacionService" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="rutValidacionService">
+      <soap:operation soapAction="http://tempuri.org/rutValidacionService" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="Process_ValidadoresSoap12" type="tns:Process_ValidadoresSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="numeroValidacionService">
+      <soap12:operation soapAction="http://tempuri.org/numeroValidacionService" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="rutValidacionService">
+      <soap12:operation soapAction="http://tempuri.org/rutValidacionService" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="Process_ValidadoresHttpGet" type="tns:Process_ValidadoresHttpGet">
+    <http:binding verb="GET" />
+    <wsdl:operation name="numeroValidacionService">
+      <http:operation location="/numeroValidacionService" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="rutValidacionService">
+      <http:operation location="/rutValidacionService" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="Process_ValidadoresHttpPost" type="tns:Process_ValidadoresHttpPost">
+    <http:binding verb="POST" />
+    <wsdl:operation name="numeroValidacionService">
+      <http:operation location="/numeroValidacionService" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="rutValidacionService">
+      <http:operation location="/rutValidacionService" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Process_Validadores">
+    <wsdl:port name="Process_ValidadoresSoap" binding="tns:Process_ValidadoresSoap">
+      <soap:address location="http://localhost:52755/Process_Validadores.asmx" />
+    </wsdl:port>
+    <wsdl:port name="Process_ValidadoresSoap12" binding="tns:Process_ValidadoresSoap12">
+      <soap12:address location="http://localhost:52755/Process_Validadores.asmx" />
+    </wsdl:port>
+    <wsdl:port name="Process_ValidadoresHttpGet" binding="tns:Process_ValidadoresHttpGet">
+      <http:address location="http://localhost:52755/Process_Validadores.asmx" />
+    </wsdl:port>
+    <wsdl:port name="Process_ValidadoresHttpPost" binding="tns:Process_ValidadoresHttpPost">
+      <http:address location="http://localhost:52755/Process_Validadores.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

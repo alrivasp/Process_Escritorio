@@ -51,6 +51,13 @@ namespace Process_APP_Desk.ServiceProcess_Empresa {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/TraerEmpresaSinEntidad_Escritorio", ReplyAction="*")]
         System.Threading.Tasks.Task<System.Data.DataSet> TraerEmpresaSinEntidad_EscritorioAsync(string _rut_empresa);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/TraerEmpresaConClaveSinEntidad_Escritorio", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        System.Data.DataSet TraerEmpresaConClaveSinEntidad_Escritorio(string _palabra_clave);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/TraerEmpresaConClaveSinEntidad_Escritorio", ReplyAction="*")]
+        System.Threading.Tasks.Task<System.Data.DataSet> TraerEmpresaConClaveSinEntidad_EscritorioAsync(string _palabra_clave);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/TraerEmpresaConEntidad_Escritorio", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         Process_APP_Desk.ServiceProcess_Empresa.Empresa TraerEmpresaConEntidad_Escritorio(string _rut_empresa);
@@ -233,6 +240,14 @@ namespace Process_APP_Desk.ServiceProcess_Empresa {
         
         public System.Threading.Tasks.Task<System.Data.DataSet> TraerEmpresaSinEntidad_EscritorioAsync(string _rut_empresa) {
             return base.Channel.TraerEmpresaSinEntidad_EscritorioAsync(_rut_empresa);
+        }
+        
+        public System.Data.DataSet TraerEmpresaConClaveSinEntidad_Escritorio(string _palabra_clave) {
+            return base.Channel.TraerEmpresaConClaveSinEntidad_Escritorio(_palabra_clave);
+        }
+        
+        public System.Threading.Tasks.Task<System.Data.DataSet> TraerEmpresaConClaveSinEntidad_EscritorioAsync(string _palabra_clave) {
+            return base.Channel.TraerEmpresaConClaveSinEntidad_EscritorioAsync(_palabra_clave);
         }
         
         public Process_APP_Desk.ServiceProcess_Empresa.Empresa TraerEmpresaConEntidad_Escritorio(string _rut_empresa) {
