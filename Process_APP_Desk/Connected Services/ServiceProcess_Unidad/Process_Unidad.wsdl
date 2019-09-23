@@ -1,0 +1,759 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="InsertarUnidadConEntidad_Escritorio">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="_unidad">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InsertarUnidadConEntidad_EscritorioResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="InsertarUnidadConEntidad_EscritorioResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InsertarUnidadSinEntidad_Escritorio">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="_nombre" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="_descripcion" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="_estado" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="_rut_empresa" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InsertarUnidadSinEntidad_EscritorioResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="InsertarUnidadSinEntidad_EscritorioResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ActualizarUnidadConEntidad_Escritorio">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="_unidad">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ActualizarUnidadConEntidad_EscritorioResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ActualizarUnidadConEntidad_EscritorioResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ActualizarUnidadSinEntidad_Escritorio">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="_id_unidad" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="_nombre" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="_descripcion" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="_estado" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="_rut_empresa" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ActualizarUnidadSinEntidad_EscritorioResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ActualizarUnidadSinEntidad_EscritorioResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TraerUnidadSinEntidad_Escritorio">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="_id_unidad" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="_rut_empresa" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TraerUnidadSinEntidad_EscritorioResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TraerUnidadSinEntidad_EscritorioResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TraerUnidadConEntidad_Escritorio">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="_id_unidad" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="_rut_empresa" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TraerUnidadConEntidad_EscritorioResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TraerUnidadConEntidad_EscritorioResult" type="tns:Unidad" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Unidad">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Id_unidad" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Nombre" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Descripcion" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Estado" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Rut_empresa" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="TraerUnidadPorNombrePorEmpresaConEntidad_Escritorio">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="_nombre" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="_rut_empresa" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TraerUnidadPorNombrePorEmpresaConEntidad_EscritorioResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TraerUnidadPorNombrePorEmpresaConEntidad_EscritorioResult" type="tns:Unidad" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TraerUnidadConClaveSinEntidad_Escritorio">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="_palabra_clave" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TraerUnidadConClaveSinEntidad_EscritorioResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TraerUnidadConClaveSinEntidad_EscritorioResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TraerTodasUnidades_Escritorio">
+        <s:complexType />
+      </s:element>
+      <s:element name="TraerTodasUnidades_EscritorioResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TraerTodasUnidades_EscritorioResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="int" type="s:int" />
+      <s:element name="DataSet" nillable="true">
+        <s:complexType>
+          <s:sequence>
+            <s:element ref="s:schema" />
+            <s:any />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Unidad" nillable="true" type="tns:Unidad" />
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="InsertarUnidadConEntidad_EscritorioSoapIn">
+    <wsdl:part name="parameters" element="tns:InsertarUnidadConEntidad_Escritorio" />
+  </wsdl:message>
+  <wsdl:message name="InsertarUnidadConEntidad_EscritorioSoapOut">
+    <wsdl:part name="parameters" element="tns:InsertarUnidadConEntidad_EscritorioResponse" />
+  </wsdl:message>
+  <wsdl:message name="InsertarUnidadSinEntidad_EscritorioSoapIn">
+    <wsdl:part name="parameters" element="tns:InsertarUnidadSinEntidad_Escritorio" />
+  </wsdl:message>
+  <wsdl:message name="InsertarUnidadSinEntidad_EscritorioSoapOut">
+    <wsdl:part name="parameters" element="tns:InsertarUnidadSinEntidad_EscritorioResponse" />
+  </wsdl:message>
+  <wsdl:message name="ActualizarUnidadConEntidad_EscritorioSoapIn">
+    <wsdl:part name="parameters" element="tns:ActualizarUnidadConEntidad_Escritorio" />
+  </wsdl:message>
+  <wsdl:message name="ActualizarUnidadConEntidad_EscritorioSoapOut">
+    <wsdl:part name="parameters" element="tns:ActualizarUnidadConEntidad_EscritorioResponse" />
+  </wsdl:message>
+  <wsdl:message name="ActualizarUnidadSinEntidad_EscritorioSoapIn">
+    <wsdl:part name="parameters" element="tns:ActualizarUnidadSinEntidad_Escritorio" />
+  </wsdl:message>
+  <wsdl:message name="ActualizarUnidadSinEntidad_EscritorioSoapOut">
+    <wsdl:part name="parameters" element="tns:ActualizarUnidadSinEntidad_EscritorioResponse" />
+  </wsdl:message>
+  <wsdl:message name="TraerUnidadSinEntidad_EscritorioSoapIn">
+    <wsdl:part name="parameters" element="tns:TraerUnidadSinEntidad_Escritorio" />
+  </wsdl:message>
+  <wsdl:message name="TraerUnidadSinEntidad_EscritorioSoapOut">
+    <wsdl:part name="parameters" element="tns:TraerUnidadSinEntidad_EscritorioResponse" />
+  </wsdl:message>
+  <wsdl:message name="TraerUnidadConEntidad_EscritorioSoapIn">
+    <wsdl:part name="parameters" element="tns:TraerUnidadConEntidad_Escritorio" />
+  </wsdl:message>
+  <wsdl:message name="TraerUnidadConEntidad_EscritorioSoapOut">
+    <wsdl:part name="parameters" element="tns:TraerUnidadConEntidad_EscritorioResponse" />
+  </wsdl:message>
+  <wsdl:message name="TraerUnidadPorNombrePorEmpresaConEntidad_EscritorioSoapIn">
+    <wsdl:part name="parameters" element="tns:TraerUnidadPorNombrePorEmpresaConEntidad_Escritorio" />
+  </wsdl:message>
+  <wsdl:message name="TraerUnidadPorNombrePorEmpresaConEntidad_EscritorioSoapOut">
+    <wsdl:part name="parameters" element="tns:TraerUnidadPorNombrePorEmpresaConEntidad_EscritorioResponse" />
+  </wsdl:message>
+  <wsdl:message name="TraerUnidadConClaveSinEntidad_EscritorioSoapIn">
+    <wsdl:part name="parameters" element="tns:TraerUnidadConClaveSinEntidad_Escritorio" />
+  </wsdl:message>
+  <wsdl:message name="TraerUnidadConClaveSinEntidad_EscritorioSoapOut">
+    <wsdl:part name="parameters" element="tns:TraerUnidadConClaveSinEntidad_EscritorioResponse" />
+  </wsdl:message>
+  <wsdl:message name="TraerTodasUnidades_EscritorioSoapIn">
+    <wsdl:part name="parameters" element="tns:TraerTodasUnidades_Escritorio" />
+  </wsdl:message>
+  <wsdl:message name="TraerTodasUnidades_EscritorioSoapOut">
+    <wsdl:part name="parameters" element="tns:TraerTodasUnidades_EscritorioResponse" />
+  </wsdl:message>
+  <wsdl:message name="InsertarUnidadSinEntidad_EscritorioHttpGetIn">
+    <wsdl:part name="_nombre" type="s:string" />
+    <wsdl:part name="_descripcion" type="s:string" />
+    <wsdl:part name="_estado" type="s:string" />
+    <wsdl:part name="_rut_empresa" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="InsertarUnidadSinEntidad_EscritorioHttpGetOut">
+    <wsdl:part name="Body" element="tns:int" />
+  </wsdl:message>
+  <wsdl:message name="ActualizarUnidadSinEntidad_EscritorioHttpGetIn">
+    <wsdl:part name="_id_unidad" type="s:string" />
+    <wsdl:part name="_nombre" type="s:string" />
+    <wsdl:part name="_descripcion" type="s:string" />
+    <wsdl:part name="_estado" type="s:string" />
+    <wsdl:part name="_rut_empresa" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ActualizarUnidadSinEntidad_EscritorioHttpGetOut">
+    <wsdl:part name="Body" element="tns:int" />
+  </wsdl:message>
+  <wsdl:message name="TraerUnidadSinEntidad_EscritorioHttpGetIn">
+    <wsdl:part name="_id_unidad" type="s:string" />
+    <wsdl:part name="_rut_empresa" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="TraerUnidadSinEntidad_EscritorioHttpGetOut">
+    <wsdl:part name="Body" element="tns:DataSet" />
+  </wsdl:message>
+  <wsdl:message name="TraerUnidadConEntidad_EscritorioHttpGetIn">
+    <wsdl:part name="_id_unidad" type="s:string" />
+    <wsdl:part name="_rut_empresa" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="TraerUnidadConEntidad_EscritorioHttpGetOut">
+    <wsdl:part name="Body" element="tns:Unidad" />
+  </wsdl:message>
+  <wsdl:message name="TraerUnidadPorNombrePorEmpresaConEntidad_EscritorioHttpGetIn">
+    <wsdl:part name="_nombre" type="s:string" />
+    <wsdl:part name="_rut_empresa" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="TraerUnidadPorNombrePorEmpresaConEntidad_EscritorioHttpGetOut">
+    <wsdl:part name="Body" element="tns:Unidad" />
+  </wsdl:message>
+  <wsdl:message name="TraerUnidadConClaveSinEntidad_EscritorioHttpGetIn">
+    <wsdl:part name="_palabra_clave" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="TraerUnidadConClaveSinEntidad_EscritorioHttpGetOut">
+    <wsdl:part name="Body" element="tns:DataSet" />
+  </wsdl:message>
+  <wsdl:message name="TraerTodasUnidades_EscritorioHttpGetIn" />
+  <wsdl:message name="TraerTodasUnidades_EscritorioHttpGetOut">
+    <wsdl:part name="Body" element="tns:DataSet" />
+  </wsdl:message>
+  <wsdl:message name="InsertarUnidadSinEntidad_EscritorioHttpPostIn">
+    <wsdl:part name="_nombre" type="s:string" />
+    <wsdl:part name="_descripcion" type="s:string" />
+    <wsdl:part name="_estado" type="s:string" />
+    <wsdl:part name="_rut_empresa" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="InsertarUnidadSinEntidad_EscritorioHttpPostOut">
+    <wsdl:part name="Body" element="tns:int" />
+  </wsdl:message>
+  <wsdl:message name="ActualizarUnidadSinEntidad_EscritorioHttpPostIn">
+    <wsdl:part name="_id_unidad" type="s:string" />
+    <wsdl:part name="_nombre" type="s:string" />
+    <wsdl:part name="_descripcion" type="s:string" />
+    <wsdl:part name="_estado" type="s:string" />
+    <wsdl:part name="_rut_empresa" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ActualizarUnidadSinEntidad_EscritorioHttpPostOut">
+    <wsdl:part name="Body" element="tns:int" />
+  </wsdl:message>
+  <wsdl:message name="TraerUnidadSinEntidad_EscritorioHttpPostIn">
+    <wsdl:part name="_id_unidad" type="s:string" />
+    <wsdl:part name="_rut_empresa" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="TraerUnidadSinEntidad_EscritorioHttpPostOut">
+    <wsdl:part name="Body" element="tns:DataSet" />
+  </wsdl:message>
+  <wsdl:message name="TraerUnidadConEntidad_EscritorioHttpPostIn">
+    <wsdl:part name="_id_unidad" type="s:string" />
+    <wsdl:part name="_rut_empresa" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="TraerUnidadConEntidad_EscritorioHttpPostOut">
+    <wsdl:part name="Body" element="tns:Unidad" />
+  </wsdl:message>
+  <wsdl:message name="TraerUnidadPorNombrePorEmpresaConEntidad_EscritorioHttpPostIn">
+    <wsdl:part name="_nombre" type="s:string" />
+    <wsdl:part name="_rut_empresa" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="TraerUnidadPorNombrePorEmpresaConEntidad_EscritorioHttpPostOut">
+    <wsdl:part name="Body" element="tns:Unidad" />
+  </wsdl:message>
+  <wsdl:message name="TraerUnidadConClaveSinEntidad_EscritorioHttpPostIn">
+    <wsdl:part name="_palabra_clave" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="TraerUnidadConClaveSinEntidad_EscritorioHttpPostOut">
+    <wsdl:part name="Body" element="tns:DataSet" />
+  </wsdl:message>
+  <wsdl:message name="TraerTodasUnidades_EscritorioHttpPostIn" />
+  <wsdl:message name="TraerTodasUnidades_EscritorioHttpPostOut">
+    <wsdl:part name="Body" element="tns:DataSet" />
+  </wsdl:message>
+  <wsdl:portType name="Process_UnidadSoap">
+    <wsdl:operation name="InsertarUnidadConEntidad_Escritorio">
+      <wsdl:input message="tns:InsertarUnidadConEntidad_EscritorioSoapIn" />
+      <wsdl:output message="tns:InsertarUnidadConEntidad_EscritorioSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertarUnidadSinEntidad_Escritorio">
+      <wsdl:input message="tns:InsertarUnidadSinEntidad_EscritorioSoapIn" />
+      <wsdl:output message="tns:InsertarUnidadSinEntidad_EscritorioSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ActualizarUnidadConEntidad_Escritorio">
+      <wsdl:input message="tns:ActualizarUnidadConEntidad_EscritorioSoapIn" />
+      <wsdl:output message="tns:ActualizarUnidadConEntidad_EscritorioSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ActualizarUnidadSinEntidad_Escritorio">
+      <wsdl:input message="tns:ActualizarUnidadSinEntidad_EscritorioSoapIn" />
+      <wsdl:output message="tns:ActualizarUnidadSinEntidad_EscritorioSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TraerUnidadSinEntidad_Escritorio">
+      <wsdl:input message="tns:TraerUnidadSinEntidad_EscritorioSoapIn" />
+      <wsdl:output message="tns:TraerUnidadSinEntidad_EscritorioSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TraerUnidadConEntidad_Escritorio">
+      <wsdl:input message="tns:TraerUnidadConEntidad_EscritorioSoapIn" />
+      <wsdl:output message="tns:TraerUnidadConEntidad_EscritorioSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TraerUnidadPorNombrePorEmpresaConEntidad_Escritorio">
+      <wsdl:input message="tns:TraerUnidadPorNombrePorEmpresaConEntidad_EscritorioSoapIn" />
+      <wsdl:output message="tns:TraerUnidadPorNombrePorEmpresaConEntidad_EscritorioSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TraerUnidadConClaveSinEntidad_Escritorio">
+      <wsdl:input message="tns:TraerUnidadConClaveSinEntidad_EscritorioSoapIn" />
+      <wsdl:output message="tns:TraerUnidadConClaveSinEntidad_EscritorioSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TraerTodasUnidades_Escritorio">
+      <wsdl:input message="tns:TraerTodasUnidades_EscritorioSoapIn" />
+      <wsdl:output message="tns:TraerTodasUnidades_EscritorioSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="Process_UnidadHttpGet">
+    <wsdl:operation name="InsertarUnidadSinEntidad_Escritorio">
+      <wsdl:input message="tns:InsertarUnidadSinEntidad_EscritorioHttpGetIn" />
+      <wsdl:output message="tns:InsertarUnidadSinEntidad_EscritorioHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ActualizarUnidadSinEntidad_Escritorio">
+      <wsdl:input message="tns:ActualizarUnidadSinEntidad_EscritorioHttpGetIn" />
+      <wsdl:output message="tns:ActualizarUnidadSinEntidad_EscritorioHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TraerUnidadSinEntidad_Escritorio">
+      <wsdl:input message="tns:TraerUnidadSinEntidad_EscritorioHttpGetIn" />
+      <wsdl:output message="tns:TraerUnidadSinEntidad_EscritorioHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TraerUnidadConEntidad_Escritorio">
+      <wsdl:input message="tns:TraerUnidadConEntidad_EscritorioHttpGetIn" />
+      <wsdl:output message="tns:TraerUnidadConEntidad_EscritorioHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TraerUnidadPorNombrePorEmpresaConEntidad_Escritorio">
+      <wsdl:input message="tns:TraerUnidadPorNombrePorEmpresaConEntidad_EscritorioHttpGetIn" />
+      <wsdl:output message="tns:TraerUnidadPorNombrePorEmpresaConEntidad_EscritorioHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TraerUnidadConClaveSinEntidad_Escritorio">
+      <wsdl:input message="tns:TraerUnidadConClaveSinEntidad_EscritorioHttpGetIn" />
+      <wsdl:output message="tns:TraerUnidadConClaveSinEntidad_EscritorioHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TraerTodasUnidades_Escritorio">
+      <wsdl:input message="tns:TraerTodasUnidades_EscritorioHttpGetIn" />
+      <wsdl:output message="tns:TraerTodasUnidades_EscritorioHttpGetOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="Process_UnidadHttpPost">
+    <wsdl:operation name="InsertarUnidadSinEntidad_Escritorio">
+      <wsdl:input message="tns:InsertarUnidadSinEntidad_EscritorioHttpPostIn" />
+      <wsdl:output message="tns:InsertarUnidadSinEntidad_EscritorioHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ActualizarUnidadSinEntidad_Escritorio">
+      <wsdl:input message="tns:ActualizarUnidadSinEntidad_EscritorioHttpPostIn" />
+      <wsdl:output message="tns:ActualizarUnidadSinEntidad_EscritorioHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TraerUnidadSinEntidad_Escritorio">
+      <wsdl:input message="tns:TraerUnidadSinEntidad_EscritorioHttpPostIn" />
+      <wsdl:output message="tns:TraerUnidadSinEntidad_EscritorioHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TraerUnidadConEntidad_Escritorio">
+      <wsdl:input message="tns:TraerUnidadConEntidad_EscritorioHttpPostIn" />
+      <wsdl:output message="tns:TraerUnidadConEntidad_EscritorioHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TraerUnidadPorNombrePorEmpresaConEntidad_Escritorio">
+      <wsdl:input message="tns:TraerUnidadPorNombrePorEmpresaConEntidad_EscritorioHttpPostIn" />
+      <wsdl:output message="tns:TraerUnidadPorNombrePorEmpresaConEntidad_EscritorioHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TraerUnidadConClaveSinEntidad_Escritorio">
+      <wsdl:input message="tns:TraerUnidadConClaveSinEntidad_EscritorioHttpPostIn" />
+      <wsdl:output message="tns:TraerUnidadConClaveSinEntidad_EscritorioHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TraerTodasUnidades_Escritorio">
+      <wsdl:input message="tns:TraerTodasUnidades_EscritorioHttpPostIn" />
+      <wsdl:output message="tns:TraerTodasUnidades_EscritorioHttpPostOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="Process_UnidadSoap" type="tns:Process_UnidadSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="InsertarUnidadConEntidad_Escritorio">
+      <soap:operation soapAction="http://tempuri.org/InsertarUnidadConEntidad_Escritorio" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertarUnidadSinEntidad_Escritorio">
+      <soap:operation soapAction="http://tempuri.org/InsertarUnidadSinEntidad_Escritorio" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ActualizarUnidadConEntidad_Escritorio">
+      <soap:operation soapAction="http://tempuri.org/ActualizarUnidadConEntidad_Escritorio" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ActualizarUnidadSinEntidad_Escritorio">
+      <soap:operation soapAction="http://tempuri.org/ActualizarUnidadSinEntidad_Escritorio" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TraerUnidadSinEntidad_Escritorio">
+      <soap:operation soapAction="http://tempuri.org/TraerUnidadSinEntidad_Escritorio" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TraerUnidadConEntidad_Escritorio">
+      <soap:operation soapAction="http://tempuri.org/TraerUnidadConEntidad_Escritorio" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TraerUnidadPorNombrePorEmpresaConEntidad_Escritorio">
+      <soap:operation soapAction="http://tempuri.org/TraerUnidadPorNombrePorEmpresaConEntidad_Escritorio" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TraerUnidadConClaveSinEntidad_Escritorio">
+      <soap:operation soapAction="http://tempuri.org/TraerUnidadConClaveSinEntidad_Escritorio" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TraerTodasUnidades_Escritorio">
+      <soap:operation soapAction="http://tempuri.org/TraerTodasUnidades_Escritorio" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="Process_UnidadSoap12" type="tns:Process_UnidadSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="InsertarUnidadConEntidad_Escritorio">
+      <soap12:operation soapAction="http://tempuri.org/InsertarUnidadConEntidad_Escritorio" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertarUnidadSinEntidad_Escritorio">
+      <soap12:operation soapAction="http://tempuri.org/InsertarUnidadSinEntidad_Escritorio" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ActualizarUnidadConEntidad_Escritorio">
+      <soap12:operation soapAction="http://tempuri.org/ActualizarUnidadConEntidad_Escritorio" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ActualizarUnidadSinEntidad_Escritorio">
+      <soap12:operation soapAction="http://tempuri.org/ActualizarUnidadSinEntidad_Escritorio" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TraerUnidadSinEntidad_Escritorio">
+      <soap12:operation soapAction="http://tempuri.org/TraerUnidadSinEntidad_Escritorio" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TraerUnidadConEntidad_Escritorio">
+      <soap12:operation soapAction="http://tempuri.org/TraerUnidadConEntidad_Escritorio" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TraerUnidadPorNombrePorEmpresaConEntidad_Escritorio">
+      <soap12:operation soapAction="http://tempuri.org/TraerUnidadPorNombrePorEmpresaConEntidad_Escritorio" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TraerUnidadConClaveSinEntidad_Escritorio">
+      <soap12:operation soapAction="http://tempuri.org/TraerUnidadConClaveSinEntidad_Escritorio" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TraerTodasUnidades_Escritorio">
+      <soap12:operation soapAction="http://tempuri.org/TraerTodasUnidades_Escritorio" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="Process_UnidadHttpGet" type="tns:Process_UnidadHttpGet">
+    <http:binding verb="GET" />
+    <wsdl:operation name="InsertarUnidadSinEntidad_Escritorio">
+      <http:operation location="/InsertarUnidadSinEntidad_Escritorio" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ActualizarUnidadSinEntidad_Escritorio">
+      <http:operation location="/ActualizarUnidadSinEntidad_Escritorio" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TraerUnidadSinEntidad_Escritorio">
+      <http:operation location="/TraerUnidadSinEntidad_Escritorio" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TraerUnidadConEntidad_Escritorio">
+      <http:operation location="/TraerUnidadConEntidad_Escritorio" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TraerUnidadPorNombrePorEmpresaConEntidad_Escritorio">
+      <http:operation location="/TraerUnidadPorNombrePorEmpresaConEntidad_Escritorio" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TraerUnidadConClaveSinEntidad_Escritorio">
+      <http:operation location="/TraerUnidadConClaveSinEntidad_Escritorio" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TraerTodasUnidades_Escritorio">
+      <http:operation location="/TraerTodasUnidades_Escritorio" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="Process_UnidadHttpPost" type="tns:Process_UnidadHttpPost">
+    <http:binding verb="POST" />
+    <wsdl:operation name="InsertarUnidadSinEntidad_Escritorio">
+      <http:operation location="/InsertarUnidadSinEntidad_Escritorio" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ActualizarUnidadSinEntidad_Escritorio">
+      <http:operation location="/ActualizarUnidadSinEntidad_Escritorio" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TraerUnidadSinEntidad_Escritorio">
+      <http:operation location="/TraerUnidadSinEntidad_Escritorio" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TraerUnidadConEntidad_Escritorio">
+      <http:operation location="/TraerUnidadConEntidad_Escritorio" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TraerUnidadPorNombrePorEmpresaConEntidad_Escritorio">
+      <http:operation location="/TraerUnidadPorNombrePorEmpresaConEntidad_Escritorio" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TraerUnidadConClaveSinEntidad_Escritorio">
+      <http:operation location="/TraerUnidadConClaveSinEntidad_Escritorio" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TraerTodasUnidades_Escritorio">
+      <http:operation location="/TraerTodasUnidades_Escritorio" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Process_Unidad">
+    <wsdl:port name="Process_UnidadSoap" binding="tns:Process_UnidadSoap">
+      <soap:address location="http://localhost:52755/Process_Unidad.asmx" />
+    </wsdl:port>
+    <wsdl:port name="Process_UnidadSoap12" binding="tns:Process_UnidadSoap12">
+      <soap12:address location="http://localhost:52755/Process_Unidad.asmx" />
+    </wsdl:port>
+    <wsdl:port name="Process_UnidadHttpGet" binding="tns:Process_UnidadHttpGet">
+      <http:address location="http://localhost:52755/Process_Unidad.asmx" />
+    </wsdl:port>
+    <wsdl:port name="Process_UnidadHttpPost" binding="tns:Process_UnidadHttpPost">
+      <http:address location="http://localhost:52755/Process_Unidad.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
