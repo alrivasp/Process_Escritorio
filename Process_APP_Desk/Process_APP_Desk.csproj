@@ -57,6 +57,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Connected Services\ServiceProcess_Cargo\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Connected Services\ServiceProcess_Comuna\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -204,6 +209,10 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="Connected Services\ServiceProcess_Cargo\Process_APP_Desk.ServiceProcess_Cargo.Cargo.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceProcess_Cargo\Process_Cargo.wsdl" />
     <None Include="Connected Services\ServiceProcess_Comuna\Process_APP_Desk.ServiceProcess_Comuna.Comuna.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
@@ -326,6 +335,7 @@
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
+    <WCFMetadataStorage Include="Connected Services\ServiceProcess_Cargo\" />
     <WCFMetadataStorage Include="Connected Services\ServiceProcess_Comuna\" />
     <WCFMetadataStorage Include="Connected Services\ServiceProcess_Cuenta\" />
     <WCFMetadataStorage Include="Connected Services\ServiceProcess_Empresa\" />
@@ -467,6 +477,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Connected Services\ServiceProcess_Unidad\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\ServiceProcess_Cargo\Process_Cargo.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\ServiceProcess_Cargo\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\ServiceProcess_Cargo\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\ServiceProcess_Cargo\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>

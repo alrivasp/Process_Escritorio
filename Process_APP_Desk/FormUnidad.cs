@@ -105,7 +105,7 @@ namespace Process_APP_Desk
             }
         }
 
-        //Metodo Carga ComboBox Region
+        //Metodo Carga ComboBox Empresa
         private void cargarComboEmpresa()
         {
             DataSet ds = new DataSet();

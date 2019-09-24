@@ -1,0 +1,913 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="InsertarCargoConEntidad_Escritorio">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="_unidad">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InsertarCargoConEntidad_EscritorioResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="InsertarCargoConEntidad_EscritorioResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InsertarCargoSinEntidad_Escritorio">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="_nombre" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="_descripcion" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="_rut_empresa" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InsertarCargoSinEntidad_EscritorioResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="InsertarCargoSinEntidad_EscritorioResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ActualizarCargoConEntidad_Escritorio">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="_unidad">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ActualizarCargoConEntidad_EscritorioResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ActualizarCargoConEntidad_EscritorioResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ActualizarCargoSinEntidad_Escritorio">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="_id_cargo" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="_nombre" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="_descripcion" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="_rut_empresa" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ActualizarCargoSinEntidad_EscritorioResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ActualizarCargoSinEntidad_EscritorioResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TraerCargoSinEntidad_Escritorio">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="_id_cargo" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TraerCargoSinEntidad_EscritorioResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TraerCargoSinEntidad_EscritorioResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TraerCargoConEntidad_Escritorio">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="_id_cargo" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TraerCargoConEntidad_EscritorioResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TraerCargoConEntidad_EscritorioResult" type="tns:Cargo" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Cargo">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Id_cargo" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Nombre" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Descripcion" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Rut_empresa" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="TraerCargoConEmpresaSinEntidad_Escritorio">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="_rut_empresa" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TraerCargoConEmpresaSinEntidad_EscritorioResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TraerCargoConEmpresaSinEntidad_EscritorioResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TraerCargoConEmpresaConEntidad_Escritorio">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="_rut_empresa" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TraerCargoConEmpresaConEntidad_EscritorioResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TraerCargoConEmpresaConEntidad_EscritorioResult" type="tns:Cargo" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TraerCargoPorNombrePorEmpresaConEntidad_Escritorio">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="_nombre" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="_rut_empresa" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TraerCargoPorNombrePorEmpresaConEntidad_EscritorioResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TraerCargoPorNombrePorEmpresaConEntidad_EscritorioResult" type="tns:Cargo" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TraerCargoConClaveSinEntidad_Escritorio">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="_palabra_clave" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TraerCargoConClaveSinEntidad_EscritorioResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TraerCargoConClaveSinEntidad_EscritorioResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TraerTodasCargos_Escritorio">
+        <s:complexType />
+      </s:element>
+      <s:element name="TraerTodasCargos_EscritorioResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TraerTodasCargos_EscritorioResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="int" type="s:int" />
+      <s:element name="DataSet" nillable="true">
+        <s:complexType>
+          <s:sequence>
+            <s:element ref="s:schema" />
+            <s:any />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Cargo" nillable="true" type="tns:Cargo" />
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="InsertarCargoConEntidad_EscritorioSoapIn">
+    <wsdl:part name="parameters" element="tns:InsertarCargoConEntidad_Escritorio" />
+  </wsdl:message>
+  <wsdl:message name="InsertarCargoConEntidad_EscritorioSoapOut">
+    <wsdl:part name="parameters" element="tns:InsertarCargoConEntidad_EscritorioResponse" />
+  </wsdl:message>
+  <wsdl:message name="InsertarCargoSinEntidad_EscritorioSoapIn">
+    <wsdl:part name="parameters" element="tns:InsertarCargoSinEntidad_Escritorio" />
+  </wsdl:message>
+  <wsdl:message name="InsertarCargoSinEntidad_EscritorioSoapOut">
+    <wsdl:part name="parameters" element="tns:InsertarCargoSinEntidad_EscritorioResponse" />
+  </wsdl:message>
+  <wsdl:message name="ActualizarCargoConEntidad_EscritorioSoapIn">
+    <wsdl:part name="parameters" element="tns:ActualizarCargoConEntidad_Escritorio" />
+  </wsdl:message>
+  <wsdl:message name="ActualizarCargoConEntidad_EscritorioSoapOut">
+    <wsdl:part name="parameters" element="tns:ActualizarCargoConEntidad_EscritorioResponse" />
+  </wsdl:message>
+  <wsdl:message name="ActualizarCargoSinEntidad_EscritorioSoapIn">
+    <wsdl:part name="parameters" element="tns:ActualizarCargoSinEntidad_Escritorio" />
+  </wsdl:message>
+  <wsdl:message name="ActualizarCargoSinEntidad_EscritorioSoapOut">
+    <wsdl:part name="parameters" element="tns:ActualizarCargoSinEntidad_EscritorioResponse" />
+  </wsdl:message>
+  <wsdl:message name="TraerCargoSinEntidad_EscritorioSoapIn">
+    <wsdl:part name="parameters" element="tns:TraerCargoSinEntidad_Escritorio" />
+  </wsdl:message>
+  <wsdl:message name="TraerCargoSinEntidad_EscritorioSoapOut">
+    <wsdl:part name="parameters" element="tns:TraerCargoSinEntidad_EscritorioResponse" />
+  </wsdl:message>
+  <wsdl:message name="TraerCargoConEntidad_EscritorioSoapIn">
+    <wsdl:part name="parameters" element="tns:TraerCargoConEntidad_Escritorio" />
+  </wsdl:message>
+  <wsdl:message name="TraerCargoConEntidad_EscritorioSoapOut">
+    <wsdl:part name="parameters" element="tns:TraerCargoConEntidad_EscritorioResponse" />
+  </wsdl:message>
+  <wsdl:message name="TraerCargoConEmpresaSinEntidad_EscritorioSoapIn">
+    <wsdl:part name="parameters" element="tns:TraerCargoConEmpresaSinEntidad_Escritorio" />
+  </wsdl:message>
+  <wsdl:message name="TraerCargoConEmpresaSinEntidad_EscritorioSoapOut">
+    <wsdl:part name="parameters" element="tns:TraerCargoConEmpresaSinEntidad_EscritorioResponse" />
+  </wsdl:message>
+  <wsdl:message name="TraerCargoConEmpresaConEntidad_EscritorioSoapIn">
+    <wsdl:part name="parameters" element="tns:TraerCargoConEmpresaConEntidad_Escritorio" />
+  </wsdl:message>
+  <wsdl:message name="TraerCargoConEmpresaConEntidad_EscritorioSoapOut">
+    <wsdl:part name="parameters" element="tns:TraerCargoConEmpresaConEntidad_EscritorioResponse" />
+  </wsdl:message>
+  <wsdl:message name="TraerCargoPorNombrePorEmpresaConEntidad_EscritorioSoapIn">
+    <wsdl:part name="parameters" element="tns:TraerCargoPorNombrePorEmpresaConEntidad_Escritorio" />
+  </wsdl:message>
+  <wsdl:message name="TraerCargoPorNombrePorEmpresaConEntidad_EscritorioSoapOut">
+    <wsdl:part name="parameters" element="tns:TraerCargoPorNombrePorEmpresaConEntidad_EscritorioResponse" />
+  </wsdl:message>
+  <wsdl:message name="TraerCargoConClaveSinEntidad_EscritorioSoapIn">
+    <wsdl:part name="parameters" element="tns:TraerCargoConClaveSinEntidad_Escritorio" />
+  </wsdl:message>
+  <wsdl:message name="TraerCargoConClaveSinEntidad_EscritorioSoapOut">
+    <wsdl:part name="parameters" element="tns:TraerCargoConClaveSinEntidad_EscritorioResponse" />
+  </wsdl:message>
+  <wsdl:message name="TraerTodasCargos_EscritorioSoapIn">
+    <wsdl:part name="parameters" element="tns:TraerTodasCargos_Escritorio" />
+  </wsdl:message>
+  <wsdl:message name="TraerTodasCargos_EscritorioSoapOut">
+    <wsdl:part name="parameters" element="tns:TraerTodasCargos_EscritorioResponse" />
+  </wsdl:message>
+  <wsdl:message name="InsertarCargoSinEntidad_EscritorioHttpGetIn">
+    <wsdl:part name="_nombre" type="s:string" />
+    <wsdl:part name="_descripcion" type="s:string" />
+    <wsdl:part name="_rut_empresa" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="InsertarCargoSinEntidad_EscritorioHttpGetOut">
+    <wsdl:part name="Body" element="tns:int" />
+  </wsdl:message>
+  <wsdl:message name="ActualizarCargoSinEntidad_EscritorioHttpGetIn">
+    <wsdl:part name="_id_cargo" type="s:string" />
+    <wsdl:part name="_nombre" type="s:string" />
+    <wsdl:part name="_descripcion" type="s:string" />
+    <wsdl:part name="_rut_empresa" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ActualizarCargoSinEntidad_EscritorioHttpGetOut">
+    <wsdl:part name="Body" element="tns:int" />
+  </wsdl:message>
+  <wsdl:message name="TraerCargoSinEntidad_EscritorioHttpGetIn">
+    <wsdl:part name="_id_cargo" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="TraerCargoSinEntidad_EscritorioHttpGetOut">
+    <wsdl:part name="Body" element="tns:DataSet" />
+  </wsdl:message>
+  <wsdl:message name="TraerCargoConEntidad_EscritorioHttpGetIn">
+    <wsdl:part name="_id_cargo" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="TraerCargoConEntidad_EscritorioHttpGetOut">
+    <wsdl:part name="Body" element="tns:Cargo" />
+  </wsdl:message>
+  <wsdl:message name="TraerCargoConEmpresaSinEntidad_EscritorioHttpGetIn">
+    <wsdl:part name="_rut_empresa" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="TraerCargoConEmpresaSinEntidad_EscritorioHttpGetOut">
+    <wsdl:part name="Body" element="tns:DataSet" />
+  </wsdl:message>
+  <wsdl:message name="TraerCargoConEmpresaConEntidad_EscritorioHttpGetIn">
+    <wsdl:part name="_rut_empresa" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="TraerCargoConEmpresaConEntidad_EscritorioHttpGetOut">
+    <wsdl:part name="Body" element="tns:Cargo" />
+  </wsdl:message>
+  <wsdl:message name="TraerCargoPorNombrePorEmpresaConEntidad_EscritorioHttpGetIn">
+    <wsdl:part name="_nombre" type="s:string" />
+    <wsdl:part name="_rut_empresa" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="TraerCargoPorNombrePorEmpresaConEntidad_EscritorioHttpGetOut">
+    <wsdl:part name="Body" element="tns:Cargo" />
+  </wsdl:message>
+  <wsdl:message name="TraerCargoConClaveSinEntidad_EscritorioHttpGetIn">
+    <wsdl:part name="_palabra_clave" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="TraerCargoConClaveSinEntidad_EscritorioHttpGetOut">
+    <wsdl:part name="Body" element="tns:DataSet" />
+  </wsdl:message>
+  <wsdl:message name="TraerTodasCargos_EscritorioHttpGetIn" />
+  <wsdl:message name="TraerTodasCargos_EscritorioHttpGetOut">
+    <wsdl:part name="Body" element="tns:DataSet" />
+  </wsdl:message>
+  <wsdl:message name="InsertarCargoSinEntidad_EscritorioHttpPostIn">
+    <wsdl:part name="_nombre" type="s:string" />
+    <wsdl:part name="_descripcion" type="s:string" />
+    <wsdl:part name="_rut_empresa" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="InsertarCargoSinEntidad_EscritorioHttpPostOut">
+    <wsdl:part name="Body" element="tns:int" />
+  </wsdl:message>
+  <wsdl:message name="ActualizarCargoSinEntidad_EscritorioHttpPostIn">
+    <wsdl:part name="_id_cargo" type="s:string" />
+    <wsdl:part name="_nombre" type="s:string" />
+    <wsdl:part name="_descripcion" type="s:string" />
+    <wsdl:part name="_rut_empresa" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ActualizarCargoSinEntidad_EscritorioHttpPostOut">
+    <wsdl:part name="Body" element="tns:int" />
+  </wsdl:message>
+  <wsdl:message name="TraerCargoSinEntidad_EscritorioHttpPostIn">
+    <wsdl:part name="_id_cargo" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="TraerCargoSinEntidad_EscritorioHttpPostOut">
+    <wsdl:part name="Body" element="tns:DataSet" />
+  </wsdl:message>
+  <wsdl:message name="TraerCargoConEntidad_EscritorioHttpPostIn">
+    <wsdl:part name="_id_cargo" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="TraerCargoConEntidad_EscritorioHttpPostOut">
+    <wsdl:part name="Body" element="tns:Cargo" />
+  </wsdl:message>
+  <wsdl:message name="TraerCargoConEmpresaSinEntidad_EscritorioHttpPostIn">
+    <wsdl:part name="_rut_empresa" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="TraerCargoConEmpresaSinEntidad_EscritorioHttpPostOut">
+    <wsdl:part name="Body" element="tns:DataSet" />
+  </wsdl:message>
+  <wsdl:message name="TraerCargoConEmpresaConEntidad_EscritorioHttpPostIn">
+    <wsdl:part name="_rut_empresa" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="TraerCargoConEmpresaConEntidad_EscritorioHttpPostOut">
+    <wsdl:part name="Body" element="tns:Cargo" />
+  </wsdl:message>
+  <wsdl:message name="TraerCargoPorNombrePorEmpresaConEntidad_EscritorioHttpPostIn">
+    <wsdl:part name="_nombre" type="s:string" />
+    <wsdl:part name="_rut_empresa" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="TraerCargoPorNombrePorEmpresaConEntidad_EscritorioHttpPostOut">
+    <wsdl:part name="Body" element="tns:Cargo" />
+  </wsdl:message>
+  <wsdl:message name="TraerCargoConClaveSinEntidad_EscritorioHttpPostIn">
+    <wsdl:part name="_palabra_clave" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="TraerCargoConClaveSinEntidad_EscritorioHttpPostOut">
+    <wsdl:part name="Body" element="tns:DataSet" />
+  </wsdl:message>
+  <wsdl:message name="TraerTodasCargos_EscritorioHttpPostIn" />
+  <wsdl:message name="TraerTodasCargos_EscritorioHttpPostOut">
+    <wsdl:part name="Body" element="tns:DataSet" />
+  </wsdl:message>
+  <wsdl:portType name="Process_CargoSoap">
+    <wsdl:operation name="InsertarCargoConEntidad_Escritorio">
+      <wsdl:input message="tns:InsertarCargoConEntidad_EscritorioSoapIn" />
+      <wsdl:output message="tns:InsertarCargoConEntidad_EscritorioSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertarCargoSinEntidad_Escritorio">
+      <wsdl:input message="tns:InsertarCargoSinEntidad_EscritorioSoapIn" />
+      <wsdl:output message="tns:InsertarCargoSinEntidad_EscritorioSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ActualizarCargoConEntidad_Escritorio">
+      <wsdl:input message="tns:ActualizarCargoConEntidad_EscritorioSoapIn" />
+      <wsdl:output message="tns:ActualizarCargoConEntidad_EscritorioSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ActualizarCargoSinEntidad_Escritorio">
+      <wsdl:input message="tns:ActualizarCargoSinEntidad_EscritorioSoapIn" />
+      <wsdl:output message="tns:ActualizarCargoSinEntidad_EscritorioSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TraerCargoSinEntidad_Escritorio">
+      <wsdl:input message="tns:TraerCargoSinEntidad_EscritorioSoapIn" />
+      <wsdl:output message="tns:TraerCargoSinEntidad_EscritorioSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TraerCargoConEntidad_Escritorio">
+      <wsdl:input message="tns:TraerCargoConEntidad_EscritorioSoapIn" />
+      <wsdl:output message="tns:TraerCargoConEntidad_EscritorioSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TraerCargoConEmpresaSinEntidad_Escritorio">
+      <wsdl:input message="tns:TraerCargoConEmpresaSinEntidad_EscritorioSoapIn" />
+      <wsdl:output message="tns:TraerCargoConEmpresaSinEntidad_EscritorioSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TraerCargoConEmpresaConEntidad_Escritorio">
+      <wsdl:input message="tns:TraerCargoConEmpresaConEntidad_EscritorioSoapIn" />
+      <wsdl:output message="tns:TraerCargoConEmpresaConEntidad_EscritorioSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TraerCargoPorNombrePorEmpresaConEntidad_Escritorio">
+      <wsdl:input message="tns:TraerCargoPorNombrePorEmpresaConEntidad_EscritorioSoapIn" />
+      <wsdl:output message="tns:TraerCargoPorNombrePorEmpresaConEntidad_EscritorioSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TraerCargoConClaveSinEntidad_Escritorio">
+      <wsdl:input message="tns:TraerCargoConClaveSinEntidad_EscritorioSoapIn" />
+      <wsdl:output message="tns:TraerCargoConClaveSinEntidad_EscritorioSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TraerTodasCargos_Escritorio">
+      <wsdl:input message="tns:TraerTodasCargos_EscritorioSoapIn" />
+      <wsdl:output message="tns:TraerTodasCargos_EscritorioSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="Process_CargoHttpGet">
+    <wsdl:operation name="InsertarCargoSinEntidad_Escritorio">
+      <wsdl:input message="tns:InsertarCargoSinEntidad_EscritorioHttpGetIn" />
+      <wsdl:output message="tns:InsertarCargoSinEntidad_EscritorioHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ActualizarCargoSinEntidad_Escritorio">
+      <wsdl:input message="tns:ActualizarCargoSinEntidad_EscritorioHttpGetIn" />
+      <wsdl:output message="tns:ActualizarCargoSinEntidad_EscritorioHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TraerCargoSinEntidad_Escritorio">
+      <wsdl:input message="tns:TraerCargoSinEntidad_EscritorioHttpGetIn" />
+      <wsdl:output message="tns:TraerCargoSinEntidad_EscritorioHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TraerCargoConEntidad_Escritorio">
+      <wsdl:input message="tns:TraerCargoConEntidad_EscritorioHttpGetIn" />
+      <wsdl:output message="tns:TraerCargoConEntidad_EscritorioHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TraerCargoConEmpresaSinEntidad_Escritorio">
+      <wsdl:input message="tns:TraerCargoConEmpresaSinEntidad_EscritorioHttpGetIn" />
+      <wsdl:output message="tns:TraerCargoConEmpresaSinEntidad_EscritorioHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TraerCargoConEmpresaConEntidad_Escritorio">
+      <wsdl:input message="tns:TraerCargoConEmpresaConEntidad_EscritorioHttpGetIn" />
+      <wsdl:output message="tns:TraerCargoConEmpresaConEntidad_EscritorioHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TraerCargoPorNombrePorEmpresaConEntidad_Escritorio">
+      <wsdl:input message="tns:TraerCargoPorNombrePorEmpresaConEntidad_EscritorioHttpGetIn" />
+      <wsdl:output message="tns:TraerCargoPorNombrePorEmpresaConEntidad_EscritorioHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TraerCargoConClaveSinEntidad_Escritorio">
+      <wsdl:input message="tns:TraerCargoConClaveSinEntidad_EscritorioHttpGetIn" />
+      <wsdl:output message="tns:TraerCargoConClaveSinEntidad_EscritorioHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TraerTodasCargos_Escritorio">
+      <wsdl:input message="tns:TraerTodasCargos_EscritorioHttpGetIn" />
+      <wsdl:output message="tns:TraerTodasCargos_EscritorioHttpGetOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="Process_CargoHttpPost">
+    <wsdl:operation name="InsertarCargoSinEntidad_Escritorio">
+      <wsdl:input message="tns:InsertarCargoSinEntidad_EscritorioHttpPostIn" />
+      <wsdl:output message="tns:InsertarCargoSinEntidad_EscritorioHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ActualizarCargoSinEntidad_Escritorio">
+      <wsdl:input message="tns:ActualizarCargoSinEntidad_EscritorioHttpPostIn" />
+      <wsdl:output message="tns:ActualizarCargoSinEntidad_EscritorioHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TraerCargoSinEntidad_Escritorio">
+      <wsdl:input message="tns:TraerCargoSinEntidad_EscritorioHttpPostIn" />
+      <wsdl:output message="tns:TraerCargoSinEntidad_EscritorioHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TraerCargoConEntidad_Escritorio">
+      <wsdl:input message="tns:TraerCargoConEntidad_EscritorioHttpPostIn" />
+      <wsdl:output message="tns:TraerCargoConEntidad_EscritorioHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TraerCargoConEmpresaSinEntidad_Escritorio">
+      <wsdl:input message="tns:TraerCargoConEmpresaSinEntidad_EscritorioHttpPostIn" />
+      <wsdl:output message="tns:TraerCargoConEmpresaSinEntidad_EscritorioHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TraerCargoConEmpresaConEntidad_Escritorio">
+      <wsdl:input message="tns:TraerCargoConEmpresaConEntidad_EscritorioHttpPostIn" />
+      <wsdl:output message="tns:TraerCargoConEmpresaConEntidad_EscritorioHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TraerCargoPorNombrePorEmpresaConEntidad_Escritorio">
+      <wsdl:input message="tns:TraerCargoPorNombrePorEmpresaConEntidad_EscritorioHttpPostIn" />
+      <wsdl:output message="tns:TraerCargoPorNombrePorEmpresaConEntidad_EscritorioHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TraerCargoConClaveSinEntidad_Escritorio">
+      <wsdl:input message="tns:TraerCargoConClaveSinEntidad_EscritorioHttpPostIn" />
+      <wsdl:output message="tns:TraerCargoConClaveSinEntidad_EscritorioHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TraerTodasCargos_Escritorio">
+      <wsdl:input message="tns:TraerTodasCargos_EscritorioHttpPostIn" />
+      <wsdl:output message="tns:TraerTodasCargos_EscritorioHttpPostOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="Process_CargoSoap" type="tns:Process_CargoSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="InsertarCargoConEntidad_Escritorio">
+      <soap:operation soapAction="http://tempuri.org/InsertarCargoConEntidad_Escritorio" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertarCargoSinEntidad_Escritorio">
+      <soap:operation soapAction="http://tempuri.org/InsertarCargoSinEntidad_Escritorio" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ActualizarCargoConEntidad_Escritorio">
+      <soap:operation soapAction="http://tempuri.org/ActualizarCargoConEntidad_Escritorio" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ActualizarCargoSinEntidad_Escritorio">
+      <soap:operation soapAction="http://tempuri.org/ActualizarCargoSinEntidad_Escritorio" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TraerCargoSinEntidad_Escritorio">
+      <soap:operation soapAction="http://tempuri.org/TraerCargoSinEntidad_Escritorio" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TraerCargoConEntidad_Escritorio">
+      <soap:operation soapAction="http://tempuri.org/TraerCargoConEntidad_Escritorio" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TraerCargoConEmpresaSinEntidad_Escritorio">
+      <soap:operation soapAction="http://tempuri.org/TraerCargoConEmpresaSinEntidad_Escritorio" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TraerCargoConEmpresaConEntidad_Escritorio">
+      <soap:operation soapAction="http://tempuri.org/TraerCargoConEmpresaConEntidad_Escritorio" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TraerCargoPorNombrePorEmpresaConEntidad_Escritorio">
+      <soap:operation soapAction="http://tempuri.org/TraerCargoPorNombrePorEmpresaConEntidad_Escritorio" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TraerCargoConClaveSinEntidad_Escritorio">
+      <soap:operation soapAction="http://tempuri.org/TraerCargoConClaveSinEntidad_Escritorio" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TraerTodasCargos_Escritorio">
+      <soap:operation soapAction="http://tempuri.org/TraerTodasCargos_Escritorio" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="Process_CargoSoap12" type="tns:Process_CargoSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="InsertarCargoConEntidad_Escritorio">
+      <soap12:operation soapAction="http://tempuri.org/InsertarCargoConEntidad_Escritorio" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertarCargoSinEntidad_Escritorio">
+      <soap12:operation soapAction="http://tempuri.org/InsertarCargoSinEntidad_Escritorio" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ActualizarCargoConEntidad_Escritorio">
+      <soap12:operation soapAction="http://tempuri.org/ActualizarCargoConEntidad_Escritorio" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ActualizarCargoSinEntidad_Escritorio">
+      <soap12:operation soapAction="http://tempuri.org/ActualizarCargoSinEntidad_Escritorio" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TraerCargoSinEntidad_Escritorio">
+      <soap12:operation soapAction="http://tempuri.org/TraerCargoSinEntidad_Escritorio" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TraerCargoConEntidad_Escritorio">
+      <soap12:operation soapAction="http://tempuri.org/TraerCargoConEntidad_Escritorio" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TraerCargoConEmpresaSinEntidad_Escritorio">
+      <soap12:operation soapAction="http://tempuri.org/TraerCargoConEmpresaSinEntidad_Escritorio" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TraerCargoConEmpresaConEntidad_Escritorio">
+      <soap12:operation soapAction="http://tempuri.org/TraerCargoConEmpresaConEntidad_Escritorio" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TraerCargoPorNombrePorEmpresaConEntidad_Escritorio">
+      <soap12:operation soapAction="http://tempuri.org/TraerCargoPorNombrePorEmpresaConEntidad_Escritorio" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TraerCargoConClaveSinEntidad_Escritorio">
+      <soap12:operation soapAction="http://tempuri.org/TraerCargoConClaveSinEntidad_Escritorio" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TraerTodasCargos_Escritorio">
+      <soap12:operation soapAction="http://tempuri.org/TraerTodasCargos_Escritorio" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="Process_CargoHttpGet" type="tns:Process_CargoHttpGet">
+    <http:binding verb="GET" />
+    <wsdl:operation name="InsertarCargoSinEntidad_Escritorio">
+      <http:operation location="/InsertarCargoSinEntidad_Escritorio" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ActualizarCargoSinEntidad_Escritorio">
+      <http:operation location="/ActualizarCargoSinEntidad_Escritorio" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TraerCargoSinEntidad_Escritorio">
+      <http:operation location="/TraerCargoSinEntidad_Escritorio" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TraerCargoConEntidad_Escritorio">
+      <http:operation location="/TraerCargoConEntidad_Escritorio" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TraerCargoConEmpresaSinEntidad_Escritorio">
+      <http:operation location="/TraerCargoConEmpresaSinEntidad_Escritorio" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TraerCargoConEmpresaConEntidad_Escritorio">
+      <http:operation location="/TraerCargoConEmpresaConEntidad_Escritorio" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TraerCargoPorNombrePorEmpresaConEntidad_Escritorio">
+      <http:operation location="/TraerCargoPorNombrePorEmpresaConEntidad_Escritorio" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TraerCargoConClaveSinEntidad_Escritorio">
+      <http:operation location="/TraerCargoConClaveSinEntidad_Escritorio" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TraerTodasCargos_Escritorio">
+      <http:operation location="/TraerTodasCargos_Escritorio" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="Process_CargoHttpPost" type="tns:Process_CargoHttpPost">
+    <http:binding verb="POST" />
+    <wsdl:operation name="InsertarCargoSinEntidad_Escritorio">
+      <http:operation location="/InsertarCargoSinEntidad_Escritorio" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ActualizarCargoSinEntidad_Escritorio">
+      <http:operation location="/ActualizarCargoSinEntidad_Escritorio" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TraerCargoSinEntidad_Escritorio">
+      <http:operation location="/TraerCargoSinEntidad_Escritorio" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TraerCargoConEntidad_Escritorio">
+      <http:operation location="/TraerCargoConEntidad_Escritorio" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TraerCargoConEmpresaSinEntidad_Escritorio">
+      <http:operation location="/TraerCargoConEmpresaSinEntidad_Escritorio" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TraerCargoConEmpresaConEntidad_Escritorio">
+      <http:operation location="/TraerCargoConEmpresaConEntidad_Escritorio" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TraerCargoPorNombrePorEmpresaConEntidad_Escritorio">
+      <http:operation location="/TraerCargoPorNombrePorEmpresaConEntidad_Escritorio" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TraerCargoConClaveSinEntidad_Escritorio">
+      <http:operation location="/TraerCargoConClaveSinEntidad_Escritorio" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TraerTodasCargos_Escritorio">
+      <http:operation location="/TraerTodasCargos_Escritorio" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Process_Cargo">
+    <wsdl:port name="Process_CargoSoap" binding="tns:Process_CargoSoap">
+      <soap:address location="http://localhost:52755/Process_Cargo.asmx" />
+    </wsdl:port>
+    <wsdl:port name="Process_CargoSoap12" binding="tns:Process_CargoSoap12">
+      <soap12:address location="http://localhost:52755/Process_Cargo.asmx" />
+    </wsdl:port>
+    <wsdl:port name="Process_CargoHttpGet" binding="tns:Process_CargoHttpGet">
+      <http:address location="http://localhost:52755/Process_Cargo.asmx" />
+    </wsdl:port>
+    <wsdl:port name="Process_CargoHttpPost" binding="tns:Process_CargoHttpPost">
+      <http:address location="http://localhost:52755/Process_Cargo.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
