@@ -57,6 +57,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Connected Services\ServiceProcess_Acceso\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Connected Services\ServiceProcess_CargosUsuarios\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -78,6 +83,11 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
     <Compile Include="Connected Services\ServiceProcess_Empresa\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Connected Services\ServiceProcess_Permisos\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -214,6 +224,10 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="Connected Services\ServiceProcess_Acceso\Process_Acceso.wsdl" />
+    <None Include="Connected Services\ServiceProcess_Acceso\Process_APP_Desk.ServiceProcess_Acceso.Acceso.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Connected Services\ServiceProcess_CargosUsuarios\Process_CargosUsuarios.wsdl" />
     <None Include="Connected Services\ServiceProcess_Cargo\Process_APP_Desk.ServiceProcess_Cargo.Cargo.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -231,6 +245,10 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\ServiceProcess_Empresa\Process_Empresa.wsdl" />
+    <None Include="Connected Services\ServiceProcess_Permisos\Process_APP_Desk.ServiceProcess_Permisos.Permisos.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceProcess_Permisos\Process_Permisos.wsdl" />
     <None Include="Connected Services\ServiceProcess_Provincia\Process_APP_Desk.ServiceProcess_Provincia.Provincia.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
@@ -341,11 +359,13 @@
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
+    <WCFMetadataStorage Include="Connected Services\ServiceProcess_Acceso\" />
     <WCFMetadataStorage Include="Connected Services\ServiceProcess_CargosUsuarios\" />
     <WCFMetadataStorage Include="Connected Services\ServiceProcess_Cargo\" />
     <WCFMetadataStorage Include="Connected Services\ServiceProcess_Comuna\" />
     <WCFMetadataStorage Include="Connected Services\ServiceProcess_Cuenta\" />
     <WCFMetadataStorage Include="Connected Services\ServiceProcess_Empresa\" />
+    <WCFMetadataStorage Include="Connected Services\ServiceProcess_Permisos\" />
     <WCFMetadataStorage Include="Connected Services\ServiceProcess_Provincia\" />
     <WCFMetadataStorage Include="Connected Services\ServiceProcess_Region\" />
     <WCFMetadataStorage Include="Connected Services\ServiceProcess_Rol\" />
@@ -514,6 +534,36 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Connected Services\ServiceProcess_CargosUsuarios\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\ServiceProcess_Permisos\Process_Permisos.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\ServiceProcess_Permisos\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\ServiceProcess_Permisos\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\ServiceProcess_Permisos\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\ServiceProcess_Acceso\Process_Acceso.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\ServiceProcess_Acceso\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\ServiceProcess_Acceso\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\ServiceProcess_Acceso\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>

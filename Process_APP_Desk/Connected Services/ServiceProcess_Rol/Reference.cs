@@ -51,6 +51,13 @@ namespace Process_APP_Desk.ServiceProcess_Rol {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/TraerRolSinEntidad_Escritorio", ReplyAction="*")]
         System.Threading.Tasks.Task<System.Data.DataSet> TraerRolSinEntidad_EscritorioAsync(int _id_rol);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/TraerRolPorNombreSinEntidad_Escritorio", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        System.Data.DataSet TraerRolPorNombreSinEntidad_Escritorio(string _nombre);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/TraerRolPorNombreSinEntidad_Escritorio", ReplyAction="*")]
+        System.Threading.Tasks.Task<System.Data.DataSet> TraerRolPorNombreSinEntidad_EscritorioAsync(string _nombre);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/TraerRolConEntidad_Escritorio", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         Process_APP_Desk.ServiceProcess_Rol.Rol TraerRolConEntidad_Escritorio(int _id_rol);
@@ -58,12 +65,26 @@ namespace Process_APP_Desk.ServiceProcess_Rol {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/TraerRolConEntidad_Escritorio", ReplyAction="*")]
         System.Threading.Tasks.Task<Process_APP_Desk.ServiceProcess_Rol.Rol> TraerRolConEntidad_EscritorioAsync(int _id_rol);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/TraerRolPorNombreConEntidad_Escritorio", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        Process_APP_Desk.ServiceProcess_Rol.Rol TraerRolPorNombreConEntidad_Escritorio(string _nombre);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/TraerRolPorNombreConEntidad_Escritorio", ReplyAction="*")]
+        System.Threading.Tasks.Task<Process_APP_Desk.ServiceProcess_Rol.Rol> TraerRolPorNombreConEntidad_EscritorioAsync(string _nombre);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/TraerTodasRoles_Escritorio", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         System.Data.DataSet TraerTodasRoles_Escritorio();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/TraerTodasRoles_Escritorio", ReplyAction="*")]
         System.Threading.Tasks.Task<System.Data.DataSet> TraerTodasRoles_EscritorioAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/TraerRolConClaveSinEntidad_Escritorio", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        System.Data.DataSet TraerRolConClaveSinEntidad_Escritorio(string _palabra_clave);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/TraerRolConClaveSinEntidad_Escritorio", ReplyAction="*")]
+        System.Threading.Tasks.Task<System.Data.DataSet> TraerRolConClaveSinEntidad_EscritorioAsync(string _palabra_clave);
     }
     
     /// <remarks/>
@@ -193,6 +214,14 @@ namespace Process_APP_Desk.ServiceProcess_Rol {
             return base.Channel.TraerRolSinEntidad_EscritorioAsync(_id_rol);
         }
         
+        public System.Data.DataSet TraerRolPorNombreSinEntidad_Escritorio(string _nombre) {
+            return base.Channel.TraerRolPorNombreSinEntidad_Escritorio(_nombre);
+        }
+        
+        public System.Threading.Tasks.Task<System.Data.DataSet> TraerRolPorNombreSinEntidad_EscritorioAsync(string _nombre) {
+            return base.Channel.TraerRolPorNombreSinEntidad_EscritorioAsync(_nombre);
+        }
+        
         public Process_APP_Desk.ServiceProcess_Rol.Rol TraerRolConEntidad_Escritorio(int _id_rol) {
             return base.Channel.TraerRolConEntidad_Escritorio(_id_rol);
         }
@@ -201,12 +230,28 @@ namespace Process_APP_Desk.ServiceProcess_Rol {
             return base.Channel.TraerRolConEntidad_EscritorioAsync(_id_rol);
         }
         
+        public Process_APP_Desk.ServiceProcess_Rol.Rol TraerRolPorNombreConEntidad_Escritorio(string _nombre) {
+            return base.Channel.TraerRolPorNombreConEntidad_Escritorio(_nombre);
+        }
+        
+        public System.Threading.Tasks.Task<Process_APP_Desk.ServiceProcess_Rol.Rol> TraerRolPorNombreConEntidad_EscritorioAsync(string _nombre) {
+            return base.Channel.TraerRolPorNombreConEntidad_EscritorioAsync(_nombre);
+        }
+        
         public System.Data.DataSet TraerTodasRoles_Escritorio() {
             return base.Channel.TraerTodasRoles_Escritorio();
         }
         
         public System.Threading.Tasks.Task<System.Data.DataSet> TraerTodasRoles_EscritorioAsync() {
             return base.Channel.TraerTodasRoles_EscritorioAsync();
+        }
+        
+        public System.Data.DataSet TraerRolConClaveSinEntidad_Escritorio(string _palabra_clave) {
+            return base.Channel.TraerRolConClaveSinEntidad_Escritorio(_palabra_clave);
+        }
+        
+        public System.Threading.Tasks.Task<System.Data.DataSet> TraerRolConClaveSinEntidad_EscritorioAsync(string _palabra_clave) {
+            return base.Channel.TraerRolConClaveSinEntidad_EscritorioAsync(_palabra_clave);
         }
     }
 }

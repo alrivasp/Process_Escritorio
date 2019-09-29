@@ -96,6 +96,27 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="TraerRolPorNombreSinEntidad_Escritorio">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="_nombre" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TraerRolPorNombreSinEntidad_EscritorioResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TraerRolPorNombreSinEntidad_EscritorioResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="TraerRolConEntidad_Escritorio">
         <s:complexType>
           <s:sequence>
@@ -117,6 +138,20 @@
           <s:element minOccurs="1" maxOccurs="1" name="Estado" type="s:int" />
         </s:sequence>
       </s:complexType>
+      <s:element name="TraerRolPorNombreConEntidad_Escritorio">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="_nombre" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TraerRolPorNombreConEntidad_EscritorioResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TraerRolPorNombreConEntidad_EscritorioResult" type="tns:Rol" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="TraerTodasRoles_Escritorio">
         <s:complexType />
       </s:element>
@@ -124,6 +159,27 @@
         <s:complexType>
           <s:sequence>
             <s:element minOccurs="0" maxOccurs="1" name="TraerTodasRoles_EscritorioResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TraerRolConClaveSinEntidad_Escritorio">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="_palabra_clave" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TraerRolConClaveSinEntidad_EscritorioResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TraerRolConClaveSinEntidad_EscritorioResult">
               <s:complexType>
                 <s:sequence>
                   <s:element ref="s:schema" />
@@ -176,17 +232,35 @@
   <wsdl:message name="TraerRolSinEntidad_EscritorioSoapOut">
     <wsdl:part name="parameters" element="tns:TraerRolSinEntidad_EscritorioResponse" />
   </wsdl:message>
+  <wsdl:message name="TraerRolPorNombreSinEntidad_EscritorioSoapIn">
+    <wsdl:part name="parameters" element="tns:TraerRolPorNombreSinEntidad_Escritorio" />
+  </wsdl:message>
+  <wsdl:message name="TraerRolPorNombreSinEntidad_EscritorioSoapOut">
+    <wsdl:part name="parameters" element="tns:TraerRolPorNombreSinEntidad_EscritorioResponse" />
+  </wsdl:message>
   <wsdl:message name="TraerRolConEntidad_EscritorioSoapIn">
     <wsdl:part name="parameters" element="tns:TraerRolConEntidad_Escritorio" />
   </wsdl:message>
   <wsdl:message name="TraerRolConEntidad_EscritorioSoapOut">
     <wsdl:part name="parameters" element="tns:TraerRolConEntidad_EscritorioResponse" />
   </wsdl:message>
+  <wsdl:message name="TraerRolPorNombreConEntidad_EscritorioSoapIn">
+    <wsdl:part name="parameters" element="tns:TraerRolPorNombreConEntidad_Escritorio" />
+  </wsdl:message>
+  <wsdl:message name="TraerRolPorNombreConEntidad_EscritorioSoapOut">
+    <wsdl:part name="parameters" element="tns:TraerRolPorNombreConEntidad_EscritorioResponse" />
+  </wsdl:message>
   <wsdl:message name="TraerTodasRoles_EscritorioSoapIn">
     <wsdl:part name="parameters" element="tns:TraerTodasRoles_Escritorio" />
   </wsdl:message>
   <wsdl:message name="TraerTodasRoles_EscritorioSoapOut">
     <wsdl:part name="parameters" element="tns:TraerTodasRoles_EscritorioResponse" />
+  </wsdl:message>
+  <wsdl:message name="TraerRolConClaveSinEntidad_EscritorioSoapIn">
+    <wsdl:part name="parameters" element="tns:TraerRolConClaveSinEntidad_Escritorio" />
+  </wsdl:message>
+  <wsdl:message name="TraerRolConClaveSinEntidad_EscritorioSoapOut">
+    <wsdl:part name="parameters" element="tns:TraerRolConClaveSinEntidad_EscritorioResponse" />
   </wsdl:message>
   <wsdl:message name="InsertarRolSinEntidad_EscritorioHttpGetIn">
     <wsdl:part name="_nombre" type="s:string" />
@@ -209,14 +283,32 @@
   <wsdl:message name="TraerRolSinEntidad_EscritorioHttpGetOut">
     <wsdl:part name="Body" element="tns:DataSet" />
   </wsdl:message>
+  <wsdl:message name="TraerRolPorNombreSinEntidad_EscritorioHttpGetIn">
+    <wsdl:part name="_nombre" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="TraerRolPorNombreSinEntidad_EscritorioHttpGetOut">
+    <wsdl:part name="Body" element="tns:DataSet" />
+  </wsdl:message>
   <wsdl:message name="TraerRolConEntidad_EscritorioHttpGetIn">
     <wsdl:part name="_id_rol" type="s:string" />
   </wsdl:message>
   <wsdl:message name="TraerRolConEntidad_EscritorioHttpGetOut">
     <wsdl:part name="Body" element="tns:Rol" />
   </wsdl:message>
+  <wsdl:message name="TraerRolPorNombreConEntidad_EscritorioHttpGetIn">
+    <wsdl:part name="_nombre" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="TraerRolPorNombreConEntidad_EscritorioHttpGetOut">
+    <wsdl:part name="Body" element="tns:Rol" />
+  </wsdl:message>
   <wsdl:message name="TraerTodasRoles_EscritorioHttpGetIn" />
   <wsdl:message name="TraerTodasRoles_EscritorioHttpGetOut">
+    <wsdl:part name="Body" element="tns:DataSet" />
+  </wsdl:message>
+  <wsdl:message name="TraerRolConClaveSinEntidad_EscritorioHttpGetIn">
+    <wsdl:part name="_palabra_clave" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="TraerRolConClaveSinEntidad_EscritorioHttpGetOut">
     <wsdl:part name="Body" element="tns:DataSet" />
   </wsdl:message>
   <wsdl:message name="InsertarRolSinEntidad_EscritorioHttpPostIn">
@@ -240,14 +332,32 @@
   <wsdl:message name="TraerRolSinEntidad_EscritorioHttpPostOut">
     <wsdl:part name="Body" element="tns:DataSet" />
   </wsdl:message>
+  <wsdl:message name="TraerRolPorNombreSinEntidad_EscritorioHttpPostIn">
+    <wsdl:part name="_nombre" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="TraerRolPorNombreSinEntidad_EscritorioHttpPostOut">
+    <wsdl:part name="Body" element="tns:DataSet" />
+  </wsdl:message>
   <wsdl:message name="TraerRolConEntidad_EscritorioHttpPostIn">
     <wsdl:part name="_id_rol" type="s:string" />
   </wsdl:message>
   <wsdl:message name="TraerRolConEntidad_EscritorioHttpPostOut">
     <wsdl:part name="Body" element="tns:Rol" />
   </wsdl:message>
+  <wsdl:message name="TraerRolPorNombreConEntidad_EscritorioHttpPostIn">
+    <wsdl:part name="_nombre" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="TraerRolPorNombreConEntidad_EscritorioHttpPostOut">
+    <wsdl:part name="Body" element="tns:Rol" />
+  </wsdl:message>
   <wsdl:message name="TraerTodasRoles_EscritorioHttpPostIn" />
   <wsdl:message name="TraerTodasRoles_EscritorioHttpPostOut">
+    <wsdl:part name="Body" element="tns:DataSet" />
+  </wsdl:message>
+  <wsdl:message name="TraerRolConClaveSinEntidad_EscritorioHttpPostIn">
+    <wsdl:part name="_palabra_clave" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="TraerRolConClaveSinEntidad_EscritorioHttpPostOut">
     <wsdl:part name="Body" element="tns:DataSet" />
   </wsdl:message>
   <wsdl:portType name="Process_RolSoap">
@@ -271,13 +381,25 @@
       <wsdl:input message="tns:TraerRolSinEntidad_EscritorioSoapIn" />
       <wsdl:output message="tns:TraerRolSinEntidad_EscritorioSoapOut" />
     </wsdl:operation>
+    <wsdl:operation name="TraerRolPorNombreSinEntidad_Escritorio">
+      <wsdl:input message="tns:TraerRolPorNombreSinEntidad_EscritorioSoapIn" />
+      <wsdl:output message="tns:TraerRolPorNombreSinEntidad_EscritorioSoapOut" />
+    </wsdl:operation>
     <wsdl:operation name="TraerRolConEntidad_Escritorio">
       <wsdl:input message="tns:TraerRolConEntidad_EscritorioSoapIn" />
       <wsdl:output message="tns:TraerRolConEntidad_EscritorioSoapOut" />
     </wsdl:operation>
+    <wsdl:operation name="TraerRolPorNombreConEntidad_Escritorio">
+      <wsdl:input message="tns:TraerRolPorNombreConEntidad_EscritorioSoapIn" />
+      <wsdl:output message="tns:TraerRolPorNombreConEntidad_EscritorioSoapOut" />
+    </wsdl:operation>
     <wsdl:operation name="TraerTodasRoles_Escritorio">
       <wsdl:input message="tns:TraerTodasRoles_EscritorioSoapIn" />
       <wsdl:output message="tns:TraerTodasRoles_EscritorioSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TraerRolConClaveSinEntidad_Escritorio">
+      <wsdl:input message="tns:TraerRolConClaveSinEntidad_EscritorioSoapIn" />
+      <wsdl:output message="tns:TraerRolConClaveSinEntidad_EscritorioSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="Process_RolHttpGet">
@@ -293,13 +415,25 @@
       <wsdl:input message="tns:TraerRolSinEntidad_EscritorioHttpGetIn" />
       <wsdl:output message="tns:TraerRolSinEntidad_EscritorioHttpGetOut" />
     </wsdl:operation>
+    <wsdl:operation name="TraerRolPorNombreSinEntidad_Escritorio">
+      <wsdl:input message="tns:TraerRolPorNombreSinEntidad_EscritorioHttpGetIn" />
+      <wsdl:output message="tns:TraerRolPorNombreSinEntidad_EscritorioHttpGetOut" />
+    </wsdl:operation>
     <wsdl:operation name="TraerRolConEntidad_Escritorio">
       <wsdl:input message="tns:TraerRolConEntidad_EscritorioHttpGetIn" />
       <wsdl:output message="tns:TraerRolConEntidad_EscritorioHttpGetOut" />
     </wsdl:operation>
+    <wsdl:operation name="TraerRolPorNombreConEntidad_Escritorio">
+      <wsdl:input message="tns:TraerRolPorNombreConEntidad_EscritorioHttpGetIn" />
+      <wsdl:output message="tns:TraerRolPorNombreConEntidad_EscritorioHttpGetOut" />
+    </wsdl:operation>
     <wsdl:operation name="TraerTodasRoles_Escritorio">
       <wsdl:input message="tns:TraerTodasRoles_EscritorioHttpGetIn" />
       <wsdl:output message="tns:TraerTodasRoles_EscritorioHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TraerRolConClaveSinEntidad_Escritorio">
+      <wsdl:input message="tns:TraerRolConClaveSinEntidad_EscritorioHttpGetIn" />
+      <wsdl:output message="tns:TraerRolConClaveSinEntidad_EscritorioHttpGetOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="Process_RolHttpPost">
@@ -315,13 +449,25 @@
       <wsdl:input message="tns:TraerRolSinEntidad_EscritorioHttpPostIn" />
       <wsdl:output message="tns:TraerRolSinEntidad_EscritorioHttpPostOut" />
     </wsdl:operation>
+    <wsdl:operation name="TraerRolPorNombreSinEntidad_Escritorio">
+      <wsdl:input message="tns:TraerRolPorNombreSinEntidad_EscritorioHttpPostIn" />
+      <wsdl:output message="tns:TraerRolPorNombreSinEntidad_EscritorioHttpPostOut" />
+    </wsdl:operation>
     <wsdl:operation name="TraerRolConEntidad_Escritorio">
       <wsdl:input message="tns:TraerRolConEntidad_EscritorioHttpPostIn" />
       <wsdl:output message="tns:TraerRolConEntidad_EscritorioHttpPostOut" />
     </wsdl:operation>
+    <wsdl:operation name="TraerRolPorNombreConEntidad_Escritorio">
+      <wsdl:input message="tns:TraerRolPorNombreConEntidad_EscritorioHttpPostIn" />
+      <wsdl:output message="tns:TraerRolPorNombreConEntidad_EscritorioHttpPostOut" />
+    </wsdl:operation>
     <wsdl:operation name="TraerTodasRoles_Escritorio">
       <wsdl:input message="tns:TraerTodasRoles_EscritorioHttpPostIn" />
       <wsdl:output message="tns:TraerTodasRoles_EscritorioHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TraerRolConClaveSinEntidad_Escritorio">
+      <wsdl:input message="tns:TraerRolConClaveSinEntidad_EscritorioHttpPostIn" />
+      <wsdl:output message="tns:TraerRolConClaveSinEntidad_EscritorioHttpPostOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="Process_RolSoap" type="tns:Process_RolSoap">
@@ -371,6 +517,15 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="TraerRolPorNombreSinEntidad_Escritorio">
+      <soap:operation soapAction="http://tempuri.org/TraerRolPorNombreSinEntidad_Escritorio" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="TraerRolConEntidad_Escritorio">
       <soap:operation soapAction="http://tempuri.org/TraerRolConEntidad_Escritorio" style="document" />
       <wsdl:input>
@@ -380,8 +535,26 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="TraerRolPorNombreConEntidad_Escritorio">
+      <soap:operation soapAction="http://tempuri.org/TraerRolPorNombreConEntidad_Escritorio" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="TraerTodasRoles_Escritorio">
       <soap:operation soapAction="http://tempuri.org/TraerTodasRoles_Escritorio" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TraerRolConClaveSinEntidad_Escritorio">
+      <soap:operation soapAction="http://tempuri.org/TraerRolConClaveSinEntidad_Escritorio" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -437,6 +610,15 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="TraerRolPorNombreSinEntidad_Escritorio">
+      <soap12:operation soapAction="http://tempuri.org/TraerRolPorNombreSinEntidad_Escritorio" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="TraerRolConEntidad_Escritorio">
       <soap12:operation soapAction="http://tempuri.org/TraerRolConEntidad_Escritorio" style="document" />
       <wsdl:input>
@@ -446,8 +628,26 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="TraerRolPorNombreConEntidad_Escritorio">
+      <soap12:operation soapAction="http://tempuri.org/TraerRolPorNombreConEntidad_Escritorio" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="TraerTodasRoles_Escritorio">
       <soap12:operation soapAction="http://tempuri.org/TraerTodasRoles_Escritorio" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TraerRolConClaveSinEntidad_Escritorio">
+      <soap12:operation soapAction="http://tempuri.org/TraerRolConClaveSinEntidad_Escritorio" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -485,6 +685,15 @@
         <mime:mimeXml part="Body" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="TraerRolPorNombreSinEntidad_Escritorio">
+      <http:operation location="/TraerRolPorNombreSinEntidad_Escritorio" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="TraerRolConEntidad_Escritorio">
       <http:operation location="/TraerRolConEntidad_Escritorio" />
       <wsdl:input>
@@ -494,8 +703,26 @@
         <mime:mimeXml part="Body" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="TraerRolPorNombreConEntidad_Escritorio">
+      <http:operation location="/TraerRolPorNombreConEntidad_Escritorio" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="TraerTodasRoles_Escritorio">
       <http:operation location="/TraerTodasRoles_Escritorio" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TraerRolConClaveSinEntidad_Escritorio">
+      <http:operation location="/TraerRolConClaveSinEntidad_Escritorio" />
       <wsdl:input>
         <http:urlEncoded />
       </wsdl:input>
@@ -533,6 +760,15 @@
         <mime:mimeXml part="Body" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="TraerRolPorNombreSinEntidad_Escritorio">
+      <http:operation location="/TraerRolPorNombreSinEntidad_Escritorio" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="TraerRolConEntidad_Escritorio">
       <http:operation location="/TraerRolConEntidad_Escritorio" />
       <wsdl:input>
@@ -542,8 +778,26 @@
         <mime:mimeXml part="Body" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="TraerRolPorNombreConEntidad_Escritorio">
+      <http:operation location="/TraerRolPorNombreConEntidad_Escritorio" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="TraerTodasRoles_Escritorio">
       <http:operation location="/TraerTodasRoles_Escritorio" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TraerRolConClaveSinEntidad_Escritorio">
+      <http:operation location="/TraerRolConClaveSinEntidad_Escritorio" />
       <wsdl:input>
         <mime:content type="application/x-www-form-urlencoded" />
       </wsdl:input>
