@@ -28,6 +28,13 @@ namespace Process_APP_Desk.ServiceProcess_Validadores {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/rutValidacionService", ReplyAction="*")]
         System.Threading.Tasks.Task<bool> rutValidacionServiceAsync(string rut);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/correoValidacionService", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        bool correoValidacionService(string email);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/correoValidacionService", ReplyAction="*")]
+        System.Threading.Tasks.Task<bool> correoValidacionServiceAsync(string email);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -71,6 +78,14 @@ namespace Process_APP_Desk.ServiceProcess_Validadores {
         
         public System.Threading.Tasks.Task<bool> rutValidacionServiceAsync(string rut) {
             return base.Channel.rutValidacionServiceAsync(rut);
+        }
+        
+        public bool correoValidacionService(string email) {
+            return base.Channel.correoValidacionService(email);
+        }
+        
+        public System.Threading.Tasks.Task<bool> correoValidacionServiceAsync(string email) {
+            return base.Channel.correoValidacionServiceAsync(email);
         }
     }
 }

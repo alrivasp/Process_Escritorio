@@ -168,7 +168,7 @@ namespace Process_APP_Desk
 
         private void BtnPerfil_Click(object sender, EventArgs e)
         {
-            FormPerfil frm = new FormPerfil();
+            FormRol frm = new FormRol();
             frm.FormClosed += new FormClosedEventHandler(mostrarLogoAlCerrarPantalla);
             AbrirFormEnPanel(frm);
         }

@@ -276,7 +276,7 @@ namespace Process_APP_Desk
                     lblTituloCuadro.Text = "MODIFICAR EMPRESA";
                     //Se habilita Boton
                     btnGuardar.Visible = true;
-                    //Se cargam comnbos de estado y region
+                    //Se carga combos de estado y region
                     cargarComboEstado();
                     cargarComboRegion();
                     //bloquear combobox

@@ -30,6 +30,20 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="correoValidacionService">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="email" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="correoValidacionServiceResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="correoValidacionServiceResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="boolean" type="s:boolean" />
     </s:schema>
   </wsdl:types>
@@ -45,6 +59,12 @@
   <wsdl:message name="rutValidacionServiceSoapOut">
     <wsdl:part name="parameters" element="tns:rutValidacionServiceResponse" />
   </wsdl:message>
+  <wsdl:message name="correoValidacionServiceSoapIn">
+    <wsdl:part name="parameters" element="tns:correoValidacionService" />
+  </wsdl:message>
+  <wsdl:message name="correoValidacionServiceSoapOut">
+    <wsdl:part name="parameters" element="tns:correoValidacionServiceResponse" />
+  </wsdl:message>
   <wsdl:message name="numeroValidacionServiceHttpGetIn">
     <wsdl:part name="num" type="s:string" />
   </wsdl:message>
@@ -55,6 +75,12 @@
     <wsdl:part name="rut" type="s:string" />
   </wsdl:message>
   <wsdl:message name="rutValidacionServiceHttpGetOut">
+    <wsdl:part name="Body" element="tns:boolean" />
+  </wsdl:message>
+  <wsdl:message name="correoValidacionServiceHttpGetIn">
+    <wsdl:part name="email" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="correoValidacionServiceHttpGetOut">
     <wsdl:part name="Body" element="tns:boolean" />
   </wsdl:message>
   <wsdl:message name="numeroValidacionServiceHttpPostIn">
@@ -69,6 +95,12 @@
   <wsdl:message name="rutValidacionServiceHttpPostOut">
     <wsdl:part name="Body" element="tns:boolean" />
   </wsdl:message>
+  <wsdl:message name="correoValidacionServiceHttpPostIn">
+    <wsdl:part name="email" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="correoValidacionServiceHttpPostOut">
+    <wsdl:part name="Body" element="tns:boolean" />
+  </wsdl:message>
   <wsdl:portType name="Process_ValidadoresSoap">
     <wsdl:operation name="numeroValidacionService">
       <wsdl:input message="tns:numeroValidacionServiceSoapIn" />
@@ -77,6 +109,10 @@
     <wsdl:operation name="rutValidacionService">
       <wsdl:input message="tns:rutValidacionServiceSoapIn" />
       <wsdl:output message="tns:rutValidacionServiceSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="correoValidacionService">
+      <wsdl:input message="tns:correoValidacionServiceSoapIn" />
+      <wsdl:output message="tns:correoValidacionServiceSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="Process_ValidadoresHttpGet">
@@ -88,6 +124,10 @@
       <wsdl:input message="tns:rutValidacionServiceHttpGetIn" />
       <wsdl:output message="tns:rutValidacionServiceHttpGetOut" />
     </wsdl:operation>
+    <wsdl:operation name="correoValidacionService">
+      <wsdl:input message="tns:correoValidacionServiceHttpGetIn" />
+      <wsdl:output message="tns:correoValidacionServiceHttpGetOut" />
+    </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="Process_ValidadoresHttpPost">
     <wsdl:operation name="numeroValidacionService">
@@ -97,6 +137,10 @@
     <wsdl:operation name="rutValidacionService">
       <wsdl:input message="tns:rutValidacionServiceHttpPostIn" />
       <wsdl:output message="tns:rutValidacionServiceHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="correoValidacionService">
+      <wsdl:input message="tns:correoValidacionServiceHttpPostIn" />
+      <wsdl:output message="tns:correoValidacionServiceHttpPostOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="Process_ValidadoresSoap" type="tns:Process_ValidadoresSoap">
@@ -112,6 +156,15 @@
     </wsdl:operation>
     <wsdl:operation name="rutValidacionService">
       <soap:operation soapAction="http://tempuri.org/rutValidacionService" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="correoValidacionService">
+      <soap:operation soapAction="http://tempuri.org/correoValidacionService" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -140,6 +193,15 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="correoValidacionService">
+      <soap12:operation soapAction="http://tempuri.org/correoValidacionService" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="Process_ValidadoresHttpGet" type="tns:Process_ValidadoresHttpGet">
     <http:binding verb="GET" />
@@ -161,6 +223,15 @@
         <mime:mimeXml part="Body" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="correoValidacionService">
+      <http:operation location="/correoValidacionService" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="Process_ValidadoresHttpPost" type="tns:Process_ValidadoresHttpPost">
     <http:binding verb="POST" />
@@ -175,6 +246,15 @@
     </wsdl:operation>
     <wsdl:operation name="rutValidacionService">
       <http:operation location="/rutValidacionService" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="correoValidacionService">
+      <http:operation location="/correoValidacionService" />
       <wsdl:input>
         <mime:content type="application/x-www-form-urlencoded" />
       </wsdl:input>

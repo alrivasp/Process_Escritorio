@@ -47,6 +47,9 @@
             this.iconCerrar = new System.Windows.Forms.PictureBox();
             this.btnSlide = new System.Windows.Forms.PictureBox();
             this.panelInferior = new System.Windows.Forms.Panel();
+            this.lblPerfil = new System.Windows.Forms.Label();
+            this.lblApellidos = new System.Windows.Forms.Label();
+            this.lblNombres = new System.Windows.Forms.Label();
             this.lblFecha = new System.Windows.Forms.Label();
             this.lblHora = new System.Windows.Forms.Label();
             this.lblTituloPerfil = new System.Windows.Forms.Label();
@@ -55,9 +58,6 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.tmFechaHora = new System.Windows.Forms.Timer(this.components);
             this.panelContenedor = new System.Windows.Forms.Panel();
-            this.lblNombres = new System.Windows.Forms.Label();
-            this.lblApellidos = new System.Windows.Forms.Label();
-            this.lblPerfil = new System.Windows.Forms.Label();
             this.menuVertical.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbNombreLogo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbLogo)).BeginInit();
@@ -154,7 +154,7 @@
             this.btnPerfil.Name = "btnPerfil";
             this.btnPerfil.Size = new System.Drawing.Size(235, 40);
             this.btnPerfil.TabIndex = 5;
-            this.btnPerfil.Text = "Perfil";
+            this.btnPerfil.Text = "Rol";
             this.btnPerfil.UseVisualStyleBackColor = true;
             this.btnPerfil.Click += new System.EventHandler(this.BtnPerfil_Click);
             // 
@@ -329,6 +329,39 @@
             this.panelInferior.Size = new System.Drawing.Size(1050, 120);
             this.panelInferior.TabIndex = 3;
             // 
+            // lblPerfil
+            // 
+            this.lblPerfil.AutoSize = true;
+            this.lblPerfil.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPerfil.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            this.lblPerfil.Location = new System.Drawing.Point(225, 70);
+            this.lblPerfil.Name = "lblPerfil";
+            this.lblPerfil.Size = new System.Drawing.Size(43, 18);
+            this.lblPerfil.TabIndex = 8;
+            this.lblPerfil.Text = "Perfil";
+            // 
+            // lblApellidos
+            // 
+            this.lblApellidos.AutoSize = true;
+            this.lblApellidos.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblApellidos.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.lblApellidos.Location = new System.Drawing.Point(225, 36);
+            this.lblApellidos.Name = "lblApellidos";
+            this.lblApellidos.Size = new System.Drawing.Size(66, 17);
+            this.lblApellidos.TabIndex = 7;
+            this.lblApellidos.Text = "Apellidos";
+            // 
+            // lblNombres
+            // 
+            this.lblNombres.AutoSize = true;
+            this.lblNombres.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNombres.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.lblNombres.Location = new System.Drawing.Point(225, 14);
+            this.lblNombres.Name = "lblNombres";
+            this.lblNombres.Size = new System.Drawing.Size(66, 17);
+            this.lblNombres.TabIndex = 6;
+            this.lblNombres.Text = "Nombres";
+            // 
             // lblFecha
             // 
             this.lblFecha.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -408,39 +441,6 @@
             this.panelContenedor.Name = "panelContenedor";
             this.panelContenedor.Size = new System.Drawing.Size(1050, 480);
             this.panelContenedor.TabIndex = 4;
-            // 
-            // lblNombres
-            // 
-            this.lblNombres.AutoSize = true;
-            this.lblNombres.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNombres.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
-            this.lblNombres.Location = new System.Drawing.Point(225, 14);
-            this.lblNombres.Name = "lblNombres";
-            this.lblNombres.Size = new System.Drawing.Size(66, 17);
-            this.lblNombres.TabIndex = 6;
-            this.lblNombres.Text = "Nombres";
-            // 
-            // lblApellidos
-            // 
-            this.lblApellidos.AutoSize = true;
-            this.lblApellidos.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblApellidos.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
-            this.lblApellidos.Location = new System.Drawing.Point(225, 36);
-            this.lblApellidos.Name = "lblApellidos";
-            this.lblApellidos.Size = new System.Drawing.Size(66, 17);
-            this.lblApellidos.TabIndex = 7;
-            this.lblApellidos.Text = "Apellidos";
-            // 
-            // lblPerfil
-            // 
-            this.lblPerfil.AutoSize = true;
-            this.lblPerfil.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPerfil.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
-            this.lblPerfil.Location = new System.Drawing.Point(225, 70);
-            this.lblPerfil.Name = "lblPerfil";
-            this.lblPerfil.Size = new System.Drawing.Size(43, 18);
-            this.lblPerfil.TabIndex = 8;
-            this.lblPerfil.Text = "Perfil";
             // 
             // PantallaMenuPrincipal
             // 

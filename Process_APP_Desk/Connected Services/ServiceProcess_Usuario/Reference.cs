@@ -64,6 +64,27 @@ namespace Process_APP_Desk.ServiceProcess_Usuario {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/TraerTodasUsuarios_Escritorio", ReplyAction="*")]
         System.Threading.Tasks.Task<System.Data.DataSet> TraerTodasUsuarios_EscritorioAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/TraerUsuarioPorRutPorEmpresaSinEntidad_Escritorio", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        System.Data.DataSet TraerUsuarioPorRutPorEmpresaSinEntidad_Escritorio(string _rut_usuario, string _rut_empresa);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/TraerUsuarioPorRutPorEmpresaSinEntidad_Escritorio", ReplyAction="*")]
+        System.Threading.Tasks.Task<System.Data.DataSet> TraerUsuarioPorRutPorEmpresaSinEntidad_EscritorioAsync(string _rut_usuario, string _rut_empresa);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/TraerTodasUsuariosJoin_Escritorio", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        System.Data.DataSet TraerTodasUsuariosJoin_Escritorio();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/TraerTodasUsuariosJoin_Escritorio", ReplyAction="*")]
+        System.Threading.Tasks.Task<System.Data.DataSet> TraerTodasUsuariosJoin_EscritorioAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/TraerUsuarioConClaveSinEntidad_Escritorio", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        System.Data.DataSet TraerUsuarioConClaveSinEntidad_Escritorio(string _palabra_clave);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/TraerUsuarioConClaveSinEntidad_Escritorio", ReplyAction="*")]
+        System.Threading.Tasks.Task<System.Data.DataSet> TraerUsuarioConClaveSinEntidad_EscritorioAsync(string _palabra_clave);
     }
     
     /// <remarks/>
@@ -319,6 +340,30 @@ namespace Process_APP_Desk.ServiceProcess_Usuario {
         
         public System.Threading.Tasks.Task<System.Data.DataSet> TraerTodasUsuarios_EscritorioAsync() {
             return base.Channel.TraerTodasUsuarios_EscritorioAsync();
+        }
+        
+        public System.Data.DataSet TraerUsuarioPorRutPorEmpresaSinEntidad_Escritorio(string _rut_usuario, string _rut_empresa) {
+            return base.Channel.TraerUsuarioPorRutPorEmpresaSinEntidad_Escritorio(_rut_usuario, _rut_empresa);
+        }
+        
+        public System.Threading.Tasks.Task<System.Data.DataSet> TraerUsuarioPorRutPorEmpresaSinEntidad_EscritorioAsync(string _rut_usuario, string _rut_empresa) {
+            return base.Channel.TraerUsuarioPorRutPorEmpresaSinEntidad_EscritorioAsync(_rut_usuario, _rut_empresa);
+        }
+        
+        public System.Data.DataSet TraerTodasUsuariosJoin_Escritorio() {
+            return base.Channel.TraerTodasUsuariosJoin_Escritorio();
+        }
+        
+        public System.Threading.Tasks.Task<System.Data.DataSet> TraerTodasUsuariosJoin_EscritorioAsync() {
+            return base.Channel.TraerTodasUsuariosJoin_EscritorioAsync();
+        }
+        
+        public System.Data.DataSet TraerUsuarioConClaveSinEntidad_Escritorio(string _palabra_clave) {
+            return base.Channel.TraerUsuarioConClaveSinEntidad_Escritorio(_palabra_clave);
+        }
+        
+        public System.Threading.Tasks.Task<System.Data.DataSet> TraerUsuarioConClaveSinEntidad_EscritorioAsync(string _palabra_clave) {
+            return base.Channel.TraerUsuarioConClaveSinEntidad_EscritorioAsync(_palabra_clave);
         }
     }
 }

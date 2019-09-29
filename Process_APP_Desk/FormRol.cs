@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Process_APP_Desk
 {
-    public partial class FormPerfil : Form
+    public partial class FormRol : Form
     {
-        public FormPerfil()
+        public FormRol()
         {
             InitializeComponent();
         }
