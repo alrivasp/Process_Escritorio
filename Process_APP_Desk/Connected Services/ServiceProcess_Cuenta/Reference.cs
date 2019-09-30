@@ -78,6 +78,13 @@ namespace Process_APP_Desk.ServiceProcess_Cuenta {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/TraerTodasCuentas_Escritorio", ReplyAction="*")]
         System.Threading.Tasks.Task<System.Data.DataSet> TraerTodasCuentas_EscritorioAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/TraerCuentaConClaveSinEntidad_Escritorio", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        System.Data.DataSet TraerCuentaConClaveSinEntidad_Escritorio(string _palabra_clave);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/TraerCuentaConClaveSinEntidad_Escritorio", ReplyAction="*")]
+        System.Threading.Tasks.Task<System.Data.DataSet> TraerCuentaConClaveSinEntidad_EscritorioAsync(string _palabra_clave);
     }
     
     /// <remarks/>
@@ -265,6 +272,14 @@ namespace Process_APP_Desk.ServiceProcess_Cuenta {
         
         public System.Threading.Tasks.Task<System.Data.DataSet> TraerTodasCuentas_EscritorioAsync() {
             return base.Channel.TraerTodasCuentas_EscritorioAsync();
+        }
+        
+        public System.Data.DataSet TraerCuentaConClaveSinEntidad_Escritorio(string _palabra_clave) {
+            return base.Channel.TraerCuentaConClaveSinEntidad_Escritorio(_palabra_clave);
+        }
+        
+        public System.Threading.Tasks.Task<System.Data.DataSet> TraerCuentaConClaveSinEntidad_EscritorioAsync(string _palabra_clave) {
+            return base.Channel.TraerCuentaConClaveSinEntidad_EscritorioAsync(_palabra_clave);
         }
     }
 }

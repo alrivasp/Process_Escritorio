@@ -178,6 +178,27 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="TraerCuentaConClaveSinEntidad_Escritorio">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="_palabra_clave" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TraerCuentaConClaveSinEntidad_EscritorioResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TraerCuentaConClaveSinEntidad_EscritorioResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="int" type="s:int" />
       <s:element name="DataSet" nillable="true">
         <s:complexType>
@@ -244,6 +265,12 @@
   <wsdl:message name="TraerTodasCuentas_EscritorioSoapOut">
     <wsdl:part name="parameters" element="tns:TraerTodasCuentas_EscritorioResponse" />
   </wsdl:message>
+  <wsdl:message name="TraerCuentaConClaveSinEntidad_EscritorioSoapIn">
+    <wsdl:part name="parameters" element="tns:TraerCuentaConClaveSinEntidad_Escritorio" />
+  </wsdl:message>
+  <wsdl:message name="TraerCuentaConClaveSinEntidad_EscritorioSoapOut">
+    <wsdl:part name="parameters" element="tns:TraerCuentaConClaveSinEntidad_EscritorioResponse" />
+  </wsdl:message>
   <wsdl:message name="InsertarCuentaSinEntidad_EscritorioHttpGetIn">
     <wsdl:part name="_rut_usuario" type="s:string" />
     <wsdl:part name="_rut_empresa" type="s:string" />
@@ -292,6 +319,12 @@
   </wsdl:message>
   <wsdl:message name="TraerTodasCuentas_EscritorioHttpGetIn" />
   <wsdl:message name="TraerTodasCuentas_EscritorioHttpGetOut">
+    <wsdl:part name="Body" element="tns:DataSet" />
+  </wsdl:message>
+  <wsdl:message name="TraerCuentaConClaveSinEntidad_EscritorioHttpGetIn">
+    <wsdl:part name="_palabra_clave" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="TraerCuentaConClaveSinEntidad_EscritorioHttpGetOut">
     <wsdl:part name="Body" element="tns:DataSet" />
   </wsdl:message>
   <wsdl:message name="InsertarCuentaSinEntidad_EscritorioHttpPostIn">
@@ -344,6 +377,12 @@
   <wsdl:message name="TraerTodasCuentas_EscritorioHttpPostOut">
     <wsdl:part name="Body" element="tns:DataSet" />
   </wsdl:message>
+  <wsdl:message name="TraerCuentaConClaveSinEntidad_EscritorioHttpPostIn">
+    <wsdl:part name="_palabra_clave" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="TraerCuentaConClaveSinEntidad_EscritorioHttpPostOut">
+    <wsdl:part name="Body" element="tns:DataSet" />
+  </wsdl:message>
   <wsdl:portType name="Process_CuentaSoap">
     <wsdl:operation name="InsertarCuentaConEntidad_Escritorio">
       <wsdl:input message="tns:InsertarCuentaConEntidad_EscritorioSoapIn" />
@@ -381,6 +420,10 @@
       <wsdl:input message="tns:TraerTodasCuentas_EscritorioSoapIn" />
       <wsdl:output message="tns:TraerTodasCuentas_EscritorioSoapOut" />
     </wsdl:operation>
+    <wsdl:operation name="TraerCuentaConClaveSinEntidad_Escritorio">
+      <wsdl:input message="tns:TraerCuentaConClaveSinEntidad_EscritorioSoapIn" />
+      <wsdl:output message="tns:TraerCuentaConClaveSinEntidad_EscritorioSoapOut" />
+    </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="Process_CuentaHttpGet">
     <wsdl:operation name="InsertarCuentaSinEntidad_Escritorio">
@@ -411,6 +454,10 @@
       <wsdl:input message="tns:TraerTodasCuentas_EscritorioHttpGetIn" />
       <wsdl:output message="tns:TraerTodasCuentas_EscritorioHttpGetOut" />
     </wsdl:operation>
+    <wsdl:operation name="TraerCuentaConClaveSinEntidad_Escritorio">
+      <wsdl:input message="tns:TraerCuentaConClaveSinEntidad_EscritorioHttpGetIn" />
+      <wsdl:output message="tns:TraerCuentaConClaveSinEntidad_EscritorioHttpGetOut" />
+    </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="Process_CuentaHttpPost">
     <wsdl:operation name="InsertarCuentaSinEntidad_Escritorio">
@@ -440,6 +487,10 @@
     <wsdl:operation name="TraerTodasCuentas_Escritorio">
       <wsdl:input message="tns:TraerTodasCuentas_EscritorioHttpPostIn" />
       <wsdl:output message="tns:TraerTodasCuentas_EscritorioHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TraerCuentaConClaveSinEntidad_Escritorio">
+      <wsdl:input message="tns:TraerCuentaConClaveSinEntidad_EscritorioHttpPostIn" />
+      <wsdl:output message="tns:TraerCuentaConClaveSinEntidad_EscritorioHttpPostOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="Process_CuentaSoap" type="tns:Process_CuentaSoap">
@@ -518,6 +569,15 @@
     </wsdl:operation>
     <wsdl:operation name="TraerTodasCuentas_Escritorio">
       <soap:operation soapAction="http://tempuri.org/TraerTodasCuentas_Escritorio" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TraerCuentaConClaveSinEntidad_Escritorio">
+      <soap:operation soapAction="http://tempuri.org/TraerCuentaConClaveSinEntidad_Escritorio" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -609,6 +669,15 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="TraerCuentaConClaveSinEntidad_Escritorio">
+      <soap12:operation soapAction="http://tempuri.org/TraerCuentaConClaveSinEntidad_Escritorio" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="Process_CuentaHttpGet" type="tns:Process_CuentaHttpGet">
     <http:binding verb="GET" />
@@ -675,6 +744,15 @@
         <mime:mimeXml part="Body" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="TraerCuentaConClaveSinEntidad_Escritorio">
+      <http:operation location="/TraerCuentaConClaveSinEntidad_Escritorio" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="Process_CuentaHttpPost" type="tns:Process_CuentaHttpPost">
     <http:binding verb="POST" />
@@ -734,6 +812,15 @@
     </wsdl:operation>
     <wsdl:operation name="TraerTodasCuentas_Escritorio">
       <http:operation location="/TraerTodasCuentas_Escritorio" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TraerCuentaConClaveSinEntidad_Escritorio">
+      <http:operation location="/TraerCuentaConClaveSinEntidad_Escritorio" />
       <wsdl:input>
         <mime:content type="application/x-www-form-urlencoded" />
       </wsdl:input>

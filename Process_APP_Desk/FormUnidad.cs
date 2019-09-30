@@ -200,8 +200,7 @@ namespace Process_APP_Desk
                 _estado = null;
                 _rut_empresa = null;
                //Variable para interaccion de botones (0 = ninguno) (1 = modificar) - (2 = guardar)
-               _guardar = 1;
-                
+               _guardar = 1;                
             }
         }
 
