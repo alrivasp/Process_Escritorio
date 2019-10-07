@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<SavedWcfConfigurationInformation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="9.1" CheckSum="E1CIVyw+Qdm4ndPJplEiExaxjLw=">
+<SavedWcfConfigurationInformation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="9.1" CheckSum="NOkW0EsPHyjjJojKZLucxO7Q6Rk=">
   <bindingConfigurations>
     <bindingConfiguration bindingType="basicHttpBinding" name="Process_EmpresaSoap">
       <properties>
@@ -263,10 +263,10 @@
     </bindingConfiguration>
   </bindingConfigurations>
   <endpoints>
-    <endpoint name="Process_EmpresaSoap" contract="ServiceProcess_Empresa.Process_EmpresaSoap" bindingType="basicHttpBinding" address="http://localhost:52755/Process_Empresa.asmx" bindingConfiguration="Process_EmpresaSoap">
+    <endpoint name="Process_EmpresaSoap" contract="ServiceProcess_Empresa.Process_EmpresaSoap" bindingType="basicHttpBinding" address="http://52.67.249.164:8071/Process_Empresa.asmx" bindingConfiguration="Process_EmpresaSoap">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>http://localhost:52755/Process_Empresa.asmx</serializedValue>
+          <serializedValue>http://52.67.249.164:8071/Process_Empresa.asmx</serializedValue>
         </property>
         <property path="/behaviorConfiguration" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />
@@ -348,10 +348,10 @@
         </property>
       </properties>
     </endpoint>
-    <endpoint name="Process_EmpresaSoap12" contract="ServiceProcess_Empresa.Process_EmpresaSoap" bindingType="customBinding" address="http://localhost:52755/Process_Empresa.asmx" bindingConfiguration="Process_EmpresaSoap12">
+    <endpoint name="Process_EmpresaSoap12" contract="ServiceProcess_Empresa.Process_EmpresaSoap" bindingType="customBinding" address="http://52.67.249.164:8071/Process_Empresa.asmx" bindingConfiguration="Process_EmpresaSoap12">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>http://localhost:52755/Process_Empresa.asmx</serializedValue>
+          <serializedValue>http://52.67.249.164:8071/Process_Empresa.asmx</serializedValue>
         </property>
         <property path="/behaviorConfiguration" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />

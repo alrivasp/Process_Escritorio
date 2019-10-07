@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<SavedWcfConfigurationInformation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="9.1" CheckSum="sZmNhcKZ9PzRZcWirXJ0a2dWIqQ=">
+<SavedWcfConfigurationInformation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="9.1" CheckSum="IQj3W54NJ3rzexVltM7uUEtBF1g=">
   <bindingConfigurations>
     <bindingConfiguration bindingType="basicHttpBinding" name="Process_UsuarioSoap">
       <properties>
@@ -263,10 +263,10 @@
     </bindingConfiguration>
   </bindingConfigurations>
   <endpoints>
-    <endpoint name="Process_UsuarioSoap" contract="ServiceProcess_Usuario.Process_UsuarioSoap" bindingType="basicHttpBinding" address="http://localhost:52755/Process_Usuario.asmx" bindingConfiguration="Process_UsuarioSoap">
+    <endpoint name="Process_UsuarioSoap" contract="ServiceProcess_Usuario.Process_UsuarioSoap" bindingType="basicHttpBinding" address="http://52.67.249.164:8071/Process_Usuario.asmx" bindingConfiguration="Process_UsuarioSoap">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>http://localhost:52755/Process_Usuario.asmx</serializedValue>
+          <serializedValue>http://52.67.249.164:8071/Process_Usuario.asmx</serializedValue>
         </property>
         <property path="/behaviorConfiguration" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />
@@ -348,10 +348,10 @@
         </property>
       </properties>
     </endpoint>
-    <endpoint name="Process_UsuarioSoap12" contract="ServiceProcess_Usuario.Process_UsuarioSoap" bindingType="customBinding" address="http://localhost:52755/Process_Usuario.asmx" bindingConfiguration="Process_UsuarioSoap12">
+    <endpoint name="Process_UsuarioSoap12" contract="ServiceProcess_Usuario.Process_UsuarioSoap" bindingType="customBinding" address="http://52.67.249.164:8071/Process_Usuario.asmx" bindingConfiguration="Process_UsuarioSoap12">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>http://localhost:52755/Process_Usuario.asmx</serializedValue>
+          <serializedValue>http://52.67.249.164:8071/Process_Usuario.asmx</serializedValue>
         </property>
         <property path="/behaviorConfiguration" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />

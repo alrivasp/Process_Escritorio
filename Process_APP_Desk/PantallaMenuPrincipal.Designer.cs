@@ -58,6 +58,7 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.tmFechaHora = new System.Windows.Forms.Timer(this.components);
             this.panelContenedor = new System.Windows.Forms.Panel();
+            this.lblTituloMenu = new System.Windows.Forms.Label();
             this.menuVertical.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbNombreLogo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbLogo)).BeginInit();
@@ -234,6 +235,7 @@
             // barraTitulo
             // 
             this.barraTitulo.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.barraTitulo.Controls.Add(this.lblTituloMenu);
             this.barraTitulo.Controls.Add(this.iconMinimizar);
             this.barraTitulo.Controls.Add(this.iconRestaurar);
             this.barraTitulo.Controls.Add(this.iconMaximizar);
@@ -442,6 +444,18 @@
             this.panelContenedor.Size = new System.Drawing.Size(1050, 480);
             this.panelContenedor.TabIndex = 4;
             // 
+            // lblTituloMenu
+            // 
+            this.lblTituloMenu.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.lblTituloMenu.AutoSize = true;
+            this.lblTituloMenu.BackColor = System.Drawing.Color.Transparent;
+            this.lblTituloMenu.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTituloMenu.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.lblTituloMenu.Location = new System.Drawing.Point(382, 11);
+            this.lblTituloMenu.Name = "lblTituloMenu";
+            this.lblTituloMenu.Size = new System.Drawing.Size(0, 29);
+            this.lblTituloMenu.TabIndex = 5;
+            // 
             // PantallaMenuPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -461,6 +475,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pbNombreLogo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbLogo)).EndInit();
             this.barraTitulo.ResumeLayout(false);
+            this.barraTitulo.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.iconMinimizar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.iconRestaurar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.iconMaximizar)).EndInit();
@@ -503,5 +518,6 @@
         private System.Windows.Forms.Label lblPerfil;
         private System.Windows.Forms.Label lblApellidos;
         private System.Windows.Forms.Label lblNombres;
+        private System.Windows.Forms.Label lblTituloMenu;
     }
 }

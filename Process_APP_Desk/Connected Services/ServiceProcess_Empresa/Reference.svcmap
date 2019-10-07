@@ -19,11 +19,11 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://localhost:52755/Process_Empresa.asmx" Protocol="http" SourceId="1" />
+    <MetadataSource Address="http://52.67.249.164:8071/Process_Empresa.asmx" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="Process_Empresa.disco" MetadataType="Disco" ID="726fceb3-c954-4eb6-b068-3d373d9a963a" SourceId="1" SourceUrl="http://localhost:52755/Process_Empresa.asmx?disco" />
-    <MetadataFile FileName="Process_Empresa.wsdl" MetadataType="Wsdl" ID="b8751dd5-a963-4316-aec4-355754614a3d" SourceId="1" SourceUrl="http://localhost:52755/Process_Empresa.asmx?wsdl" />
+    <MetadataFile FileName="Process_Empresa1.disco" MetadataType="Disco" ID="2e1e23ce-ce2f-4206-b145-5f1a7cfd53ee" SourceId="1" SourceUrl="http://52.67.249.164:8071/Process_Empresa.asmx?disco" />
+    <MetadataFile FileName="Process_Empresa1.wsdl" MetadataType="Wsdl" ID="982f5299-4cde-4eeb-a2ac-ac3bd4c2db7e" SourceId="1" SourceUrl="http://52.67.249.164:8071/Process_Empresa.asmx?wsdl" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

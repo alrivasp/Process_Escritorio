@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<SavedWcfConfigurationInformation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="9.1" CheckSum="IIzWWn7tFuNfPUr6V0+DsZaLH3A=">
+<SavedWcfConfigurationInformation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="9.1" CheckSum="unl6bYu0EF+xYfdCSx2wzH6W5GM=">
   <bindingConfigurations>
     <bindingConfiguration bindingType="basicHttpBinding" name="Process_ProvinciaSoap">
       <properties>
@@ -263,10 +263,10 @@
     </bindingConfiguration>
   </bindingConfigurations>
   <endpoints>
-    <endpoint name="Process_ProvinciaSoap" contract="ServiceProcess_Provincia.Process_ProvinciaSoap" bindingType="basicHttpBinding" address="http://localhost:52755/Process_Provincia.asmx" bindingConfiguration="Process_ProvinciaSoap">
+    <endpoint name="Process_ProvinciaSoap" contract="ServiceProcess_Provincia.Process_ProvinciaSoap" bindingType="basicHttpBinding" address="http://52.67.249.164:8071/Process_Provincia.asmx" bindingConfiguration="Process_ProvinciaSoap">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>http://localhost:52755/Process_Provincia.asmx</serializedValue>
+          <serializedValue>http://52.67.249.164:8071/Process_Provincia.asmx</serializedValue>
         </property>
         <property path="/behaviorConfiguration" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />
@@ -348,10 +348,10 @@
         </property>
       </properties>
     </endpoint>
-    <endpoint name="Process_ProvinciaSoap12" contract="ServiceProcess_Provincia.Process_ProvinciaSoap" bindingType="customBinding" address="http://localhost:52755/Process_Provincia.asmx" bindingConfiguration="Process_ProvinciaSoap12">
+    <endpoint name="Process_ProvinciaSoap12" contract="ServiceProcess_Provincia.Process_ProvinciaSoap" bindingType="customBinding" address="http://52.67.249.164:8071/Process_Provincia.asmx" bindingConfiguration="Process_ProvinciaSoap12">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>http://localhost:52755/Process_Provincia.asmx</serializedValue>
+          <serializedValue>http://52.67.249.164:8071/Process_Provincia.asmx</serializedValue>
         </property>
         <property path="/behaviorConfiguration" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />

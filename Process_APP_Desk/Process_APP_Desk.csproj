@@ -12,6 +12,21 @@
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -122,6 +137,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Cuenta.cs" />
     <Compile Include="FormCargo.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -139,6 +155,12 @@
     </Compile>
     <Compile Include="FormEmpresa.Designer.cs">
       <DependentUpon>FormEmpresa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormEmpresaModal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormEmpresaModal.Designer.cs">
+      <DependentUpon>FormEmpresaModal.cs</DependentUpon>
     </Compile>
     <Compile Include="FormRol.cs">
       <SubType>Form</SubType>
@@ -193,6 +215,9 @@
     <EmbeddedResource Include="FormEmpresa.resx">
       <DependentUpon>FormEmpresa.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormEmpresaModal.resx">
+      <DependentUpon>FormEmpresaModal.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormRol.resx">
       <DependentUpon>FormRol.cs</DependentUpon>
     </EmbeddedResource>
@@ -236,15 +261,15 @@
     <None Include="Connected Services\ServiceProcess_Comuna\Process_APP_Desk.ServiceProcess_Comuna.Comuna.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Connected Services\ServiceProcess_Comuna\Process_Comuna.wsdl" />
+    <None Include="Connected Services\ServiceProcess_Comuna\Process_Comuna1.wsdl" />
     <None Include="Connected Services\ServiceProcess_Cuenta\Process_APP_Desk.ServiceProcess_Cuenta.Cuenta.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Connected Services\ServiceProcess_Cuenta\Process_Cuenta.wsdl" />
+    <None Include="Connected Services\ServiceProcess_Cuenta\Process_Cuenta1.wsdl" />
     <None Include="Connected Services\ServiceProcess_Empresa\Process_APP_Desk.ServiceProcess_Empresa.Empresa.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Connected Services\ServiceProcess_Empresa\Process_Empresa.wsdl" />
+    <None Include="Connected Services\ServiceProcess_Empresa\Process_Empresa1.wsdl" />
     <None Include="Connected Services\ServiceProcess_Permisos\Process_APP_Desk.ServiceProcess_Permisos.Permisos.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
@@ -252,15 +277,15 @@
     <None Include="Connected Services\ServiceProcess_Provincia\Process_APP_Desk.ServiceProcess_Provincia.Provincia.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Connected Services\ServiceProcess_Provincia\Process_Provincia.wsdl" />
+    <None Include="Connected Services\ServiceProcess_Provincia\Process_Provincia1.wsdl" />
     <None Include="Connected Services\ServiceProcess_Region\Process_APP_Desk.ServiceProcess_Region.Region.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Connected Services\ServiceProcess_Region\Process_Region.wsdl" />
+    <None Include="Connected Services\ServiceProcess_Region\Process_Region1.wsdl" />
     <None Include="Connected Services\ServiceProcess_Rol\Process_APP_Desk.ServiceProcess_Rol.Rol.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Connected Services\ServiceProcess_Rol\Process_Rol.wsdl" />
+    <None Include="Connected Services\ServiceProcess_Rol\Process_Rol1.wsdl" />
     <None Include="Connected Services\ServiceProcess_Unidad\Process_APP_Desk.ServiceProcess_Unidad.Unidad.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
@@ -268,8 +293,8 @@
     <None Include="Connected Services\ServiceProcess_Usuario\Process_APP_Desk.ServiceProcess_Usuario.Usuario.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Connected Services\ServiceProcess_Usuario\Process_Usuario.wsdl" />
-    <None Include="Connected Services\ServiceProcess_Validadores\Process_Validadores.wsdl" />
+    <None Include="Connected Services\ServiceProcess_Usuario\Process_Usuario1.wsdl" />
+    <None Include="Connected Services\ServiceProcess_Validadores\Process_Validadores1.wsdl" />
     <None Include="packages.config" />
     <None Include="Properties\DataSources\System.Data.DataSet.datasource" />
     <None Include="Properties\Settings.settings">
@@ -374,9 +399,6 @@
     <WCFMetadataStorage Include="Connected Services\ServiceProcess_Validadores\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Connected Services\ServiceProcess_Empresa\Process_Empresa.disco" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Connected Services\ServiceProcess_Empresa\configuration91.svcinfo" />
   </ItemGroup>
   <ItemGroup>
@@ -387,9 +409,6 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Connected Services\ServiceProcess_Cuenta\Process_Cuenta.disco" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Connected Services\ServiceProcess_Cuenta\configuration91.svcinfo" />
@@ -404,9 +423,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Connected Services\ServiceProcess_Usuario\Process_Usuario.disco" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Connected Services\ServiceProcess_Usuario\configuration91.svcinfo" />
   </ItemGroup>
   <ItemGroup>
@@ -417,9 +433,6 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Connected Services\ServiceProcess_Rol\Process_Rol.disco" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Connected Services\ServiceProcess_Rol\configuration91.svcinfo" />
@@ -434,9 +447,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Connected Services\ServiceProcess_Region\Process_Region.disco" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Connected Services\ServiceProcess_Region\configuration91.svcinfo" />
   </ItemGroup>
   <ItemGroup>
@@ -447,9 +457,6 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Connected Services\ServiceProcess_Provincia\Process_Provincia.disco" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Connected Services\ServiceProcess_Provincia\configuration91.svcinfo" />
@@ -464,9 +471,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Connected Services\ServiceProcess_Comuna\Process_Comuna.disco" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Connected Services\ServiceProcess_Comuna\configuration91.svcinfo" />
   </ItemGroup>
   <ItemGroup>
@@ -477,9 +481,6 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Connected Services\ServiceProcess_Validadores\Process_Validadores.disco" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Connected Services\ServiceProcess_Validadores\configuration91.svcinfo" />
@@ -567,6 +568,63 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.6">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.6 %28x86 y x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\ServiceProcess_Cuenta\Process_Cuenta1.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\ServiceProcess_Usuario\Process_Usuario1.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\ServiceProcess_Rol\Process_Rol1.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\ServiceProcess_Comuna\Process_Comuna1.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\ServiceProcess_Provincia\Process_Provincia1.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\ServiceProcess_Region\Process_Region1.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\ServiceProcess_Empresa\Process_Empresa1.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\277-exit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\ServiceProcess_Validadores\Process_Validadores1.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\272-cross.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\273-checkmark.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\071-pushpin.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\207-eye.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\207-eye-white.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\135-search-white.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

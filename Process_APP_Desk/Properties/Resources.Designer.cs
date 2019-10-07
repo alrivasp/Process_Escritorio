@@ -113,6 +113,16 @@ namespace Process_APP_Desk.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _071_pushpin {
+            get {
+                object obj = ResourceManager.GetObject("071-pushpin", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap _099_floppy_disk {
             get {
                 object obj = ResourceManager.GetObject("099-floppy-disk", resourceCulture);
@@ -143,6 +153,16 @@ namespace Process_APP_Desk.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _135_search_white {
+            get {
+                object obj = ResourceManager.GetObject("135-search-white", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap _143_key2 {
             get {
                 object obj = ResourceManager.GetObject("143-key2", resourceCulture);
@@ -156,6 +176,26 @@ namespace Process_APP_Desk.Properties {
         internal static System.Drawing.Bitmap _183_switch {
             get {
                 object obj = ResourceManager.GetObject("183-switch", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _207_eye {
+            get {
+                object obj = ResourceManager.GetObject("207-eye", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _207_eye_white {
+            get {
+                object obj = ResourceManager.GetObject("207-eye-white", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -186,6 +226,36 @@ namespace Process_APP_Desk.Properties {
         internal static System.Drawing.Bitmap _267_plus_White {
             get {
                 object obj = ResourceManager.GetObject("267-plus_White", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _272_cross {
+            get {
+                object obj = ResourceManager.GetObject("272-cross", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _273_checkmark {
+            get {
+                object obj = ResourceManager.GetObject("273-checkmark", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _277_exit {
+            get {
+                object obj = ResourceManager.GetObject("277-exit", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

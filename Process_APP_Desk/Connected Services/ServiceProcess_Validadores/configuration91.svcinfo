@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<SavedWcfConfigurationInformation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="9.1" CheckSum="iGGR/UoenOvovt16QydjaV343Us=">
+<SavedWcfConfigurationInformation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="9.1" CheckSum="fv8kvxFR1TTb/FK98HsrsStpB24=">
   <bindingConfigurations>
     <bindingConfiguration bindingType="basicHttpBinding" name="Process_ValidadoresSoap">
       <properties>
@@ -263,10 +263,10 @@
     </bindingConfiguration>
   </bindingConfigurations>
   <endpoints>
-    <endpoint name="Process_ValidadoresSoap" contract="ServiceProcess_Validadores.Process_ValidadoresSoap" bindingType="basicHttpBinding" address="http://localhost:52755/Process_Validadores.asmx" bindingConfiguration="Process_ValidadoresSoap">
+    <endpoint name="Process_ValidadoresSoap" contract="ServiceProcess_Validadores.Process_ValidadoresSoap" bindingType="basicHttpBinding" address="http://52.67.249.164:8071/Process_Validadores.asmx" bindingConfiguration="Process_ValidadoresSoap">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>http://localhost:52755/Process_Validadores.asmx</serializedValue>
+          <serializedValue>http://52.67.249.164:8071/Process_Validadores.asmx</serializedValue>
         </property>
         <property path="/behaviorConfiguration" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />
@@ -348,10 +348,10 @@
         </property>
       </properties>
     </endpoint>
-    <endpoint name="Process_ValidadoresSoap12" contract="ServiceProcess_Validadores.Process_ValidadoresSoap" bindingType="customBinding" address="http://localhost:52755/Process_Validadores.asmx" bindingConfiguration="Process_ValidadoresSoap12">
+    <endpoint name="Process_ValidadoresSoap12" contract="ServiceProcess_Validadores.Process_ValidadoresSoap" bindingType="customBinding" address="http://52.67.249.164:8071/Process_Validadores.asmx" bindingConfiguration="Process_ValidadoresSoap12">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>http://localhost:52755/Process_Validadores.asmx</serializedValue>
+          <serializedValue>http://52.67.249.164:8071/Process_Validadores.asmx</serializedValue>
         </property>
         <property path="/behaviorConfiguration" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />

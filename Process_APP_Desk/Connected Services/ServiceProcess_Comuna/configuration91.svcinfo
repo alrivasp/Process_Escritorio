@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<SavedWcfConfigurationInformation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="9.1" CheckSum="mIIP6H90FRBAY8a/n5e0NolOMJQ=">
+<SavedWcfConfigurationInformation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="9.1" CheckSum="XkMZ5d2YLUEh2VuNJ97jyl/JLN8=">
   <bindingConfigurations>
     <bindingConfiguration bindingType="basicHttpBinding" name="Process_ComunaSoap">
       <properties>
@@ -263,10 +263,10 @@
     </bindingConfiguration>
   </bindingConfigurations>
   <endpoints>
-    <endpoint name="Process_ComunaSoap" contract="ServiceProcess_Comuna.Process_ComunaSoap" bindingType="basicHttpBinding" address="http://localhost:52755/Process_Comuna.asmx" bindingConfiguration="Process_ComunaSoap">
+    <endpoint name="Process_ComunaSoap" contract="ServiceProcess_Comuna.Process_ComunaSoap" bindingType="basicHttpBinding" address="http://52.67.249.164:8071/Process_Comuna.asmx" bindingConfiguration="Process_ComunaSoap">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>http://localhost:52755/Process_Comuna.asmx</serializedValue>
+          <serializedValue>http://52.67.249.164:8071/Process_Comuna.asmx</serializedValue>
         </property>
         <property path="/behaviorConfiguration" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />
@@ -348,10 +348,10 @@
         </property>
       </properties>
     </endpoint>
-    <endpoint name="Process_ComunaSoap12" contract="ServiceProcess_Comuna.Process_ComunaSoap" bindingType="customBinding" address="http://localhost:52755/Process_Comuna.asmx" bindingConfiguration="Process_ComunaSoap12">
+    <endpoint name="Process_ComunaSoap12" contract="ServiceProcess_Comuna.Process_ComunaSoap" bindingType="customBinding" address="http://52.67.249.164:8071/Process_Comuna.asmx" bindingConfiguration="Process_ComunaSoap12">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>http://localhost:52755/Process_Comuna.asmx</serializedValue>
+          <serializedValue>http://52.67.249.164:8071/Process_Comuna.asmx</serializedValue>
         </property>
         <property path="/behaviorConfiguration" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />

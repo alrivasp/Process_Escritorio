@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<SavedWcfConfigurationInformation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="9.1" CheckSum="N4Mvz+A2QqwiZTQpFC37ZggVY94=">
+<SavedWcfConfigurationInformation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="9.1" CheckSum="sLfPhUi7P6C4HX5saxGCH2tW/yk=">
   <bindingConfigurations>
     <bindingConfiguration bindingType="basicHttpBinding" name="Process_CuentaSoap">
       <properties>
@@ -263,10 +263,10 @@
     </bindingConfiguration>
   </bindingConfigurations>
   <endpoints>
-    <endpoint name="Process_CuentaSoap" contract="ServiceProcess_Cuenta.Process_CuentaSoap" bindingType="basicHttpBinding" address="http://localhost:52755/Process_Cuenta.asmx" bindingConfiguration="Process_CuentaSoap">
+    <endpoint name="Process_CuentaSoap" contract="ServiceProcess_Cuenta.Process_CuentaSoap" bindingType="basicHttpBinding" address="http://52.67.249.164:8071/Process_Cuenta.asmx" bindingConfiguration="Process_CuentaSoap">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>http://localhost:52755/Process_Cuenta.asmx</serializedValue>
+          <serializedValue>http://52.67.249.164:8071/Process_Cuenta.asmx</serializedValue>
         </property>
         <property path="/behaviorConfiguration" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />
@@ -348,10 +348,10 @@
         </property>
       </properties>
     </endpoint>
-    <endpoint name="Process_CuentaSoap12" contract="ServiceProcess_Cuenta.Process_CuentaSoap" bindingType="customBinding" address="http://localhost:52755/Process_Cuenta.asmx" bindingConfiguration="Process_CuentaSoap12">
+    <endpoint name="Process_CuentaSoap12" contract="ServiceProcess_Cuenta.Process_CuentaSoap" bindingType="customBinding" address="http://52.67.249.164:8071/Process_Cuenta.asmx" bindingConfiguration="Process_CuentaSoap12">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>http://localhost:52755/Process_Cuenta.asmx</serializedValue>
+          <serializedValue>http://52.67.249.164:8071/Process_Cuenta.asmx</serializedValue>
         </property>
         <property path="/behaviorConfiguration" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />

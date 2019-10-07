@@ -19,11 +19,11 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://localhost:52755/Process_Region.asmx" Protocol="http" SourceId="1" />
+    <MetadataSource Address="http://52.67.249.164:8071/Process_Region.asmx" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="Process_Region.disco" MetadataType="Disco" ID="f5cb8a03-f679-4783-894d-2cbb1e03a3e9" SourceId="1" SourceUrl="http://localhost:52755/Process_Region.asmx?disco" />
-    <MetadataFile FileName="Process_Region.wsdl" MetadataType="Wsdl" ID="1435e15a-faf3-4843-83f5-76fe5d975022" SourceId="1" SourceUrl="http://localhost:52755/Process_Region.asmx?wsdl" />
+    <MetadataFile FileName="Process_Region1.wsdl" MetadataType="Wsdl" ID="abe6b881-9add-4559-b417-181b4ec13693" SourceId="1" SourceUrl="http://52.67.249.164:8071/Process_Region.asmx?wsdl" />
+    <MetadataFile FileName="Process_Region1.disco" MetadataType="Disco" ID="5780ddc2-3dc7-4021-8463-4cd26b951897" SourceId="1" SourceUrl="http://52.67.249.164:8071/Process_Region.asmx?disco" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

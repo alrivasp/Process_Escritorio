@@ -13,6 +13,7 @@ namespace Process_APP_Desk
 {
     public partial class PantallaMenuPrincipal : Form
     {
+        //Variables globales
         string nombres;
         string apellidos;
         string perfil;
@@ -22,6 +23,7 @@ namespace Process_APP_Desk
             //Estas lineas eliminan los parpadeos del formulario o controles en la interfaz grafica (Pero no en un 100%)
             this.SetStyle(ControlStyles.ResizeRedraw, true);
             this.DoubleBuffered = true;
+            lblTituloMenu.Text = "";
         }
 
         public PantallaMenuPrincipal(string _nombres, string _apellidos, string _perfil)
@@ -36,6 +38,7 @@ namespace Process_APP_Desk
             //Estas lineas eliminan los parpadeos del formulario o controles en la interfaz grafica (Pero no en un 100%)
             this.SetStyle(ControlStyles.ResizeRedraw, true);
             this.DoubleBuffered = true;
+            lblTituloMenu.Text = "";
         }
 
         //METODO PARA ARRASTRAR EL FORMULARIO---------------------------------------------------------------------
@@ -59,9 +62,13 @@ namespace Process_APP_Desk
         
         private void IconCerrar_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("¿Está seguro de cerrar?", "Alerta¡¡", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            if (MessageBox.Show("¿Esta seguro de Salir del Sistema Process?", "Confirmar", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 Application.Exit();
+            }
+            else
+            {
+                //continua en el programa
             }
         }
 
@@ -101,9 +108,13 @@ namespace Process_APP_Desk
 
         private void BtnCerrarSesion_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("¿Está seguro de Cerrar la Sesion?", "Alerta¡¡", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            if (MessageBox.Show("¿Esta seguro de Salir del Sistema Process?", "Confirmar", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 Application.Exit();
+            }
+            else
+            {
+                //volver al menu
             }
         }
 
@@ -127,6 +138,7 @@ namespace Process_APP_Desk
 
         private void BtnEmpresas_Click(object sender, EventArgs e)
         {
+            lblTituloMenu.Text = "MANTENCION EMPRESA";
             FormEmpresa frm = new FormEmpresa();
             frm.FormClosed += new FormClosedEventHandler(mostrarLogoAlCerrarPantalla);
             AbrirFormEnPanel(frm);
@@ -189,6 +201,7 @@ namespace Process_APP_Desk
 
         private void mostrarLogo()
         {
+            lblTituloMenu.Text = "";
             AbrirFormEnPanel(new PantallaLogo());
         }
     }

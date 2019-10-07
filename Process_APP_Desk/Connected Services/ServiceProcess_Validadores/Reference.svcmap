@@ -19,11 +19,11 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://localhost:52755/Process_Validadores.asmx" Protocol="http" SourceId="1" />
+    <MetadataSource Address="http://52.67.249.164:8071/Process_Validadores.asmx" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="Process_Validadores.disco" MetadataType="Disco" ID="4fb8b3e7-8bbf-471f-94be-ca408ac5edc1" SourceId="1" SourceUrl="http://localhost:52755/Process_Validadores.asmx?disco" />
-    <MetadataFile FileName="Process_Validadores.wsdl" MetadataType="Wsdl" ID="e6bca3c8-efa6-4f46-8d71-2e82cc68dbf3" SourceId="1" SourceUrl="http://localhost:52755/Process_Validadores.asmx?wsdl" />
+    <MetadataFile FileName="Process_Validadores1.wsdl" MetadataType="Wsdl" ID="7ee352b7-2754-4e84-8fea-f1cbc69016a1" SourceId="1" SourceUrl="http://52.67.249.164:8071/Process_Validadores.asmx?wsdl" />
+    <MetadataFile FileName="Process_Validadores1.disco" MetadataType="Disco" ID="488b372f-d052-4c18-b57e-8eba5c999e9e" SourceId="1" SourceUrl="http://52.67.249.164:8071/Process_Validadores.asmx?disco" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

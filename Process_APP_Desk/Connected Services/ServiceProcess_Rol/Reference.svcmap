@@ -19,11 +19,11 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://localhost:52755/Process_Rol.asmx" Protocol="http" SourceId="1" />
+    <MetadataSource Address="http://52.67.249.164:8071/Process_Rol.asmx" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="Process_Rol.disco" MetadataType="Disco" ID="28afce31-1d92-4666-a595-2c9287099cb8" SourceId="1" SourceUrl="http://localhost:52755/Process_Rol.asmx?disco" />
-    <MetadataFile FileName="Process_Rol.wsdl" MetadataType="Wsdl" ID="b5c5b343-7eed-4ab2-89e7-11993830b1fd" SourceId="1" SourceUrl="http://localhost:52755/Process_Rol.asmx?wsdl" />
+    <MetadataFile FileName="Process_Rol1.disco" MetadataType="Disco" ID="504663f6-6654-411d-b89e-e0468421179a" SourceId="1" SourceUrl="http://52.67.249.164:8071/Process_Rol.asmx?disco" />
+    <MetadataFile FileName="Process_Rol1.wsdl" MetadataType="Wsdl" ID="b00e1b28-1087-44d4-86d6-b92da578b941" SourceId="1" SourceUrl="http://52.67.249.164:8071/Process_Rol.asmx?wsdl" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

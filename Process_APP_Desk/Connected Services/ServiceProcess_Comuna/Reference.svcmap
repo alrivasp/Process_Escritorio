@@ -19,11 +19,11 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://localhost:52755/Process_Comuna.asmx" Protocol="http" SourceId="1" />
+    <MetadataSource Address="http://52.67.249.164:8071/Process_Comuna.asmx" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="Process_Comuna.disco" MetadataType="Disco" ID="6003e5c5-60e6-4773-9f89-b30f09c0e024" SourceId="1" SourceUrl="http://localhost:52755/Process_Comuna.asmx?disco" />
-    <MetadataFile FileName="Process_Comuna.wsdl" MetadataType="Wsdl" ID="e02d44da-891e-4700-a02e-21b24ec790da" SourceId="1" SourceUrl="http://localhost:52755/Process_Comuna.asmx?wsdl" />
+    <MetadataFile FileName="Process_Comuna1.wsdl" MetadataType="Wsdl" ID="73a44b3d-fe1a-498f-b9b9-61742a616524" SourceId="1" SourceUrl="http://52.67.249.164:8071/Process_Comuna.asmx?wsdl" />
+    <MetadataFile FileName="Process_Comuna1.disco" MetadataType="Disco" ID="c74ef811-f14f-48e1-a102-d4359808f0d8" SourceId="1" SourceUrl="http://52.67.249.164:8071/Process_Comuna.asmx?disco" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
