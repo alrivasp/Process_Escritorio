@@ -12,60 +12,96 @@ namespace Process_APP_Desk
 {
     public partial class FormUnidad : Form
     {
-        //Carga de Web Service
-        ServiceProcess_Unidad.Process_UnidadSoapClient auxServiceUnidad = new ServiceProcess_Unidad.Process_UnidadSoapClient();
-        ServiceProcess_Empresa.Process_EmpresaSoapClient auxServiceEmpresa = new ServiceProcess_Empresa.Process_EmpresaSoapClient();
+        //Variable Titulo
+        public static string _titulo_modal;
         //Variables para cargar datos desde el gridview
         public static string _id_unidad = null;
-        public static string _nombre;       
+        public static string _nombre;
         public static string _descripcion;
         public static string _estado;
         public static string _rut_empresa;
-        //Variables de verificacion
-        public static string _id_unidad_enviar;
-        public static string _nombre_consulta;
-        public static string _rut_empresa_consulta;
-        //Variable para interaccion de botones (0 = modificar) - (1 = guardar)
+        //Variable para interaccion de botones (1 = modificar) - (2 = nuevo) - (3 = Ver)
         public static int _guardar = 0;
         public FormUnidad()
         {
             InitializeComponent();
             //Metodo Carga de GridView
             cargarDataGridViewPpal();
-            //Metodo Carga Cuadro de Datos en Blanco
-            cargarDatosEnBlanco();
+            pbSeleccion.Visible = false;
+            btnActivar.Visible = false;
+            btnDesactivar.Visible = false;
+            //vACIAR VARIABLES
+            _id_unidad = null;
+            _nombre = string.Empty;
+            _descripcion = string.Empty;
+            _estado = string.Empty;
+            _rut_empresa = string.Empty;
         }
-        //Metodo Carga Cuadro de Datos en Blanco
-        private void cargarDatosEnBlanco()
-        {
-            //CAMBIO DE TITULO DE CUADRO DE DATOS
-            lblTituloCuadro.Text = "DATOS DE UNIDAD";
-            //bloquear cajas de texto
-            txtNombre.ReadOnly = true;
-            txtDescripcion.ReadOnly = true;
-            //vaciar cajas de texto
-            txtNombre.Text = string.Empty;
-            txtDescripcion.Text = string.Empty;           
-            //bloquear combobox
-            cbEmpresa.DropDownStyle = ComboBoxStyle.DropDownList;
-            cbEstado.DropDownStyle = ComboBoxStyle.DropDownList;
-            //vaciar combobox
-            cbEmpresa.DataSource = null;
-            cbEmpresa.Items.Clear();
-            cbEstado.DataSource = null;
-            cbEstado.Items.Clear();            
-            //inactivar boton guaradar
-            btnGuardar.Visible = false;
-            //Variable para interaccion de botones (0 = ninguno) (1 = modificar) - (2 = guardar)
-            _guardar = 0;
-        }
+
         //Metodo Carga de GridView
         private void cargarDataGridViewPpal()
         {
-            DataSet ds = auxServiceUnidad.TraerTodasUnidades_Escritorio();
-            DataTable dt = ds.Tables[0];
-            dgvUnidad.DataSource = dt;
+            try
+            {
+                //instansear web service con seguridad
+                ServiceProcess_Empresa.Process_EmpresaSoapClient auxServiceEmpresa = new ServiceProcess_Empresa.Process_EmpresaSoapClient();
+                auxServiceEmpresa.ClientCredentials.UserName.UserName = Cuenta.Usuario_iis;
+                auxServiceEmpresa.ClientCredentials.UserName.Password = Cuenta.Clave_iis;
+                ServiceProcess_Unidad.Process_UnidadSoapClient auxServiceUnidad = new ServiceProcess_Unidad.Process_UnidadSoapClient();
+                auxServiceUnidad.ClientCredentials.UserName.UserName = Cuenta.Usuario_iis;
+                auxServiceUnidad.ClientCredentials.UserName.Password = Cuenta.Clave_iis;
+                ServiceProcess_Empresa.Empresa auxEmpresa = new ServiceProcess_Empresa.Empresa();
+                ServiceProcess_Unidad.Unidad auxUnidad = new ServiceProcess_Unidad.Unidad();
+                //capturar dataset
+                DataSet ds = auxServiceUnidad.TraerTodasUnidades_Escritorio();
+                //Capturar Tabla
+                DataTable dt = ds.Tables[0];
+                //contar cantidad de empresas
+                int _cantidad_unidades = dt.Rows.Count;
+                //crear array bidimencional
+                string[,] ListaUnidad = new string[_cantidad_unidades, 6];
+                //Recorrer data table
+                int _fila = 0;
+                for (int i = 0; i < dt.Rows.Count; i++)
+                {
+                    //Capturar datos de la fila recorridad en objeto empresa
+                    auxUnidad.Id_unidad = Convert.ToInt32(dt.Rows[i]["Id_unidad"]);
+                    auxUnidad.Nombre = (String)dt.Rows[i]["Nombre"];
+                    auxUnidad.Descripcion = (String)dt.Rows[i]["Descripcion"];
+                    auxUnidad.Estado = Convert.ToInt32(dt.Rows[i]["Estado"]);
+                    auxUnidad.Rut_empresa = (String)dt.Rows[i]["Rut_empresa"];
+                    //variables temporales de apoyo
+                    string _estado = string.Empty;
+                    string _nombre_empresa = string.Empty;
+                    //cargar array con datos de fila
+                    ListaUnidad[_fila, 0] = auxUnidad.Id_unidad.ToString();
+                    ListaUnidad[_fila, 1] = auxUnidad.Nombre;
+                    auxEmpresa = auxServiceEmpresa.TraerEmpresaConEntidad_Escritorio(auxUnidad.Rut_empresa);
+                    ListaUnidad[_fila, 2] = auxEmpresa.Nombre;
+                    ListaUnidad[_fila, 3] = auxEmpresa.Rut_empresa;
+                    if (auxUnidad.Estado == 0)
+                    {
+                        _estado = "DESACTIVADO";
+                    }
+                    else
+                    {
+                        _estado = "ACTIVADO";
+                    }
+                    ListaUnidad[_fila, 4] = _estado;
+                    ListaUnidad[_fila, 5] = auxUnidad.Descripcion;
+                    //agregar lista a gridview
+                    dgvUnidad.Rows.Add(ListaUnidad[_fila, 0], ListaUnidad[_fila, 1], ListaUnidad[_fila, 2], ListaUnidad[_fila, 3], ListaUnidad[_fila, 4], ListaUnidad[_fila, 5]);
+                    _fila++;
+
+                }
+                pbSeleccion.Visible = false;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error en metodo cargarDataGridViewPpal, Contactese con el Administrador Detalle de Error: " + ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
+
         //Boton Cerrar
         private void BtnCerrar_Click(object sender, EventArgs e)
         {
@@ -77,289 +113,335 @@ namespace Process_APP_Desk
         {
             try
             {
-                DataSet ds = auxServiceUnidad.TraerUnidadConClaveSinEntidad_Escritorio(txtFiltrar.Text.ToUpper());
-                DataTable dt = ds.Tables[0];
-                dgvUnidad.DataSource = dt;
+                dgvUnidad.Rows.Clear();
+                dgvUnidad.Refresh();
+                //instansear web service con seguridad
+                ServiceProcess_Empresa.Process_EmpresaSoapClient auxServiceEmpresa = new ServiceProcess_Empresa.Process_EmpresaSoapClient();
+                auxServiceEmpresa.ClientCredentials.UserName.UserName = Cuenta.Usuario_iis;
+                auxServiceEmpresa.ClientCredentials.UserName.Password = Cuenta.Clave_iis;
+                ServiceProcess_Unidad.Process_UnidadSoapClient auxServiceUnidad = new ServiceProcess_Unidad.Process_UnidadSoapClient();
+                auxServiceUnidad.ClientCredentials.UserName.UserName = Cuenta.Usuario_iis;
+                auxServiceUnidad.ClientCredentials.UserName.Password = Cuenta.Clave_iis;
+                ServiceProcess_Empresa.Empresa auxEmpresa = new ServiceProcess_Empresa.Empresa();
+                ServiceProcess_Unidad.Unidad auxUnidad = new ServiceProcess_Unidad.Unidad();
+                //capturar dataset
+                DataSet ds = auxServiceUnidad.TraerUnidadConClaveSinEntidad_Escritorio(txtFiltrar.Text.ToUpper());                
+                if ((ds.Tables.Count != 0) && (ds.Tables[0].Rows.Count > 0))
+                {
+                    //Capturar Tabla
+                    DataTable dt = ds.Tables[0];
+                    //contar cantidad de empresas
+                    int _cantidad_unidades = dt.Rows.Count;
+                    //crear array bidimencional
+                    string[,] ListaUnidad = new string[_cantidad_unidades, 6];
+                    //Recorrer data table
+                    int _fila = 0;
+                    for (int i = 0; i < dt.Rows.Count; i++)
+                    {
+                        //Capturar datos de la fila recorridad en objeto empresa
+                        auxUnidad.Id_unidad = Convert.ToInt32(dt.Rows[i]["Id_unidad"]);
+                        auxUnidad.Nombre = (String)dt.Rows[i]["Nombre"];
+                        auxUnidad.Descripcion = (String)dt.Rows[i]["Descripcion"];
+                        auxUnidad.Estado = Convert.ToInt32(dt.Rows[i]["Estado"]);
+                        auxUnidad.Rut_empresa = (String)dt.Rows[i]["Rut_empresa"];
+                        //variables temporales de apoyo
+                        string _estado = string.Empty;
+                        string _nombre_empresa = string.Empty;
+                        //cargar array con datos de fila
+                        ListaUnidad[_fila, 0] = auxUnidad.Id_unidad.ToString();
+                        ListaUnidad[_fila, 1] = auxUnidad.Nombre;
+                        auxEmpresa = auxServiceEmpresa.TraerEmpresaConEntidad_Escritorio(auxUnidad.Rut_empresa);
+                        ListaUnidad[_fila, 2] = auxEmpresa.Nombre;
+                        ListaUnidad[_fila, 3] = auxEmpresa.Rut_empresa;
+                        if (auxUnidad.Estado == 0)
+                        {
+                            _estado = "DESACTIVADO";
+                        }
+                        else
+                        {
+                            _estado = "ACTIVADO";
+                        }
+                        ListaUnidad[_fila, 4] = _estado;
+                        ListaUnidad[_fila, 5] = auxUnidad.Descripcion;
+                        //agregar lista a gridview
+                        dgvUnidad.Rows.Add(ListaUnidad[_fila, 0], ListaUnidad[_fila, 1], ListaUnidad[_fila, 2], ListaUnidad[_fila, 3], ListaUnidad[_fila, 4], ListaUnidad[_fila, 5]);
+                        _fila++;
+
+                    }
+                    pbSeleccion.Visible = false;                    
+                }
+                else
+                {
+                    //Mostrar GridView Vacio
+                }                
             }
             catch (Exception ex)
             {
-                DataTable dt = new DataTable();
-                DataSet ds = new DataSet();
-                DataRow dr = dt.NewRow();
-                dt.TableName = "Unidad";
-                dt.Columns.Add(new DataColumn("ID_UNIDAD"));
-                dt.Columns.Add(new DataColumn("NOMBRE"));
-                dt.Columns.Add(new DataColumn("DESCRIPCION"));                
-                dt.Columns.Add(new DataColumn("ESTADO"));
-                dt.Columns.Add(new DataColumn("RUT_EMPRESA"));
-                dr["ID_UNIDAD"] = "SIN REGISTRO";
-                dr["NOMBRE"] = "SIN REGISTRO";
-                dr["DESCRIPCION"] = "SIN REGISTRO";
-                dr["ESTADO"] = "SIN REGISTRO";
-                dr["RUT_EMPRESA"] = "SIN REGISTRO";                
-                dt.Rows.Add(dr);
-                ds.Tables.Add(dt);
-
-                dgvUnidad.DataSource = ds;
-
+                MessageBox.Show("Error en metodo de accion TxtFiltrar_KeyUp, Contactese con el Administrador Detalle de Error: " + ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-        }
 
-        //Metodo Carga ComboBox Empresa
-        private void cargarComboEmpresa()
-        {
-            DataSet ds = new DataSet();
-            DataTable dt = new DataTable();
-            ds = auxServiceEmpresa.TraerTodasEmpresas_Escritorio();
-            dt = ds.Tables[0];
-            DataRow fila = dt.NewRow();
-            fila["RUT_EMPRESA"] = 0;
-            fila["NOMBRE"] = "SELECCIONE EMPRESA";
-            fila["GIRO"] = " ";
-            fila["DIRECCION"] = " ";
-            fila["ESTADO"] = 0;
-            fila["ID_COMUNA"] = 0;
-            dt.Rows.InsertAt(fila, 0);
-            cbEmpresa.DropDownStyle = ComboBoxStyle.DropDownList;
-            cbEmpresa.DataSource = dt;
-            cbEmpresa.DisplayMember = "NOMBRE";
-            cbEmpresa.ValueMember = "RUT_EMPRESA";
-        }
-        //Metodo Carga ComboBox Estado
-        private void cargarComboEstado()
-        {
-            DataTable dtEstado = new DataTable();
-            DataRow dr = dtEstado.NewRow();
-            dtEstado.TableName = "Estado";
-            dtEstado.Columns.Add(new DataColumn("ID"));
-            dtEstado.Columns.Add(new DataColumn("Nombre"));
-            dr["ID"] = "";
-            dr["Nombre"] = "SELECCIONE ESTADO";
-            dtEstado.Rows.Add(dr);
-            DataRow dr1 = dtEstado.NewRow();
-            dr1["ID"] = 0;
-            dr1["Nombre"] = "INACTIVO";
-            dtEstado.Rows.Add(dr1);
-            DataRow dr2 = dtEstado.NewRow();
-            dr2["ID"] = 1;
-            dr2["Nombre"] = "ACTIVO";
-            dtEstado.Rows.Add(dr2);
+            //try
+            //{
+            //    //Instancia de web servuice con seguridad NT
+            //    ServiceProcess_Unidad.Process_UnidadSoapClient auxServiceUnidad = new ServiceProcess_Unidad.Process_UnidadSoapClient();
+            //    auxServiceUnidad.ClientCredentials.UserName.UserName = Cuenta.Usuario_iis;
+            //    auxServiceUnidad.ClientCredentials.UserName.Password = Cuenta.Clave_iis;
+            //    DataSet ds = auxServiceUnidad.TraerUnidadConClaveSinEntidad_Escritorio(txtFiltrar.Text.ToUpper());
+            //    DataTable dt = ds.Tables[0];
+            //    dgvUnidad.DataSource = dt;
+            //}
+            //catch (Exception ex)
+            //{
+            //    DataTable dt = new DataTable();
+            //    DataSet ds = new DataSet();
+            //    DataRow dr = dt.NewRow();
+            //    dt.TableName = "Unidad";
+            //    dt.Columns.Add(new DataColumn("ID_UNIDAD"));
+            //    dt.Columns.Add(new DataColumn("NOMBRE"));
+            //    dt.Columns.Add(new DataColumn("DESCRIPCION"));
+            //    dt.Columns.Add(new DataColumn("ESTADO"));
+            //    dt.Columns.Add(new DataColumn("RUT_EMPRESA"));
+            //    dr["ID_UNIDAD"] = "SIN REGISTRO";
+            //    dr["NOMBRE"] = "SIN REGISTRO";
+            //    dr["DESCRIPCION"] = "SIN REGISTRO";
+            //    dr["ESTADO"] = "SIN REGISTRO";
+            //    dr["RUT_EMPRESA"] = "SIN REGISTRO";
+            //    dt.Rows.Add(dr);
+            //    ds.Tables.Add(dt);
 
+            //    dgvUnidad.DataSource = ds;
 
-            cbEstado.DropDownStyle = ComboBoxStyle.DropDownList;
-            cbEstado.DataSource = dtEstado;
-            cbEstado.DisplayMember = "Nombre";
-            cbEstado.ValueMember = "ID";
-        }
-
-        private void DgvUnidad_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            _id_unidad = dgvUnidad.Rows[e.RowIndex].Cells["ID_UNIDAD"].Value.ToString();
-            _nombre = dgvUnidad.Rows[e.RowIndex].Cells["NOMBRE"].Value.ToString();
-            _descripcion = dgvUnidad.Rows[e.RowIndex].Cells["DESCRIPCION"].Value.ToString();
-            _estado = dgvUnidad.Rows[e.RowIndex].Cells["ESTADO"].Value.ToString();
-            _rut_empresa = dgvUnidad.Rows[e.RowIndex].Cells["RUT_EMPRESA"].Value.ToString();
-            //variables de validacion
-            _id_unidad_enviar = dgvUnidad.Rows[e.RowIndex].Cells["ID_UNIDAD"].Value.ToString();
-            _nombre_consulta = dgvUnidad.Rows[e.RowIndex].Cells["NOMBRE"].Value.ToString();
-            _rut_empresa_consulta = dgvUnidad.Rows[e.RowIndex].Cells["RUT_EMPRESA"].Value.ToString();
+            //}
         }
 
         private void BtnModificar_Click(object sender, EventArgs e)
         {
-            if (_id_unidad == null)//validador que se seleccione un fila de UNIDAD
+            try
             {
-                MessageBox.Show("Seleccione una Fila a Modificar", "ATENCION", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                if (_id_unidad == null)//validador que se seleccione un fila de Unidad
+                {
+                    MessageBox.Show("Seleccione una Fila a Modificar", "ATENCION", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+
+                    _titulo_modal = "MODIFICAR UNIDAD";
+                    _guardar = 1;
+                    FormUnidadModal frmModal = new FormUnidadModal(_titulo_modal, _guardar, Convert.ToInt32(_id_unidad), _nombre, _descripcion, Convert.ToInt32(_estado), _rut_empresa);
+                    if (frmModal.ShowDialog() == DialogResult.OK)
+                    {
+                        btnActivar.Visible = false;
+                        btnDesactivar.Visible = false;
+                        //Vaciar variables
+                        _id_unidad = null;
+                        _nombre = string.Empty;
+                        _descripcion = string.Empty;
+                        _estado = string.Empty;
+                        _rut_empresa = string.Empty;
+                        //limpiar GridView
+                        dgvUnidad.Rows.Clear();
+                        dgvUnidad.Refresh();
+                        //cargar gridview
+                        cargarDataGridViewPpal();
+                        MessageBox.Show("Unidad Modificada Correctamente.", "ATENCION", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                    }
+
+                }
             }
-            else
-            {               
-                //Se edita titulo de cuadro de datos
-                lblTituloCuadro.Text = "MODIFICAR UNIDAD";
-                //Se habilita Boton
-                btnGuardar.Visible = true;
-                //Se cargam comnbos de estado y empresa
-                cargarComboEstado();
-                cargarComboEmpresa();
-                //bloquear combobox
-                cbEstado.DropDownStyle = ComboBoxStyle.DropDownList;
-                cbEmpresa.DropDownStyle = ComboBoxStyle.DropDownList;
-                //combo solo lectura
-                cbEmpresa.Enabled = false;
-                //desbloquear cajas de texto                 
-                txtNombre.ReadOnly = false;
-                txtDescripcion.ReadOnly = false;                
-                //se pasan datos a cajas de texto de cuadro de datos
-                txtNombre.Text = _nombre;
-                txtDescripcion.Text = _descripcion;
-                cbEmpresa.SelectedValue = _rut_empresa;
-                cbEstado.SelectedValue = _estado;                    
-                //se vacian variables para que no queden con informacion
-                _id_unidad = null;
-                _nombre = null;
-                _descripcion = null;                
-                _estado = null;
-                _rut_empresa = null;
-               //Variable para interaccion de botones (0 = ninguno) (1 = modificar) - (2 = guardar)
-               _guardar = 1;                
-            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error en metodo de accion BtnModificar_Click, Contactese con el Administrador Detalle de Error: " + ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }   
         }
 
         private void BtnNuevo_Click(object sender, EventArgs e)
         {
-            //cambiar titulo
-            lblTituloCuadro.Text = "NUEVA UNIDAD";
-            //habilitar boton guardar
-            btnGuardar.Visible = true;
-            //desbloquear cajas de texto
-            txtNombre.ReadOnly = false;
-            txtDescripcion.ReadOnly = false;
-            //Cargar comobox de empresa y estado
-            cargarComboEstado();
-            cargarComboEmpresa();
-            //combo solo lectura
-            cbEmpresa.Enabled = true;
-            //vaciar textbox
-            txtNombre.Text = string.Empty;
-            txtDescripcion.Text = string.Empty;
-            //bloquear combobox
-            cbEstado.DropDownStyle = ComboBoxStyle.DropDownList;
-            cbEmpresa.DropDownStyle = ComboBoxStyle.DropDownList;       
-            //Variable para interaccion de botones (0 = ninguno) (1 = modificar) - (2 = Nuevo)
-            _guardar = 2;
+            try
+            {
+                FormUnidadModalNuevo frmModal = new FormUnidadModalNuevo();
+                if (frmModal.ShowDialog() == DialogResult.OK)
+                {
+                    btnActivar.Visible = false;
+                    btnDesactivar.Visible = false;
+                    //Vaciar variables
+                    _id_unidad = null;
+                    _nombre = string.Empty;
+                    _descripcion = string.Empty;
+                    _estado = string.Empty;
+                    _rut_empresa = string.Empty;
+                    //limpiar GridView
+                    dgvUnidad.Rows.Clear();
+                    dgvUnidad.Refresh();
+                    //cargar gridview
+                    cargarDataGridViewPpal();
+                    MessageBox.Show("Unidad creada Correctamente.", "ATENCION", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error en Boton de accion BtnNuevo_Click, Contactese con el Administrador Detalle de Error: " + ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+           
         }
 
-        private void BtnGuardar_Click(object sender, EventArgs e)
+        private void DgvUnidad_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            //try
-            //{
-                if (_guardar == 1)//Modificar Unidad
+            try
+            {
+                if (e.RowIndex < 0)
+                    return;
+
+                _id_unidad = dgvUnidad.Rows[e.RowIndex].Cells["ID_UNIDAD"].Value.ToString();
+                _rut_empresa = dgvUnidad.Rows[e.RowIndex].Cells["RUT_EMPRESA"].Value.ToString();
+
+                //instansear web service con seguridad
+                ServiceProcess_Unidad.Process_UnidadSoapClient auxServiceUnidad = new ServiceProcess_Unidad.Process_UnidadSoapClient();
+                auxServiceUnidad.ClientCredentials.UserName.UserName = Cuenta.Usuario_iis;
+                auxServiceUnidad.ClientCredentials.UserName.Password = Cuenta.Clave_iis;
+                ServiceProcess_Unidad.Unidad auxUnidad = new ServiceProcess_Unidad.Unidad();
+                auxUnidad = auxServiceUnidad.TraerUnidadConEntidad_Escritorio(Convert.ToInt32(_id_unidad), _rut_empresa);
+
+                _nombre = auxUnidad.Nombre;
+                _descripcion = auxUnidad.Descripcion;
+                _estado = auxUnidad.Estado.ToString();
+
+                pbSeleccion.Visible = true;
+
+                if (_estado.Equals("0"))
                 {
-                    //Validacion espacion en blanco y combobox vacios
-                    if (txtNombre.Text.Equals("") || txtDescripcion.Text.Equals("") || cbEstado.SelectedValue.ToString().Equals(""))
+                    btnActivar.Visible = true;
+                    btnDesactivar.Visible = false;
+                }
+                else
+                {
+                    btnDesactivar.Visible = true;
+                    btnActivar.Visible = false;
+                }
+
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error en metodo de accion DgvUnidad_CellClick, Contactese con el Administrador Detalle de Error: " + ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void BtnVer_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (_id_unidad == null)//validador que se seleccione un fila de unidad
+                {
+                    MessageBox.Show("Seleccione una Fila para Mostrar", "ATENCION", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    _titulo_modal = "MOSTRAR UNIDAD";
+                    _guardar = 3;
+                    FormUnidadModal frmModal = new FormUnidadModal(_titulo_modal, _guardar, Convert.ToInt32(_id_unidad), _nombre,_descripcion, Convert.ToInt32(_estado), _rut_empresa);
+                    if (frmModal.ShowDialog() == DialogResult.OK)
                     {
-                        MessageBox.Show("Debe Completar todos los campos.", "ATENCION", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
-                    else
-                    {
-                        //Validacion numero de caracteres minimo para  Unidad
-                        if (txtNombre.Text.Trim().Length < 8 || txtDescripcion.Text.Trim().Length < 8)
-                        {
-                            MessageBox.Show("La Informacion Ingresada debe ser superior a 8 Caracteres.", "ATENCION", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        }
-                        else
-                        {
-                            //Validar si se modifica nombre de Unidad
-                            if (_nombre_consulta.ToUpper().Equals(txtNombre.Text.ToUpper()))//NO se modifica nombre de Unidad
-                            {
-                                //confirmacion de modificar Unidad
-                                if (MessageBox.Show("Confirmar La Modificacion de la Unidad Seleccionada", "Confirmar", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-                                {
-                                    //actualizar datos via web service
-                                    auxServiceUnidad.ActualizarUnidadSinEntidad_Escritorio(Convert.ToInt32(_id_unidad_enviar), txtNombre.Text.ToUpper(), txtDescripcion.Text.ToUpper(), Convert.ToInt32(cbEstado.SelectedValue), _rut_empresa_consulta);
-                                    //Metodo Carga de cuadro de datos
-                                    cargarDatosEnBlanco();
-                                    //Metodo Carga de GridView
-                                    cargarDataGridViewPpal();
-                                    //Vaciar variables de consulta
-                                    _id_unidad_enviar = string.Empty;
-                                    _nombre_consulta = string.Empty;
-                                    _rut_empresa_consulta = string.Empty;
-                                }
-                                else
-                                {
-                                    //se devuelve al Cuadro de datos
-                                }
-                            }
-                            else//SI se modifica nombre de Unidad
-                            {
-                                //carga clase Unidad
-                                ServiceProcess_Unidad.Unidad auxUnidad = new ServiceProcess_Unidad.Unidad();
-                                auxUnidad = auxServiceUnidad.TraerUnidadPorNombrePorEmpresaConEntidad_Escritorio(txtNombre.Text.ToUpper(), _rut_empresa_consulta);
-                                //Validar si Nombre Unidad ya existe en la empresa
-                                if (auxUnidad.Nombre == null)
-                                {
-                                    //confirmacion de modificar Unidad
-                                    if (MessageBox.Show("Confirmar La Modificacion de la Unidad Seleccionada", "Confirmar", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-                                    {
-                                        //actualizar datos via web service
-                                        auxServiceUnidad.ActualizarUnidadSinEntidad_Escritorio(Convert.ToInt32(_id_unidad_enviar), txtNombre.Text.ToUpper(), txtDescripcion.Text.ToUpper(), Convert.ToInt32(cbEstado.SelectedValue), _rut_empresa_consulta);
-                                        //Metodo Carga de cuadro de datos
-                                        cargarDatosEnBlanco();
-                                        //Metodo Carga de GridView
-                                        cargarDataGridViewPpal();
-                                        //Vaciar variables de consulta
-                                        _id_unidad_enviar = string.Empty;
-                                        _nombre_consulta = string.Empty;
-                                        _rut_empresa_consulta = string.Empty;
-                                    }
-                                    else
-                                    {
-                                        //se devuelve al Cuadro de datos
-                                    }
-                                }
-                                else
-                                {
-                                    MessageBox.Show("Este Nombre de Unidad ya Existe en la Empresa", "ATENCION", MessageBoxButtons.OK, MessageBoxIcon.Information);                                    
-                                }
-                            }   
-                        }
+                       
                     }
                 }
-                else//Nueva Unidad
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error en Boton de accion BtnVer_Click, Contactese con el Administrador Detalle de Error: " + ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void BtnActivar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                //Instancia de Web service con credenciales NT
+                ServiceProcess_Empresa.Process_EmpresaSoapClient auxServiceEmpresa = new ServiceProcess_Empresa.Process_EmpresaSoapClient();
+                auxServiceEmpresa.ClientCredentials.UserName.UserName = Cuenta.Usuario_iis;
+                auxServiceEmpresa.ClientCredentials.UserName.Password = Cuenta.Clave_iis;
+                ServiceProcess_Empresa.Empresa auxEmpresa = new ServiceProcess_Empresa.Empresa();
+                auxEmpresa = auxServiceEmpresa.TraerEmpresaConEntidad_Escritorio(_rut_empresa);
+                if (MessageBox.Show("¿Esta Seguro de Activar la Unidad " + _nombre + " de la Empresa "+ auxEmpresa.Nombre +"?", "CONFIRMAR", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
-                    //Validacion espacion en blanco y combobox vacios
-                    if (txtNombre.Text.Equals("") || txtDescripcion.Text.Equals("") || Convert.ToInt32(cbEmpresa.SelectedIndex) == 0 || cbEstado.SelectedValue.ToString().Equals(""))
-                    {
-                        MessageBox.Show("Debe Completar todos los campos.", "ATENCION", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
-                    else
-                    {
-                        //Validacion numero de caracteres minumo para  8 
-                        if (txtNombre.Text.Trim().Length < 4 || txtDescripcion.Text.Trim().Length < 8)
-                        {
-                            MessageBox.Show("La Informacion Ingresada debe ser superior a 8 Caracteres.", "ATENCION", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        }
-                        else
-                        {
-                            //carga clase Unidad
-                            ServiceProcess_Unidad.Unidad auxUnidad = new ServiceProcess_Unidad.Unidad();
-                            auxUnidad = auxServiceUnidad.TraerUnidadPorNombrePorEmpresaConEntidad_Escritorio(txtNombre.Text.ToUpper(), cbEmpresa.SelectedValue.ToString());
-                            //Validar si Nombre Unidad ya existe en la empresa
-                            if (auxUnidad.Nombre == null)
-                            {
-                                //confirmacion de modificar Unidad
-                                if (MessageBox.Show("Confirmar La Creacion de la Unidad", "Confirmar", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-                                {                                    
-                                    //Insertar datos via web service
-                                    auxServiceUnidad.InsertarUnidadSinEntidad_Escritorio(txtNombre.Text.ToUpper(), txtDescripcion.Text.ToUpper(), Convert.ToInt32(cbEstado.SelectedValue), cbEmpresa.SelectedValue.ToString());
-                                    //Metodo Carga de cuadro de datos
-                                    cargarDatosEnBlanco();
-                                    //Metodo Carga de GridView
-                                    cargarDataGridViewPpal();
-                                    //Vaciar variables de consulta
-                                    _id_unidad_enviar = string.Empty;
-                                    _nombre_consulta = string.Empty;
-                                    _rut_empresa_consulta = string.Empty;
-                                }
-                                else
-                                {
-                                    //se devuelve al Cuadro de datos
-                                }
-                            }
-                            else
-                            {
-                                MessageBox.Show("Este Nombre de Unidad ya Existe en la Empresa Seleccionada", "ATENCION", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            }
-                        }
-                    }
-                }//fin if principal
-            //}
-            //catch (Exception ex)
-            //{
+                    //Instancia de Web service con credenciales NT
+                    ServiceProcess_Unidad.Process_UnidadSoapClient auxServiceUnidad = new ServiceProcess_Unidad.Process_UnidadSoapClient();
+                    auxServiceUnidad.ClientCredentials.UserName.UserName = Cuenta.Usuario_iis;
+                    auxServiceUnidad.ClientCredentials.UserName.Password = Cuenta.Clave_iis;
 
-            //    MessageBox.Show("Web Service Process Fuera de Linea, Contactese con el Administrador Detalle de Error: " + ex.Message, "Mensaje de sistema");
+                    //Insertar datos via web service
+                    auxServiceUnidad.ActualizarUnidadSinEntidad_Escritorio(Convert.ToInt32(_id_unidad), _nombre, _descripcion, 1, _rut_empresa);
+                    //ocultar botones
+                    btnActivar.Visible = false;
+                    btnDesactivar.Visible = false;
+                    //Vaciar variables
+                    _id_unidad = null;
+                    _nombre = string.Empty;
+                    _descripcion = string.Empty;
+                    _estado = string.Empty;
+                    _rut_empresa = string.Empty;
+                    //limpiar GridView
+                    dgvUnidad.Rows.Clear();
+                    dgvUnidad.Refresh();
+                    //Metodo Carga de GridView
+                    cargarDataGridViewPpal();
+                    MessageBox.Show("Unidad Activada.", "ATENCION", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                }
+                else
+                {
+                    //continua CON LA VISTA ACTUAL
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error en metodo de accion BtnActivar_Click, Contactese con el Administrador Detalle de Error: " + ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
 
-            //}//fin try catch
+        private void BtnDesactivar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                //Instancia de Web service con credenciales NT
+                ServiceProcess_Empresa.Process_EmpresaSoapClient auxServiceEmpresa = new ServiceProcess_Empresa.Process_EmpresaSoapClient();
+                auxServiceEmpresa.ClientCredentials.UserName.UserName = Cuenta.Usuario_iis;
+                auxServiceEmpresa.ClientCredentials.UserName.Password = Cuenta.Clave_iis;
+                ServiceProcess_Empresa.Empresa auxEmpresa = new ServiceProcess_Empresa.Empresa();
+                auxEmpresa = auxServiceEmpresa.TraerEmpresaConEntidad_Escritorio(_rut_empresa);
+                if (MessageBox.Show("¿Esta Seguro de Desactivar la Unidad " + _nombre + " de la Empresa "+ auxEmpresa.Nombre + "?", "CONFIRMAR", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    //Instancia de Web service con credenciales NT
+                    ServiceProcess_Unidad.Process_UnidadSoapClient auxServiceUnidad = new ServiceProcess_Unidad.Process_UnidadSoapClient();
+                    auxServiceUnidad.ClientCredentials.UserName.UserName = Cuenta.Usuario_iis;
+                    auxServiceUnidad.ClientCredentials.UserName.Password = Cuenta.Clave_iis;
+
+                    //Insertar datos via web service
+                    auxServiceUnidad.ActualizarUnidadSinEntidad_Escritorio(Convert.ToInt32(_id_unidad), _nombre, _descripcion,  0, _rut_empresa);
+                    //ocultar botones
+                    btnActivar.Visible = false;
+                    btnDesactivar.Visible = false;
+                    //Vaciar variables
+                    _id_unidad = null;
+                    _nombre = string.Empty;
+                    _descripcion = string.Empty;
+                    _estado = string.Empty;
+                    _rut_empresa = string.Empty;                    
+                    //limpiar GridView
+                    dgvUnidad.Rows.Clear();
+                    dgvUnidad.Refresh();
+                    //Metodo Carga de GridView
+                    cargarDataGridViewPpal();
+                    MessageBox.Show("Unidad Desactivada.", "ATENCION", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                }
+                else
+                {
+                    //continua CON LA VISTA ACTUAL
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error en metodo de accion BtnDesactivar_Click, Contactese con el Administrador Detalle de Error: " + ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
         }
     }
 }

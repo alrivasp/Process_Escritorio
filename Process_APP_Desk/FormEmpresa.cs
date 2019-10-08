@@ -32,6 +32,13 @@ namespace Process_APP_Desk
             btnActivar.Visible = false;
             btnDesactivar.Visible = false;
             pbSeleccion.Visible = false;
+            //Vaciar variables
+            _rut_empresa = null;
+            _nombre = string.Empty;
+            _giro = string.Empty;
+            _direccion = string.Empty;
+            _estado = string.Empty;
+            _id_comuna = string.Empty;
         }
 
         //Metodo Carga GridView 
@@ -210,6 +217,7 @@ namespace Process_APP_Desk
                     dgvEmpresas.Refresh();
                     //cargar gridview
                     cargarDataGridViewPpal();
+                    MessageBox.Show("Empresa Creada correctamente.", "ATENCION", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                 }
 
             }
@@ -257,6 +265,7 @@ namespace Process_APP_Desk
                             dgvEmpresas.Refresh();
                             //cargar gridview
                             cargarDataGridViewPpal();
+                            MessageBox.Show("Empresa Modificada Correctamente.", "ATENCION", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                         }
                     }
                 }
@@ -305,10 +314,12 @@ namespace Process_APP_Desk
                     if (_estado.Equals("0"))
                     {
                         btnActivar.Visible = true;
+                        btnDesactivar.Visible = false;
                     }
                     else
                     {
                         btnDesactivar.Visible = true;
+                        btnActivar.Visible = false;
                     }
 
                 }
@@ -348,6 +359,7 @@ namespace Process_APP_Desk
                     dgvEmpresas.Refresh();
                     //Metodo Carga de GridView
                     cargarDataGridViewPpal();
+                    MessageBox.Show("Empresa Desactivada.", "ATENCION", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                 }
                 else
                 {
@@ -390,6 +402,7 @@ namespace Process_APP_Desk
                     dgvEmpresas.Refresh();
                     //Metodo Carga de GridView
                     cargarDataGridViewPpal();
+                    MessageBox.Show("Empresa Activada.", "ATENCION", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                 }
                 else
                 {
@@ -424,7 +437,7 @@ namespace Process_APP_Desk
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error en Boton de accion BtnNuevo_Click, Contactese con el Administrador Detalle de Error: " + ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error en Boton de accion BtnVer_Click, Contactese con el Administrador Detalle de Error: " + ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

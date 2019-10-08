@@ -82,7 +82,7 @@ namespace Process_APP_Desk
                     }
                     else
                     {
-                        txtEstado.Text = "INACTIVO";
+                        txtEstado.Text = "DASACTIVADO";
                     }
 
                     //Variable para interaccion de botones (0 = ninguno) (1 = modificar) - (2 = guardar) - (3 = Ver)
@@ -171,7 +171,7 @@ namespace Process_APP_Desk
                     }
                     else
                     {
-                        txtEstado.Text = "INACTIVO";
+                        txtEstado.Text = "DASACTIVADO";
                     }
 
                     //se inactiva txtbox de rut de empresa
@@ -215,7 +215,7 @@ namespace Process_APP_Desk
             }
             else
             {
-                //volver al Modal
+                // volver al Modal
             }
 
         }

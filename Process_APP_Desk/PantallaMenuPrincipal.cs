@@ -166,6 +166,7 @@ namespace Process_APP_Desk
 
         private void BtnUnidad_Click(object sender, EventArgs e)
         {
+            lblTituloMenu.Text = "MANTENCION UNIDAD";
             FormUnidad frm = new FormUnidad();
             frm.FormClosed += new FormClosedEventHandler(mostrarLogoAlCerrarPantalla);
             AbrirFormEnPanel(frm);
@@ -173,6 +174,7 @@ namespace Process_APP_Desk
 
         private void BtnUsuario_Click(object sender, EventArgs e)
         {
+            lblTituloMenu.Text = "MANTENCION USUARIO";
             FormUsuario frm = new FormUsuario();
             frm.FormClosed += new FormClosedEventHandler(mostrarLogoAlCerrarPantalla);
             AbrirFormEnPanel(frm);
@@ -180,6 +182,7 @@ namespace Process_APP_Desk
 
         private void BtnPerfil_Click(object sender, EventArgs e)
         {
+            lblTituloMenu.Text = "MANTENCION ROL";
             FormRol frm = new FormRol();
             frm.FormClosed += new FormClosedEventHandler(mostrarLogoAlCerrarPantalla);
             AbrirFormEnPanel(frm);
@@ -187,6 +190,7 @@ namespace Process_APP_Desk
 
         private void BtnCuenta_Click(object sender, EventArgs e)
         {
+            lblTituloMenu.Text = "MANTENCION CUENTA";
             FormCuenta frm = new FormCuenta();
             frm.FormClosed += new FormClosedEventHandler(mostrarLogoAlCerrarPantalla);
             AbrirFormEnPanel(frm);
@@ -194,9 +198,15 @@ namespace Process_APP_Desk
 
         private void BtnCargo_Click(object sender, EventArgs e)
         {
+            lblTituloMenu.Text = "MANTENCION CARGO";
             FormCargo frm = new FormCargo();
             frm.FormClosed += new FormClosedEventHandler(mostrarLogoAlCerrarPantalla);
             AbrirFormEnPanel(frm);
+        }
+
+        private void BtnEquipo_Click(object sender, EventArgs e)
+        {
+            lblTituloMenu.Text = "MANTENCION EQUIPO";
         }
 
         private void mostrarLogo()

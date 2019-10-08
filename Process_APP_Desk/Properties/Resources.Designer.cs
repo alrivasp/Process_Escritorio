@@ -183,6 +183,16 @@ namespace Process_APP_Desk.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _189_tree {
+            get {
+                object obj = ResourceManager.GetObject("189-tree", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap _207_eye {
             get {
                 object obj = ResourceManager.GetObject("207-eye", resourceCulture);
@@ -246,6 +256,16 @@ namespace Process_APP_Desk.Properties {
         internal static System.Drawing.Bitmap _273_checkmark {
             get {
                 object obj = ResourceManager.GetObject("273-checkmark", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _273_checkmark_black {
+            get {
+                object obj = ResourceManager.GetObject("273-checkmark-black", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
