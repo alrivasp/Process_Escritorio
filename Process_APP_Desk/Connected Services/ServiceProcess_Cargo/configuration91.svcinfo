@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<SavedWcfConfigurationInformation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="9.1" CheckSum="eXVAfvBPZvHHukr/TwVz2NKWme8=">
+<SavedWcfConfigurationInformation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="9.1" CheckSum="NBjF9h/QdeK01qCbxaZhfh73ge0=">
   <bindingConfigurations>
     <bindingConfiguration bindingType="basicHttpBinding" name="Process_CargoSoap">
       <properties>
@@ -263,10 +263,10 @@
     </bindingConfiguration>
   </bindingConfigurations>
   <endpoints>
-    <endpoint name="Process_CargoSoap" contract="ServiceProcess_Cargo.Process_CargoSoap" bindingType="basicHttpBinding" address="http://localhost:52755/Process_Cargo.asmx" bindingConfiguration="Process_CargoSoap">
+    <endpoint name="Process_CargoSoap" contract="ServiceProcess_Cargo.Process_CargoSoap" bindingType="basicHttpBinding" address="http://52.67.249.164:8071/Process_Cargo.asmx" bindingConfiguration="Process_CargoSoap">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>http://localhost:52755/Process_Cargo.asmx</serializedValue>
+          <serializedValue>http://52.67.249.164:8071/Process_Cargo.asmx</serializedValue>
         </property>
         <property path="/behaviorConfiguration" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />
@@ -348,10 +348,10 @@
         </property>
       </properties>
     </endpoint>
-    <endpoint name="Process_CargoSoap12" contract="ServiceProcess_Cargo.Process_CargoSoap" bindingType="customBinding" address="http://localhost:52755/Process_Cargo.asmx" bindingConfiguration="Process_CargoSoap12">
+    <endpoint name="Process_CargoSoap12" contract="ServiceProcess_Cargo.Process_CargoSoap" bindingType="customBinding" address="http://52.67.249.164:8071/Process_Cargo.asmx" bindingConfiguration="Process_CargoSoap12">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>http://localhost:52755/Process_Cargo.asmx</serializedValue>
+          <serializedValue>http://52.67.249.164:8071/Process_Cargo.asmx</serializedValue>
         </property>
         <property path="/behaviorConfiguration" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />

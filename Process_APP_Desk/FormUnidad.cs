@@ -168,50 +168,34 @@ namespace Process_APP_Desk
                         _fila++;
 
                     }
-                    pbSeleccion.Visible = false;                    
+                    //vACIAR VARIABLES
+                    _id_unidad = null;
+                    _nombre = string.Empty;
+                    _descripcion = string.Empty;
+                    _estado = string.Empty;
+                    _rut_empresa = string.Empty;
+                    pbSeleccion.Visible = false;
+                    btnActivar.Visible = false;
+                    btnDesactivar.Visible = false;
                 }
                 else
                 {
                     //Mostrar GridView Vacio
+                    //vACIAR VARIABLES
+                    _id_unidad = null;
+                    _nombre = string.Empty;
+                    _descripcion = string.Empty;
+                    _estado = string.Empty;
+                    _rut_empresa = string.Empty;
+                    pbSeleccion.Visible = false;
+                    btnActivar.Visible = false;
+                    btnDesactivar.Visible = false;
                 }                
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error en metodo de accion TxtFiltrar_KeyUp, Contactese con el Administrador Detalle de Error: " + ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
-            //try
-            //{
-            //    //Instancia de web servuice con seguridad NT
-            //    ServiceProcess_Unidad.Process_UnidadSoapClient auxServiceUnidad = new ServiceProcess_Unidad.Process_UnidadSoapClient();
-            //    auxServiceUnidad.ClientCredentials.UserName.UserName = Cuenta.Usuario_iis;
-            //    auxServiceUnidad.ClientCredentials.UserName.Password = Cuenta.Clave_iis;
-            //    DataSet ds = auxServiceUnidad.TraerUnidadConClaveSinEntidad_Escritorio(txtFiltrar.Text.ToUpper());
-            //    DataTable dt = ds.Tables[0];
-            //    dgvUnidad.DataSource = dt;
-            //}
-            //catch (Exception ex)
-            //{
-            //    DataTable dt = new DataTable();
-            //    DataSet ds = new DataSet();
-            //    DataRow dr = dt.NewRow();
-            //    dt.TableName = "Unidad";
-            //    dt.Columns.Add(new DataColumn("ID_UNIDAD"));
-            //    dt.Columns.Add(new DataColumn("NOMBRE"));
-            //    dt.Columns.Add(new DataColumn("DESCRIPCION"));
-            //    dt.Columns.Add(new DataColumn("ESTADO"));
-            //    dt.Columns.Add(new DataColumn("RUT_EMPRESA"));
-            //    dr["ID_UNIDAD"] = "SIN REGISTRO";
-            //    dr["NOMBRE"] = "SIN REGISTRO";
-            //    dr["DESCRIPCION"] = "SIN REGISTRO";
-            //    dr["ESTADO"] = "SIN REGISTRO";
-            //    dr["RUT_EMPRESA"] = "SIN REGISTRO";
-            //    dt.Rows.Add(dr);
-            //    ds.Tables.Add(dt);
-
-            //    dgvUnidad.DataSource = ds;
-
-            //}
         }
 
         private void BtnModificar_Click(object sender, EventArgs e)

@@ -10,19 +10,19 @@ using System.Windows.Forms;
 
 namespace Process_APP_Desk
 {
-    public partial class FormUnidadModal : Form
+    public partial class FormCargoModal : Form
     {
         //Variable para interaccion de botones (1 = modificar) - (2 = nuevo) - (3 = Ver)
         public static int _guardar = 0;
-        int id_unidad = 0;
+        int id_cargo = 0;
         string rut_empresa = string.Empty;
-        int estado = 0;
-        public FormUnidadModal()
+
+        public FormCargoModal()
         {
             InitializeComponent();
         }
 
-        public FormUnidadModal(string _tituloModal, int _accion, int _id_unidad, string _nombre, string _descripcion, int _estado , string _rut_empresa )
+        public FormCargoModal(string _tituloModal, int _accion, int _id_cargo, string _nombre, string _descripcion, string _rut_empresa)
         {
             InitializeComponent();
             try
@@ -38,36 +38,23 @@ namespace Process_APP_Desk
                     auxServiceEmpresa.ClientCredentials.UserName.Password = Cuenta.Clave_iis;
                     ServiceProcess_Empresa.Empresa auxEmpresa = new ServiceProcess_Empresa.Empresa();
                     //Se carga variable de id unidad
-                    id_unidad = _id_unidad;
+                    id_cargo = _id_cargo;
                     //Capturar rut empresa
                     rut_empresa = _rut_empresa;
-                    //Capturar estado
-                    estado = _estado;
                     //Se habilita Boton
                     btnGuardar.Visible = true;
                     btnCancelar.Visible = true;
-                    // desactivar boton acepatar
+                    // desactivar boton volver
                     btnVolver.Visible = false;
                     //se inactiva txtbox de rut de empresa
                     txtEmpresa.ReadOnly = true;
                     txtEmpresa.Enabled = false;
-                    //se inactiva txtbox de estado
-                    txtEstado.ReadOnly = true;
-                    txtEstado.Enabled = false;
                     //desbloquear cajas de texto                 
                     txtNombre.ReadOnly = false;
-                    txtDescripcion.ReadOnly = false;                    
-                    //se pasan datos a cajas de texto desde formulario principa
+                    txtDescripcion.ReadOnly = false;
+                    //se pasan datos a cajas de texto desde formulario principal
                     txtNombre.Text = _nombre;
                     txtDescripcion.Text = _descripcion;
-                    if (_estado == 1)
-                    {
-                        txtEstado.Text = "ACTIVO";
-                    }
-                    else
-                    {
-                        txtEstado.Text = "DASACTIVADO";
-                    }
                     auxEmpresa = auxServiceEmpresa.TraerEmpresaConEntidad_Escritorio(_rut_empresa);
                     txtEmpresa.Text = auxEmpresa.Nombre;
 
@@ -90,27 +77,15 @@ namespace Process_APP_Desk
                     btnVolver.Visible = true;
                     //se pasan datos a cajas de texto de cuadro de datos
                     txtNombre.Text = _nombre;
-                    txtDescripcion.Text = _descripcion;
-                    if (_estado == 1)
-                    {
-                        txtEstado.Text = "ACTIVO";
-                    }
-                    else
-                    {
-                        txtEstado.Text = "DASACTIVADO";
-                    }
+                    txtDescripcion.Text = _descripcion;                   
                     auxEmpresa = auxServiceEmpresa.TraerEmpresaConEntidad_Escritorio(_rut_empresa);
                     txtEmpresa.Text = auxEmpresa.Nombre;
-
                     //se inactiva txtbox de nombre unidad
                     txtNombre.ReadOnly = true;
                     txtNombre.Enabled = false;
                     //se inactiva txtbox de descripcion
                     txtDescripcion.ReadOnly = true;
                     txtDescripcion.Enabled = false;
-                    //se inactiva txtbox de estado
-                    txtEstado.ReadOnly = true;
-                    txtEstado.Enabled = false;
                     //se inactiva txtbox de empresa
                     txtEmpresa.ReadOnly = true;
                     txtEmpresa.Enabled = false;
@@ -143,56 +118,53 @@ namespace Process_APP_Desk
             try
             {
                 //Instancia de Web service con credenciales NT
-                ServiceProcess_Unidad.Process_UnidadSoapClient auxServiceUnidad = new ServiceProcess_Unidad.Process_UnidadSoapClient();
-                auxServiceUnidad.ClientCredentials.UserName.UserName = Cuenta.Usuario_iis;
-                auxServiceUnidad.ClientCredentials.UserName.Password = Cuenta.Clave_iis;
-                ServiceProcess_Validadores.Process_ValidadoresSoapClient auxServiceValidadores = new ServiceProcess_Validadores.Process_ValidadoresSoapClient();
-                auxServiceValidadores.ClientCredentials.UserName.UserName = Cuenta.Usuario_iis;
-                auxServiceValidadores.ClientCredentials.UserName.Password = Cuenta.Clave_iis;
-                ServiceProcess_Unidad.Unidad auxUnidad = new ServiceProcess_Unidad.Unidad();
-                
+                ServiceProcess_Cargo.Process_CargoSoapClient auxServiceCargo = new ServiceProcess_Cargo.Process_CargoSoapClient();
+                auxServiceCargo.ClientCredentials.UserName.UserName = Cuenta.Usuario_iis;
+                auxServiceCargo.ClientCredentials.UserName.Password = Cuenta.Clave_iis;               
+                ServiceProcess_Cargo.Cargo auxCargo = new ServiceProcess_Cargo.Cargo();
+
                 //Validacion espacion en blanco y combobox vacios
                 if (txtNombre.Text.Equals("") || txtDescripcion.Text.Equals("") || txtEmpresa.Text.Equals(""))
                 {
                     if (txtNombre.Text.Equals(""))
                     {
-                        MessageBox.Show("El Nombre de la Unidad no Puede estar Vacia.", "ATENCION", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("El Nombre del Cargo no Puede estar Vacio.", "ATENCION", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     else if (txtDescripcion.Text.Equals(""))
                     {
-                        MessageBox.Show("La Descripcion de la Unidad no Puede estar Vacia.", "ATENCION", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("La Descripcion del Cargo no Puede estar Vacio.", "ATENCION", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     else if (txtEmpresa.Text.Equals(""))
                     {
-                        MessageBox.Show("Debe seleccionar una Empresa a la cual pertenece la Unidad, en la Lista de la Izquierda.", "ATENCION", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("Debe seleccionar una Empresa a la cual pertenesca el Cargo, en la Lista de la Izquierda.", "ATENCION", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }
                 else
                 {
                     //Validacion de longitud de caracteres
-                    if (txtNombre.Text.Trim().Length < 4 || txtNombre.Text.Trim().Length > 99
+                    if (txtNombre.Text.Trim().Length < 3 || txtNombre.Text.Trim().Length > 99
                         || txtDescripcion.Text.Trim().Length < 10 || txtDescripcion.Text.Trim().Length > 250)
                     {
-                        if (txtNombre.Text.Trim().Length < 4 || txtNombre.Text.Trim().Length > 99)
+                        if (txtNombre.Text.Trim().Length < 3 || txtNombre.Text.Trim().Length > 99)
                         {
-                            MessageBox.Show("El Nombre de la Unidad debe tener Minimo 4 caracteres y Maximo 99 .", "ATENCION", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            MessageBox.Show("El Nombre del Cargo debe tener Minimo 3 caracteres y Maximo 99 .", "ATENCION", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
                         else if (txtDescripcion.Text.Trim().Length < 10 || txtDescripcion.Text.Trim().Length > 250)
                         {
-                            MessageBox.Show("La Descripcion de la Unidad debe tener Minimo 10 caracteres y Maximo 250 .", "ATENCION", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            MessageBox.Show("La Descripcion del Cargo debe tener Minimo 10 caracteres y Maximo 250 .", "ATENCION", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
                     }
                     else
                     {
-                        auxUnidad = auxServiceUnidad.TraerUnidadPorNombrePorEmpresaConEntidad_Escritorio(txtNombre.Text.ToUpper(), rut_empresa);
-                        //Validar si Nombre Unidad ya existe en la empresa
-                        if (auxUnidad.Nombre == null || auxUnidad.Nombre.ToUpper().Equals(txtNombre.Text.ToUpper()))
+                        auxCargo = auxServiceCargo.TraerCargoPorNombrePorEmpresaConEntidad_Escritorio(txtNombre.Text.ToUpper(), rut_empresa);
+                        //Validar si Nombre cargo ya existe en la empresa
+                        if (auxCargo.Nombre == null || auxCargo.Nombre.ToUpper().Equals(txtNombre.Text.ToUpper()))
                         {
 
-                            if (MessageBox.Show("Confirmar la modificacion de la Unidad", "CONFIRMAR", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                            if (MessageBox.Show("Confirmar la modificacion del Cargo", "CONFIRMAR", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                             {
                                 //Insertar datos via web service
-                                auxServiceUnidad.ActualizarUnidadSinEntidad_Escritorio(id_unidad,txtNombre.Text.ToUpper(), txtDescripcion.Text.ToUpper(), estado, rut_empresa);                                
+                                auxServiceCargo.ActualizarCargoSinEntidad_Escritorio(id_cargo, txtNombre.Text.ToUpper(), txtDescripcion.Text.ToUpper(), rut_empresa);
                                 //Metodo Carga de GridView
                                 this.DialogResult = DialogResult.OK;
                                 this.Close();
@@ -204,7 +176,7 @@ namespace Process_APP_Desk
                         }
                         else
                         {
-                            MessageBox.Show("Este Nombre de Unidad ya Existe en la Empresa Seleccionada", "ATENCION", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            MessageBox.Show("Este Nombre de Cargo ya Existe en la Empresa Seleccionada", "ATENCION", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
                     }
                 }
@@ -222,4 +194,3 @@ namespace Process_APP_Desk
         }
     }
 }
-

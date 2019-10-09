@@ -144,6 +144,18 @@
     <Compile Include="FormCargo.Designer.cs">
       <DependentUpon>FormCargo.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormCargoModal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormCargoModal.Designer.cs">
+      <DependentUpon>FormCargoModal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormCargoModalNuevo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormCargoModalNuevo.Designer.cs">
+      <DependentUpon>FormCargoModalNuevo.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormCuenta.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -221,6 +233,12 @@
     <EmbeddedResource Include="FormCargo.resx">
       <DependentUpon>FormCargo.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormCargoModal.resx">
+      <DependentUpon>FormCargoModal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormCargoModalNuevo.resx">
+      <DependentUpon>FormCargoModalNuevo.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormCuenta.resx">
       <DependentUpon>FormCuenta.cs</DependentUpon>
     </EmbeddedResource>
@@ -275,7 +293,7 @@
     <None Include="Connected Services\ServiceProcess_Cargo\Process_APP_Desk.ServiceProcess_Cargo.Cargo.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Connected Services\ServiceProcess_Cargo\Process_Cargo.wsdl" />
+    <None Include="Connected Services\ServiceProcess_Cargo\Process_Cargo1.wsdl" />
     <None Include="Connected Services\ServiceProcess_Comuna\Process_APP_Desk.ServiceProcess_Comuna.Comuna.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
@@ -525,9 +543,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Connected Services\ServiceProcess_Cargo\Process_Cargo.disco" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Connected Services\ServiceProcess_Cargo\configuration91.svcinfo" />
   </ItemGroup>
   <ItemGroup>
@@ -649,6 +664,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\273-checkmark-black.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\ServiceProcess_Cargo\Process_Cargo1.disco" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

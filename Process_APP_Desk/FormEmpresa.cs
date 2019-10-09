@@ -180,11 +180,34 @@ namespace Process_APP_Desk
                         //agregar lista a gridview
                         dgvEmpresas.Rows.Add(ListaEmpresa[_fila, 0], ListaEmpresa[_fila, 1], ListaEmpresa[_fila, 2], ListaEmpresa[_fila, 3], ListaEmpresa[_fila, 4], ListaEmpresa[_fila, 5]);
                         _fila++;
+                        
                     }
+                    //Vaciar variables
+                    _rut_empresa = null;
+                    _nombre = string.Empty;
+                    _giro = string.Empty;
+                    _direccion = string.Empty;
+                    _estado = string.Empty;
+                    _id_comuna = string.Empty;
+                    //deseleccionar
+                    pbSeleccion.Visible = false;
+                    btnActivar.Visible = false;
+                    btnDesactivar.Visible = false;
                 }
                 else
                 {
                     //Mostrar GridView Vacio
+                    //Vaciar variables
+                    _rut_empresa = null;
+                    _nombre = string.Empty;
+                    _giro = string.Empty;
+                    _direccion = string.Empty;
+                    _estado = string.Empty;
+                    _id_comuna = string.Empty;
+                    //deseleccionar
+                    pbSeleccion.Visible = false;
+                    btnActivar.Visible = false;
+                    btnDesactivar.Visible = false;
                 }
             }
             catch (Exception ex)
@@ -281,48 +304,47 @@ namespace Process_APP_Desk
         {
             try
             {
+
                 if (e.RowIndex < 0)
                     return;
 
                 _rut_empresa = dgvEmpresas.Rows[e.RowIndex].Cells["RUT"].Value.ToString();
 
+
+                //instansear web service con seguridad
+                ServiceProcess_Empresa.Process_EmpresaSoapClient auxServiceEmpresa = new ServiceProcess_Empresa.Process_EmpresaSoapClient();
+                auxServiceEmpresa.ClientCredentials.UserName.UserName = Cuenta.Usuario_iis;
+                auxServiceEmpresa.ClientCredentials.UserName.Password = Cuenta.Clave_iis;
+                ServiceProcess_Empresa.Empresa auxEmpresa = new ServiceProcess_Empresa.Empresa();
+                auxEmpresa = auxServiceEmpresa.TraerEmpresaConEntidad_Escritorio(_rut_empresa);
+
+                _nombre = auxEmpresa.Nombre;
+                _giro = auxEmpresa.Giro;
+                _direccion = auxEmpresa.Direccion;
+                _estado = auxEmpresa.Estado.ToString();
+                _id_comuna = auxEmpresa.Id_comuna.ToString();
+
+                pbSeleccion.Visible = true;
+
                 if (_rut_empresa.Equals("82982300-4"))//No se puede editar la empresa dueña del software
                 {
                     btnActivar.Visible = false;
                     btnDesactivar.Visible = false;
-                    pbSeleccion.Visible = false;
-                    _rut_empresa = null;
-                    MessageBox.Show("La Empresa Process S.A. NO se puede Modificar", "ATENCION", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else
                 {
-                    //instansear web service con seguridad
-                    ServiceProcess_Empresa.Process_EmpresaSoapClient auxServiceEmpresa = new ServiceProcess_Empresa.Process_EmpresaSoapClient();
-                    auxServiceEmpresa.ClientCredentials.UserName.UserName = Cuenta.Usuario_iis;
-                    auxServiceEmpresa.ClientCredentials.UserName.Password = Cuenta.Clave_iis;
-                    ServiceProcess_Empresa.Empresa auxEmpresa = new ServiceProcess_Empresa.Empresa();
-                    auxEmpresa = auxServiceEmpresa.TraerEmpresaConEntidad_Escritorio(_rut_empresa);
-
-                    _nombre = auxEmpresa.Nombre;
-                    _giro = auxEmpresa.Giro;
-                    _direccion = auxEmpresa.Direccion;
-                    _estado = auxEmpresa.Estado.ToString();
-                    _id_comuna = auxEmpresa.Id_comuna.ToString();
-
-                    pbSeleccion.Visible = true;
-
                     if (_estado.Equals("0"))
                     {
-                        btnActivar.Visible = true;
+                        btnActivar.Visible = true;                        
                         btnDesactivar.Visible = false;
                     }
                     else
                     {
-                        btnDesactivar.Visible = true;
+                        btnDesactivar.Visible = true;                        
                         btnActivar.Visible = false;
                     }
-
                 }
+
             }
             catch (Exception ex)
             {
@@ -335,6 +357,7 @@ namespace Process_APP_Desk
         {
             try
             {
+
                 if (MessageBox.Show("¿Esta Seguro de Desactivar Empresa " + _nombre + "?", "CONFIRMAR", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     //Instancia de Web service con credenciales NT

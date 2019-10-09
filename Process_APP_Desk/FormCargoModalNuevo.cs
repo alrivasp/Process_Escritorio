@@ -10,11 +10,11 @@ using System.Windows.Forms;
 
 namespace Process_APP_Desk
 {
-    public partial class FormUnidadModalNuevo : Form
+    public partial class FormCargoModalNuevo : Form
     {
         //VARIABLES
         string _rut_empresa = null;
-        public FormUnidadModalNuevo()
+        public FormCargoModalNuevo()
         {
             InitializeComponent();
             //Se habilita Boton
@@ -35,8 +35,6 @@ namespace Process_APP_Desk
             //se inactiva foto seleccion
             pbSeleccion.Visible = false;
             cargarDataGridViewPpal();
-
-
         }
 
         //Metodo Carga GridView 
@@ -89,20 +87,20 @@ namespace Process_APP_Desk
 
         }
         //mETODO BOTON CANCELAR
-        private void BtnCancelar_Click(object sender, EventArgs e)
-        {
-            if (MessageBox.Show("¿Esta seguro de Cancelar?", "CONFIRMAR", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-            {
-                this.Close();
-                System.GC.Collect();
-                //volver al menu de Mantenedor
-            }
-            else
-            {
-                //volver al Modal
-            }
-        }
-        //Metodo de accion click en gridview
+        //private void BtnCancelar_Click(object sender, EventArgs e)
+        //{
+        //    if (MessageBox.Show("¿Esta seguro de Cancelar?", "CONFIRMAR", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+        //    {
+        //        this.Close();
+        //        System.GC.Collect();
+        //        //volver al menu de Mantenedor
+        //    }
+        //    else
+        //    {
+        //        //volver al Modal
+        //    }
+        //}
+
         private void DgvEmpresas_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             try
@@ -131,7 +129,7 @@ namespace Process_APP_Desk
                 MessageBox.Show("Error en metodo de accion DgvEmpresas_CellClick, Contactese con el Administrador Detalle de Error: " + ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        // metodo para filtrar gridview
+
         private void TxtFiltrar_KeyUp(object sender, KeyEventArgs e)
         {
             try
@@ -188,31 +186,32 @@ namespace Process_APP_Desk
                 MessageBox.Show("Error en metodo de accion TxtFiltrar_KeyUp, Contactese con el Administrador Detalle de Error: " + ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        //Metodo de guardar
+
         private void BtnGuardar_Click(object sender, EventArgs e)
         {
             try
             {
                 //Instancia de Web service con credenciales NT
-                ServiceProcess_Unidad.Process_UnidadSoapClient auxServiceUnidad = new ServiceProcess_Unidad.Process_UnidadSoapClient();
-                auxServiceUnidad.ClientCredentials.UserName.UserName = Cuenta.Usuario_iis;
-                auxServiceUnidad.ClientCredentials.UserName.Password = Cuenta.Clave_iis;               
-                ServiceProcess_Unidad.Unidad auxUnidad = new ServiceProcess_Unidad.Unidad();
+                ServiceProcess_Cargo.Process_CargoSoapClient auxServiceCargo = new ServiceProcess_Cargo.Process_CargoSoapClient();
+                auxServiceCargo.ClientCredentials.UserName.UserName = Cuenta.Usuario_iis;
+                auxServiceCargo.ClientCredentials.UserName.Password = Cuenta.Clave_iis;
+               
+                ServiceProcess_Cargo.Cargo auxCargo = new ServiceProcess_Cargo.Cargo();
 
                 //Validacion espacion en blanco y combobox vacios
                 if (txtNombre.Text.Equals("") || txtDescripcion.Text.Equals("") || txtEmpresa.Text.Equals(""))
                 {
                     if (txtNombre.Text.Equals(""))
                     {
-                        MessageBox.Show("El Nombre de la Unidad no Puede estar Vacia.", "ATENCION", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("El Nombre del Cargo no Puede estar Vacio.", "ATENCION", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     else if (txtDescripcion.Text.Equals(""))
                     {
-                        MessageBox.Show("La Descripcion de la Unidad no Puede estar Vacia.", "ATENCION", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("La Descripcion del Cargo no Puede estar Vacio.", "ATENCION", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     else if (txtEmpresa.Text.Equals(""))
                     {
-                        MessageBox.Show("Debe seleccionar una Empresa a la cual pertenece la Unidad, en la Lista de la Izquierda.", "ATENCION", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("Debe seleccionar una Empresa a la cual pertenece el Cargo, en la Lista de la Izquierda.", "ATENCION", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }
                 else
@@ -223,25 +222,24 @@ namespace Process_APP_Desk
                     {
                         if (txtNombre.Text.Trim().Length < 4 || txtNombre.Text.Trim().Length > 99)
                         {
-                            MessageBox.Show("El Nombre de la Unidad debe tener Minimo 4 caracteres y Maximo 99 .", "ATENCION", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            MessageBox.Show("El Nombre del Cargo debe tener Minimo 4 caracteres y Maximo 99 .", "ATENCION", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
                         else if (txtDescripcion.Text.Trim().Length < 4 || txtDescripcion.Text.Trim().Length > 250)
                         {
-                            MessageBox.Show("La Descripcion de la Unidad debe tener Minimo 10 caracteres y Maximo 250 .", "ATENCION", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            MessageBox.Show("La Descripcion del cargo debe tener Minimo 10 caracteres y Maximo 250 .", "ATENCION", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
                     }
                     else
                     {
-                        auxUnidad = auxServiceUnidad.TraerUnidadPorNombrePorEmpresaConEntidad_Escritorio(txtNombre.Text.ToUpper(), _rut_empresa);
-                        //Validar si Nombre Unidad ya existe en la empresa
-                        if (auxUnidad.Nombre == null)
+                        auxCargo = auxServiceCargo.TraerCargoPorNombrePorEmpresaConEntidad_Escritorio(txtNombre.Text.ToUpper(), _rut_empresa);
+                        //Validar si Nombre Cargo ya existe en la empresa
+                        if (auxCargo.Nombre == null)
                         {
 
-                            if (MessageBox.Show("Confirmar La Creacion de la Unidad", "Confirmar", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                            if (MessageBox.Show("Confirmar La Creacion del Cargo", "Confirmar", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                             {
                                 //Insertar datos via web service
-                                auxServiceUnidad.InsertarUnidadSinEntidad_Escritorio(txtNombre.Text.ToUpper(), txtDescripcion.Text.ToUpper(), 1, _rut_empresa);
-                                //Metodo Carga de cuadro de datos
+                                auxServiceCargo.InsertarCargoSinEntidad_Escritorio(txtNombre.Text.ToUpper(), txtDescripcion.Text.ToUpper(), _rut_empresa);                         
                                 //Metodo Carga de GridView
                                 this.DialogResult = DialogResult.OK;
                                 this.Close();
@@ -253,7 +251,7 @@ namespace Process_APP_Desk
                         }
                         else
                         {
-                            MessageBox.Show("Este Nombre de Unidad ya Existe en la Empresa Seleccionada", "ATENCION", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            MessageBox.Show("Este Nombre de Cargo ya Existe en la Empresa Seleccionada", "ATENCION", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
                     }
                 }
@@ -261,6 +259,20 @@ namespace Process_APP_Desk
             catch (Exception ex)
             {
                 MessageBox.Show("Error en metodo de accion BtnGuardar_Click, Contactese con el Administrador Detalle de Error: " + ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void BtnCancelar_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("¿Esta seguro de Cancelar?", "CONFIRMAR", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                this.Close();
+                System.GC.Collect();
+                //volver al menu de Mantenedor
+            }
+            else
+            {
+                //volver al Modal
             }
         }
     }

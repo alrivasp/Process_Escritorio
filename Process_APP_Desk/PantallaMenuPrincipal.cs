@@ -23,7 +23,7 @@ namespace Process_APP_Desk
             //Estas lineas eliminan los parpadeos del formulario o controles en la interfaz grafica (Pero no en un 100%)
             this.SetStyle(ControlStyles.ResizeRedraw, true);
             this.DoubleBuffered = true;
-            lblTituloMenu.Text = "";
+            lblTituloMenu.Text = string.Empty;
         }
 
         public PantallaMenuPrincipal(string _nombres, string _apellidos, string _perfil)
@@ -38,7 +38,7 @@ namespace Process_APP_Desk
             //Estas lineas eliminan los parpadeos del formulario o controles en la interfaz grafica (Pero no en un 100%)
             this.SetStyle(ControlStyles.ResizeRedraw, true);
             this.DoubleBuffered = true;
-            lblTituloMenu.Text = "";
+            lblTituloMenu.Text = string.Empty;
         }
 
         //METODO PARA ARRASTRAR EL FORMULARIO---------------------------------------------------------------------
