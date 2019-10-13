@@ -19,11 +19,11 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://localhost:52755/Process_Permisos.asmx" Protocol="http" SourceId="1" />
+    <MetadataSource Address="http://52.67.249.164:8071/Process_Permisos.asmx" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="Process_Permisos.disco" MetadataType="Disco" ID="5b400ecd-5095-4fdf-aa34-f457451b80e2" SourceId="1" SourceUrl="http://localhost:52755/Process_Permisos.asmx?disco" />
-    <MetadataFile FileName="Process_Permisos.wsdl" MetadataType="Wsdl" ID="8d61e6e7-c17e-4c71-9894-402f265cf067" SourceId="1" SourceUrl="http://localhost:52755/Process_Permisos.asmx?wsdl" />
+    <MetadataFile FileName="Process_Permisos1.wsdl" MetadataType="Wsdl" ID="f6f8e884-4472-47d5-aaba-0b8acc50b5fd" SourceId="1" SourceUrl="http://52.67.249.164:8071/Process_Permisos.asmx?wsdl" />
+    <MetadataFile FileName="Process_Permisos1.disco" MetadataType="Disco" ID="801b0913-8ba7-43a3-8833-bb56f071cc28" SourceId="1" SourceUrl="http://52.67.249.164:8071/Process_Permisos.asmx?disco" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

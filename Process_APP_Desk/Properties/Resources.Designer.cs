@@ -243,6 +243,16 @@ namespace Process_APP_Desk.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _268_minus {
+            get {
+                object obj = ResourceManager.GetObject("268-minus", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap _272_cross {
             get {
                 object obj = ResourceManager.GetObject("272-cross", resourceCulture);

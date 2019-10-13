@@ -138,6 +138,12 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
     <Compile Include="Cuenta.cs" />
+    <Compile Include="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormCargo.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -179,6 +185,12 @@
     </Compile>
     <Compile Include="FormRol.Designer.cs">
       <DependentUpon>FormRol.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormRolModal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormRolModal.Designer.cs">
+      <DependentUpon>FormRolModal.cs</DependentUpon>
     </Compile>
     <Compile Include="FormUnidad.cs">
       <SubType>Form</SubType>
@@ -230,6 +242,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormCargo.resx">
       <DependentUpon>FormCargo.cs</DependentUpon>
     </EmbeddedResource>
@@ -250,6 +265,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormRol.resx">
       <DependentUpon>FormRol.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormRolModal.resx">
+      <DependentUpon>FormRolModal.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormUnidad.resx">
       <DependentUpon>FormUnidad.cs</DependentUpon>
@@ -285,7 +303,8 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <None Include="Connected Services\ServiceProcess_Acceso\Process_Acceso.wsdl" />
+    <None Include="Connected Services\ServiceProcess_Acceso\Process_Acceso1.wsdl" />
+    <None Include="Connected Services\ServiceProcess_Acceso\Process_Acceso11.wsdl" />
     <None Include="Connected Services\ServiceProcess_Acceso\Process_APP_Desk.ServiceProcess_Acceso.Acceso.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
@@ -309,7 +328,7 @@
     <None Include="Connected Services\ServiceProcess_Permisos\Process_APP_Desk.ServiceProcess_Permisos.Permisos.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Connected Services\ServiceProcess_Permisos\Process_Permisos.wsdl" />
+    <None Include="Connected Services\ServiceProcess_Permisos\Process_Permisos1.wsdl" />
     <None Include="Connected Services\ServiceProcess_Provincia\Process_APP_Desk.ServiceProcess_Provincia.Provincia.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
@@ -570,9 +589,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Connected Services\ServiceProcess_Permisos\Process_Permisos.disco" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Connected Services\ServiceProcess_Permisos\configuration91.svcinfo" />
   </ItemGroup>
   <ItemGroup>
@@ -583,9 +599,6 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Connected Services\ServiceProcess_Acceso\Process_Acceso.disco" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Connected Services\ServiceProcess_Acceso\configuration91.svcinfo" />
@@ -667,6 +680,18 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Connected Services\ServiceProcess_Cargo\Process_Cargo1.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\268-minus.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\ServiceProcess_Acceso\Process_Acceso1.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\ServiceProcess_Acceso\Process_Acceso11.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\ServiceProcess_Permisos\Process_Permisos1.disco" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

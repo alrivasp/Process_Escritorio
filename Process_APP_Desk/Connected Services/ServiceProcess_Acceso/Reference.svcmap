@@ -19,11 +19,11 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://localhost:52755/Process_Acceso.asmx" Protocol="http" SourceId="1" />
+    <MetadataSource Address="http://52.67.249.164:8071/Process_Acceso.asmx" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="Process_Acceso.wsdl" MetadataType="Wsdl" ID="4af666df-f669-4300-85b9-e70d1d43606c" SourceId="1" SourceUrl="http://localhost:52755/Process_Acceso.asmx?wsdl" />
-    <MetadataFile FileName="Process_Acceso.disco" MetadataType="Disco" ID="a7805426-7aed-46ea-89d5-28aa15ec84c5" SourceId="1" SourceUrl="http://localhost:52755/Process_Acceso.asmx?disco" />
+    <MetadataFile FileName="Process_Acceso11.wsdl" MetadataType="Wsdl" ID="47a30d21-1fb6-41f2-8fc2-e48b388ec235" SourceId="1" SourceUrl="http://52.67.249.164:8071/Process_Acceso.asmx?wsdl" />
+    <MetadataFile FileName="Process_Acceso11.disco" MetadataType="Disco" ID="ecbcc6c8-239d-4c31-b26d-7da1e93a2c7e" SourceId="1" SourceUrl="http://52.67.249.164:8071/Process_Acceso.asmx?disco" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

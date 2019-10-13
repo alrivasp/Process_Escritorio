@@ -30,6 +30,13 @@ namespace Process_APP_Desk.ServiceProcess_Permisos {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ActualizarPermisosSinEntidad_Escritorio", ReplyAction="*")]
         System.Threading.Tasks.Task<int> ActualizarPermisosSinEntidad_EscritorioAsync(int _id_acceso, int _rol);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/EliminarPermisosSinEntidad_Escritorio", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        int EliminarPermisosSinEntidad_Escritorio(int _rol);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/EliminarPermisosSinEntidad_Escritorio", ReplyAction="*")]
+        System.Threading.Tasks.Task<int> EliminarPermisosSinEntidad_EscritorioAsync(int _rol);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/TraerPermisosPorAccesoPorRolSinEntidad_Escritorio", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         System.Data.DataSet TraerPermisosPorAccesoPorRolSinEntidad_Escritorio(int _id_acceso, int _rol);
@@ -139,6 +146,14 @@ namespace Process_APP_Desk.ServiceProcess_Permisos {
         
         public System.Threading.Tasks.Task<int> ActualizarPermisosSinEntidad_EscritorioAsync(int _id_acceso, int _rol) {
             return base.Channel.ActualizarPermisosSinEntidad_EscritorioAsync(_id_acceso, _rol);
+        }
+        
+        public int EliminarPermisosSinEntidad_Escritorio(int _rol) {
+            return base.Channel.EliminarPermisosSinEntidad_Escritorio(_rol);
+        }
+        
+        public System.Threading.Tasks.Task<int> EliminarPermisosSinEntidad_EscritorioAsync(int _rol) {
+            return base.Channel.EliminarPermisosSinEntidad_EscritorioAsync(_rol);
         }
         
         public System.Data.DataSet TraerPermisosPorAccesoPorRolSinEntidad_Escritorio(int _id_acceso, int _rol) {
