@@ -19,11 +19,11 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://localhost:52755/Process_CargosUsuarios.asmx" Protocol="http" SourceId="1" />
+    <MetadataSource Address="http://52.67.249.164:8071/Process_CargosUsuarios.asmx" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="Process_CargosUsuarios.disco" MetadataType="Disco" ID="4ac00c3c-f1fc-42b2-af97-587894fbe846" SourceId="1" SourceUrl="http://localhost:52755/Process_CargosUsuarios.asmx?disco" />
-    <MetadataFile FileName="Process_CargosUsuarios.wsdl" MetadataType="Wsdl" ID="0458ca8a-0e4c-41df-98fe-bef967a0468a" SourceId="1" SourceUrl="http://localhost:52755/Process_CargosUsuarios.asmx?wsdl" />
+    <MetadataFile FileName="Process_CargosUsuarios1.disco" MetadataType="Disco" ID="26b0c84b-2920-4de7-9b86-110ac4490ea4" SourceId="1" SourceUrl="http://52.67.249.164:8071/Process_CargosUsuarios.asmx?disco" />
+    <MetadataFile FileName="Process_CargosUsuarios1.wsdl" MetadataType="Wsdl" ID="dcd3e38c-7eb6-417e-8685-c052ea704e38" SourceId="1" SourceUrl="http://52.67.249.164:8071/Process_CargosUsuarios.asmx?wsdl" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

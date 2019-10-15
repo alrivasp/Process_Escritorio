@@ -138,12 +138,6 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
     <Compile Include="Cuenta.cs" />
-    <Compile Include="Form1.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </Compile>
     <Compile Include="FormCargo.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -216,6 +210,24 @@
     <Compile Include="FormUsuario.Designer.cs">
       <DependentUpon>FormUsuario.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormUsuarioModal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormUsuarioModal.Designer.cs">
+      <DependentUpon>FormUsuarioModal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormUsuarioModalMultiempresa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormUsuarioModalMultiempresa.Designer.cs">
+      <DependentUpon>FormUsuarioModalMultiempresa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormUsuarioModalNuevo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormUsuarioModalNuevo.Designer.cs">
+      <DependentUpon>FormUsuarioModalNuevo.cs</DependentUpon>
+    </Compile>
     <Compile Include="PantallaCarga.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -242,9 +254,6 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="FormCargo.resx">
       <DependentUpon>FormCargo.cs</DependentUpon>
     </EmbeddedResource>
@@ -281,6 +290,15 @@
     <EmbeddedResource Include="FormUsuario.resx">
       <DependentUpon>FormUsuario.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormUsuarioModal.resx">
+      <DependentUpon>FormUsuarioModal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormUsuarioModalMultiempresa.resx">
+      <DependentUpon>FormUsuarioModalMultiempresa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormUsuarioModalNuevo.resx">
+      <DependentUpon>FormUsuarioModalNuevo.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="PantallaCarga.resx">
       <DependentUpon>PantallaCarga.cs</DependentUpon>
     </EmbeddedResource>
@@ -308,7 +326,7 @@
     <None Include="Connected Services\ServiceProcess_Acceso\Process_APP_Desk.ServiceProcess_Acceso.Acceso.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Connected Services\ServiceProcess_CargosUsuarios\Process_CargosUsuarios.wsdl" />
+    <None Include="Connected Services\ServiceProcess_CargosUsuarios\Process_CargosUsuarios1.wsdl" />
     <None Include="Connected Services\ServiceProcess_Cargo\Process_APP_Desk.ServiceProcess_Cargo.Cargo.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
@@ -574,9 +592,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Connected Services\ServiceProcess_CargosUsuarios\Process_CargosUsuarios.disco" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Connected Services\ServiceProcess_CargosUsuarios\configuration91.svcinfo" />
   </ItemGroup>
   <ItemGroup>
@@ -692,6 +707,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Connected Services\ServiceProcess_Permisos\Process_Permisos1.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\ServiceProcess_CargosUsuarios\Process_CargosUsuarios1.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\317-arrow-right2.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

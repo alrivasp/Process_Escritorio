@@ -25,10 +25,10 @@ namespace Process_APP_Desk.ServiceProcess_Usuario {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/InsertarUsuarioSinEntidad_Escritorio", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        int InsertarUsuarioSinEntidad_Escritorio(string _rut_usuario, string _primer_nombre, string _segundo_nombre, string _primer_apellido, string _segundo_apellido, string _direccion, string _correo, int _telefono_fijp, int _telefono_movil, int _estado, int _id_comuna);
+        int InsertarUsuarioSinEntidad_Escritorio(string _rut_usuario, string _primer_nombre, string _segundo_nombre, string _primer_apellido, string _segundo_apellido, string _direccion, int _telefono_fijp, int _telefono_movil, int _id_comuna);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/InsertarUsuarioSinEntidad_Escritorio", ReplyAction="*")]
-        System.Threading.Tasks.Task<int> InsertarUsuarioSinEntidad_EscritorioAsync(string _rut_usuario, string _primer_nombre, string _segundo_nombre, string _primer_apellido, string _segundo_apellido, string _direccion, string _correo, int _telefono_fijp, int _telefono_movil, int _estado, int _id_comuna);
+        System.Threading.Tasks.Task<int> InsertarUsuarioSinEntidad_EscritorioAsync(string _rut_usuario, string _primer_nombre, string _segundo_nombre, string _primer_apellido, string _segundo_apellido, string _direccion, int _telefono_fijp, int _telefono_movil, int _id_comuna);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ActualizarUsuarioConEntidad_Escritorio", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
@@ -39,10 +39,10 @@ namespace Process_APP_Desk.ServiceProcess_Usuario {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ActualizarUsuarioSinEntidad_Escritorio", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        int ActualizarUsuarioSinEntidad_Escritorio(string _rut_usuario, string _primer_nombre, string _segundo_nombre, string _primer_apellido, string _segundo_apellido, string _direccion, string _correo, int _telefono_fijp, int _telefono_movil, int _estado, int _id_comuna);
+        int ActualizarUsuarioSinEntidad_Escritorio(string _rut_usuario, string _primer_nombre, string _segundo_nombre, string _primer_apellido, string _segundo_apellido, string _direccion, int _telefono_fijp, int _telefono_movil, int _id_comuna);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ActualizarUsuarioSinEntidad_Escritorio", ReplyAction="*")]
-        System.Threading.Tasks.Task<int> ActualizarUsuarioSinEntidad_EscritorioAsync(string _rut_usuario, string _primer_nombre, string _segundo_nombre, string _primer_apellido, string _segundo_apellido, string _direccion, string _correo, int _telefono_fijp, int _telefono_movil, int _estado, int _id_comuna);
+        System.Threading.Tasks.Task<int> ActualizarUsuarioSinEntidad_EscritorioAsync(string _rut_usuario, string _primer_nombre, string _segundo_nombre, string _primer_apellido, string _segundo_apellido, string _direccion, int _telefono_fijp, int _telefono_movil, int _id_comuna);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/TraerUsuarioSinEntidad_Escritorio", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
@@ -85,6 +85,13 @@ namespace Process_APP_Desk.ServiceProcess_Usuario {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/TraerUsuarioConClaveSinEntidad_Escritorio", ReplyAction="*")]
         System.Threading.Tasks.Task<System.Data.DataSet> TraerUsuarioConClaveSinEntidad_EscritorioAsync(string _palabra_clave);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/TraerUsuarioConFiltroSinEntidad_Escritorio", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        System.Data.DataSet TraerUsuarioConFiltroSinEntidad_Escritorio(string _palabra_clave);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/TraerUsuarioConFiltroSinEntidad_Escritorio", ReplyAction="*")]
+        System.Threading.Tasks.Task<System.Data.DataSet> TraerUsuarioConFiltroSinEntidad_EscritorioAsync(string _palabra_clave);
     }
     
     /// <remarks/>
@@ -107,13 +114,9 @@ namespace Process_APP_Desk.ServiceProcess_Usuario {
         
         private string direccionField;
         
-        private string correoField;
-        
         private int telefono_fijoField;
         
         private int telefono_movilField;
-        
-        private int estadoField;
         
         private int id_comunaField;
         
@@ -191,18 +194,6 @@ namespace Process_APP_Desk.ServiceProcess_Usuario {
         
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Order=6)]
-        public string Correo {
-            get {
-                return this.correoField;
-            }
-            set {
-                this.correoField = value;
-                this.RaisePropertyChanged("Correo");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=7)]
         public int Telefono_fijo {
             get {
                 return this.telefono_fijoField;
@@ -214,7 +205,7 @@ namespace Process_APP_Desk.ServiceProcess_Usuario {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=8)]
+        [System.Xml.Serialization.XmlElementAttribute(Order=7)]
         public int Telefono_movil {
             get {
                 return this.telefono_movilField;
@@ -226,19 +217,7 @@ namespace Process_APP_Desk.ServiceProcess_Usuario {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=9)]
-        public int Estado {
-            get {
-                return this.estadoField;
-            }
-            set {
-                this.estadoField = value;
-                this.RaisePropertyChanged("Estado");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=10)]
+        [System.Xml.Serialization.XmlElementAttribute(Order=8)]
         public int Id_comuna {
             get {
                 return this.id_comunaField;
@@ -294,12 +273,12 @@ namespace Process_APP_Desk.ServiceProcess_Usuario {
             return base.Channel.InsertarUsuarioConEntidad_EscritorioAsync(_unidad);
         }
         
-        public int InsertarUsuarioSinEntidad_Escritorio(string _rut_usuario, string _primer_nombre, string _segundo_nombre, string _primer_apellido, string _segundo_apellido, string _direccion, string _correo, int _telefono_fijp, int _telefono_movil, int _estado, int _id_comuna) {
-            return base.Channel.InsertarUsuarioSinEntidad_Escritorio(_rut_usuario, _primer_nombre, _segundo_nombre, _primer_apellido, _segundo_apellido, _direccion, _correo, _telefono_fijp, _telefono_movil, _estado, _id_comuna);
+        public int InsertarUsuarioSinEntidad_Escritorio(string _rut_usuario, string _primer_nombre, string _segundo_nombre, string _primer_apellido, string _segundo_apellido, string _direccion, int _telefono_fijp, int _telefono_movil, int _id_comuna) {
+            return base.Channel.InsertarUsuarioSinEntidad_Escritorio(_rut_usuario, _primer_nombre, _segundo_nombre, _primer_apellido, _segundo_apellido, _direccion, _telefono_fijp, _telefono_movil, _id_comuna);
         }
         
-        public System.Threading.Tasks.Task<int> InsertarUsuarioSinEntidad_EscritorioAsync(string _rut_usuario, string _primer_nombre, string _segundo_nombre, string _primer_apellido, string _segundo_apellido, string _direccion, string _correo, int _telefono_fijp, int _telefono_movil, int _estado, int _id_comuna) {
-            return base.Channel.InsertarUsuarioSinEntidad_EscritorioAsync(_rut_usuario, _primer_nombre, _segundo_nombre, _primer_apellido, _segundo_apellido, _direccion, _correo, _telefono_fijp, _telefono_movil, _estado, _id_comuna);
+        public System.Threading.Tasks.Task<int> InsertarUsuarioSinEntidad_EscritorioAsync(string _rut_usuario, string _primer_nombre, string _segundo_nombre, string _primer_apellido, string _segundo_apellido, string _direccion, int _telefono_fijp, int _telefono_movil, int _id_comuna) {
+            return base.Channel.InsertarUsuarioSinEntidad_EscritorioAsync(_rut_usuario, _primer_nombre, _segundo_nombre, _primer_apellido, _segundo_apellido, _direccion, _telefono_fijp, _telefono_movil, _id_comuna);
         }
         
         public int ActualizarUsuarioConEntidad_Escritorio(System.Data.DataSet _unidad) {
@@ -310,12 +289,12 @@ namespace Process_APP_Desk.ServiceProcess_Usuario {
             return base.Channel.ActualizarUsuarioConEntidad_EscritorioAsync(_unidad);
         }
         
-        public int ActualizarUsuarioSinEntidad_Escritorio(string _rut_usuario, string _primer_nombre, string _segundo_nombre, string _primer_apellido, string _segundo_apellido, string _direccion, string _correo, int _telefono_fijp, int _telefono_movil, int _estado, int _id_comuna) {
-            return base.Channel.ActualizarUsuarioSinEntidad_Escritorio(_rut_usuario, _primer_nombre, _segundo_nombre, _primer_apellido, _segundo_apellido, _direccion, _correo, _telefono_fijp, _telefono_movil, _estado, _id_comuna);
+        public int ActualizarUsuarioSinEntidad_Escritorio(string _rut_usuario, string _primer_nombre, string _segundo_nombre, string _primer_apellido, string _segundo_apellido, string _direccion, int _telefono_fijp, int _telefono_movil, int _id_comuna) {
+            return base.Channel.ActualizarUsuarioSinEntidad_Escritorio(_rut_usuario, _primer_nombre, _segundo_nombre, _primer_apellido, _segundo_apellido, _direccion, _telefono_fijp, _telefono_movil, _id_comuna);
         }
         
-        public System.Threading.Tasks.Task<int> ActualizarUsuarioSinEntidad_EscritorioAsync(string _rut_usuario, string _primer_nombre, string _segundo_nombre, string _primer_apellido, string _segundo_apellido, string _direccion, string _correo, int _telefono_fijp, int _telefono_movil, int _estado, int _id_comuna) {
-            return base.Channel.ActualizarUsuarioSinEntidad_EscritorioAsync(_rut_usuario, _primer_nombre, _segundo_nombre, _primer_apellido, _segundo_apellido, _direccion, _correo, _telefono_fijp, _telefono_movil, _estado, _id_comuna);
+        public System.Threading.Tasks.Task<int> ActualizarUsuarioSinEntidad_EscritorioAsync(string _rut_usuario, string _primer_nombre, string _segundo_nombre, string _primer_apellido, string _segundo_apellido, string _direccion, int _telefono_fijp, int _telefono_movil, int _id_comuna) {
+            return base.Channel.ActualizarUsuarioSinEntidad_EscritorioAsync(_rut_usuario, _primer_nombre, _segundo_nombre, _primer_apellido, _segundo_apellido, _direccion, _telefono_fijp, _telefono_movil, _id_comuna);
         }
         
         public System.Data.DataSet TraerUsuarioSinEntidad_Escritorio(string _rut_usuario) {
@@ -364,6 +343,14 @@ namespace Process_APP_Desk.ServiceProcess_Usuario {
         
         public System.Threading.Tasks.Task<System.Data.DataSet> TraerUsuarioConClaveSinEntidad_EscritorioAsync(string _palabra_clave) {
             return base.Channel.TraerUsuarioConClaveSinEntidad_EscritorioAsync(_palabra_clave);
+        }
+        
+        public System.Data.DataSet TraerUsuarioConFiltroSinEntidad_Escritorio(string _palabra_clave) {
+            return base.Channel.TraerUsuarioConFiltroSinEntidad_Escritorio(_palabra_clave);
+        }
+        
+        public System.Threading.Tasks.Task<System.Data.DataSet> TraerUsuarioConFiltroSinEntidad_EscritorioAsync(string _palabra_clave) {
+            return base.Channel.TraerUsuarioConFiltroSinEntidad_EscritorioAsync(_palabra_clave);
         }
     }
 }

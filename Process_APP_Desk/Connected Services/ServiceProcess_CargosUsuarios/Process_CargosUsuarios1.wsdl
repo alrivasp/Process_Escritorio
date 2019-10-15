@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
   <wsdl:types>
     <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
       <s:element name="InsertarCargosUsuarioSinEntidad_Escritorio">
@@ -56,6 +56,27 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="TraerCargosUsuarioPorRutSinEntidad_Escritorio">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="_rut_usuario" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TraerCargosUsuarioPorRutSinEntidad_EscritorioResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TraerCargosUsuarioPorRutSinEntidad_EscritorioResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="int" type="s:int" />
       <s:element name="DataSet" nillable="true">
         <s:complexType>
@@ -85,6 +106,12 @@
   <wsdl:message name="TraerCargosUsuarioPorRutPorCargoSinEntidad_EscritorioSoapOut">
     <wsdl:part name="parameters" element="tns:TraerCargosUsuarioPorRutPorCargoSinEntidad_EscritorioResponse" />
   </wsdl:message>
+  <wsdl:message name="TraerCargosUsuarioPorRutSinEntidad_EscritorioSoapIn">
+    <wsdl:part name="parameters" element="tns:TraerCargosUsuarioPorRutSinEntidad_Escritorio" />
+  </wsdl:message>
+  <wsdl:message name="TraerCargosUsuarioPorRutSinEntidad_EscritorioSoapOut">
+    <wsdl:part name="parameters" element="tns:TraerCargosUsuarioPorRutSinEntidad_EscritorioResponse" />
+  </wsdl:message>
   <wsdl:message name="InsertarCargosUsuarioSinEntidad_EscritorioHttpGetIn">
     <wsdl:part name="_rut_usuario" type="s:string" />
     <wsdl:part name="_id_cargo" type="s:string" />
@@ -106,6 +133,12 @@
     <wsdl:part name="_id_cargo" type="s:string" />
   </wsdl:message>
   <wsdl:message name="TraerCargosUsuarioPorRutPorCargoSinEntidad_EscritorioHttpGetOut">
+    <wsdl:part name="Body" element="tns:DataSet" />
+  </wsdl:message>
+  <wsdl:message name="TraerCargosUsuarioPorRutSinEntidad_EscritorioHttpGetIn">
+    <wsdl:part name="_rut_usuario" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="TraerCargosUsuarioPorRutSinEntidad_EscritorioHttpGetOut">
     <wsdl:part name="Body" element="tns:DataSet" />
   </wsdl:message>
   <wsdl:message name="InsertarCargosUsuarioSinEntidad_EscritorioHttpPostIn">
@@ -131,6 +164,12 @@
   <wsdl:message name="TraerCargosUsuarioPorRutPorCargoSinEntidad_EscritorioHttpPostOut">
     <wsdl:part name="Body" element="tns:DataSet" />
   </wsdl:message>
+  <wsdl:message name="TraerCargosUsuarioPorRutSinEntidad_EscritorioHttpPostIn">
+    <wsdl:part name="_rut_usuario" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="TraerCargosUsuarioPorRutSinEntidad_EscritorioHttpPostOut">
+    <wsdl:part name="Body" element="tns:DataSet" />
+  </wsdl:message>
   <wsdl:portType name="Process_CargosUsuariosSoap">
     <wsdl:operation name="InsertarCargosUsuarioSinEntidad_Escritorio">
       <wsdl:input message="tns:InsertarCargosUsuarioSinEntidad_EscritorioSoapIn" />
@@ -143,6 +182,10 @@
     <wsdl:operation name="TraerCargosUsuarioPorRutPorCargoSinEntidad_Escritorio">
       <wsdl:input message="tns:TraerCargosUsuarioPorRutPorCargoSinEntidad_EscritorioSoapIn" />
       <wsdl:output message="tns:TraerCargosUsuarioPorRutPorCargoSinEntidad_EscritorioSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TraerCargosUsuarioPorRutSinEntidad_Escritorio">
+      <wsdl:input message="tns:TraerCargosUsuarioPorRutSinEntidad_EscritorioSoapIn" />
+      <wsdl:output message="tns:TraerCargosUsuarioPorRutSinEntidad_EscritorioSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="Process_CargosUsuariosHttpGet">
@@ -158,6 +201,10 @@
       <wsdl:input message="tns:TraerCargosUsuarioPorRutPorCargoSinEntidad_EscritorioHttpGetIn" />
       <wsdl:output message="tns:TraerCargosUsuarioPorRutPorCargoSinEntidad_EscritorioHttpGetOut" />
     </wsdl:operation>
+    <wsdl:operation name="TraerCargosUsuarioPorRutSinEntidad_Escritorio">
+      <wsdl:input message="tns:TraerCargosUsuarioPorRutSinEntidad_EscritorioHttpGetIn" />
+      <wsdl:output message="tns:TraerCargosUsuarioPorRutSinEntidad_EscritorioHttpGetOut" />
+    </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="Process_CargosUsuariosHttpPost">
     <wsdl:operation name="InsertarCargosUsuarioSinEntidad_Escritorio">
@@ -171,6 +218,10 @@
     <wsdl:operation name="TraerCargosUsuarioPorRutPorCargoSinEntidad_Escritorio">
       <wsdl:input message="tns:TraerCargosUsuarioPorRutPorCargoSinEntidad_EscritorioHttpPostIn" />
       <wsdl:output message="tns:TraerCargosUsuarioPorRutPorCargoSinEntidad_EscritorioHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TraerCargosUsuarioPorRutSinEntidad_Escritorio">
+      <wsdl:input message="tns:TraerCargosUsuarioPorRutSinEntidad_EscritorioHttpPostIn" />
+      <wsdl:output message="tns:TraerCargosUsuarioPorRutSinEntidad_EscritorioHttpPostOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="Process_CargosUsuariosSoap" type="tns:Process_CargosUsuariosSoap">
@@ -195,6 +246,15 @@
     </wsdl:operation>
     <wsdl:operation name="TraerCargosUsuarioPorRutPorCargoSinEntidad_Escritorio">
       <soap:operation soapAction="http://tempuri.org/TraerCargosUsuarioPorRutPorCargoSinEntidad_Escritorio" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TraerCargosUsuarioPorRutSinEntidad_Escritorio">
+      <soap:operation soapAction="http://tempuri.org/TraerCargosUsuarioPorRutSinEntidad_Escritorio" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -232,6 +292,15 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="TraerCargosUsuarioPorRutSinEntidad_Escritorio">
+      <soap12:operation soapAction="http://tempuri.org/TraerCargosUsuarioPorRutSinEntidad_Escritorio" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="Process_CargosUsuariosHttpGet" type="tns:Process_CargosUsuariosHttpGet">
     <http:binding verb="GET" />
@@ -255,6 +324,15 @@
     </wsdl:operation>
     <wsdl:operation name="TraerCargosUsuarioPorRutPorCargoSinEntidad_Escritorio">
       <http:operation location="/TraerCargosUsuarioPorRutPorCargoSinEntidad_Escritorio" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TraerCargosUsuarioPorRutSinEntidad_Escritorio">
+      <http:operation location="/TraerCargosUsuarioPorRutSinEntidad_Escritorio" />
       <wsdl:input>
         <http:urlEncoded />
       </wsdl:input>
@@ -292,19 +370,28 @@
         <mime:mimeXml part="Body" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="TraerCargosUsuarioPorRutSinEntidad_Escritorio">
+      <http:operation location="/TraerCargosUsuarioPorRutSinEntidad_Escritorio" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:service name="Process_CargosUsuarios">
     <wsdl:port name="Process_CargosUsuariosSoap" binding="tns:Process_CargosUsuariosSoap">
-      <soap:address location="http://localhost:52755/Process_CargosUsuarios.asmx" />
+      <soap:address location="http://52.67.249.164:8071/Process_CargosUsuarios.asmx" />
     </wsdl:port>
     <wsdl:port name="Process_CargosUsuariosSoap12" binding="tns:Process_CargosUsuariosSoap12">
-      <soap12:address location="http://localhost:52755/Process_CargosUsuarios.asmx" />
+      <soap12:address location="http://52.67.249.164:8071/Process_CargosUsuarios.asmx" />
     </wsdl:port>
     <wsdl:port name="Process_CargosUsuariosHttpGet" binding="tns:Process_CargosUsuariosHttpGet">
-      <http:address location="http://localhost:52755/Process_CargosUsuarios.asmx" />
+      <http:address location="http://52.67.249.164:8071/Process_CargosUsuarios.asmx" />
     </wsdl:port>
     <wsdl:port name="Process_CargosUsuariosHttpPost" binding="tns:Process_CargosUsuariosHttpPost">
-      <http:address location="http://localhost:52755/Process_CargosUsuarios.asmx" />
+      <http:address location="http://52.67.249.164:8071/Process_CargosUsuarios.asmx" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

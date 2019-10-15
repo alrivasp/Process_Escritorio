@@ -32,10 +32,8 @@
             <s:element minOccurs="0" maxOccurs="1" name="_primer_apellido" type="s:string" />
             <s:element minOccurs="0" maxOccurs="1" name="_segundo_apellido" type="s:string" />
             <s:element minOccurs="0" maxOccurs="1" name="_direccion" type="s:string" />
-            <s:element minOccurs="0" maxOccurs="1" name="_correo" type="s:string" />
             <s:element minOccurs="1" maxOccurs="1" name="_telefono_fijp" type="s:int" />
             <s:element minOccurs="1" maxOccurs="1" name="_telefono_movil" type="s:int" />
-            <s:element minOccurs="1" maxOccurs="1" name="_estado" type="s:int" />
             <s:element minOccurs="1" maxOccurs="1" name="_id_comuna" type="s:int" />
           </s:sequence>
         </s:complexType>
@@ -77,10 +75,8 @@
             <s:element minOccurs="0" maxOccurs="1" name="_primer_apellido" type="s:string" />
             <s:element minOccurs="0" maxOccurs="1" name="_segundo_apellido" type="s:string" />
             <s:element minOccurs="0" maxOccurs="1" name="_direccion" type="s:string" />
-            <s:element minOccurs="0" maxOccurs="1" name="_correo" type="s:string" />
             <s:element minOccurs="1" maxOccurs="1" name="_telefono_fijp" type="s:int" />
             <s:element minOccurs="1" maxOccurs="1" name="_telefono_movil" type="s:int" />
-            <s:element minOccurs="1" maxOccurs="1" name="_estado" type="s:int" />
             <s:element minOccurs="1" maxOccurs="1" name="_id_comuna" type="s:int" />
           </s:sequence>
         </s:complexType>
@@ -135,10 +131,8 @@
           <s:element minOccurs="0" maxOccurs="1" name="Primer_apellido" type="s:string" />
           <s:element minOccurs="0" maxOccurs="1" name="Segundo_apellido" type="s:string" />
           <s:element minOccurs="0" maxOccurs="1" name="Direccion" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Correo" type="s:string" />
           <s:element minOccurs="1" maxOccurs="1" name="Telefono_fijo" type="s:int" />
           <s:element minOccurs="1" maxOccurs="1" name="Telefono_movil" type="s:int" />
-          <s:element minOccurs="1" maxOccurs="1" name="Estado" type="s:int" />
           <s:element minOccurs="1" maxOccurs="1" name="Id_comuna" type="s:int" />
         </s:sequence>
       </s:complexType>
@@ -209,6 +203,27 @@
         <s:complexType>
           <s:sequence>
             <s:element minOccurs="0" maxOccurs="1" name="TraerUsuarioConClaveSinEntidad_EscritorioResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TraerUsuarioConFiltroSinEntidad_Escritorio">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="_palabra_clave" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TraerUsuarioConFiltroSinEntidad_EscritorioResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TraerUsuarioConFiltroSinEntidad_EscritorioResult">
               <s:complexType>
                 <s:sequence>
                   <s:element ref="s:schema" />
@@ -291,6 +306,12 @@
   <wsdl:message name="TraerUsuarioConClaveSinEntidad_EscritorioSoapOut">
     <wsdl:part name="parameters" element="tns:TraerUsuarioConClaveSinEntidad_EscritorioResponse" />
   </wsdl:message>
+  <wsdl:message name="TraerUsuarioConFiltroSinEntidad_EscritorioSoapIn">
+    <wsdl:part name="parameters" element="tns:TraerUsuarioConFiltroSinEntidad_Escritorio" />
+  </wsdl:message>
+  <wsdl:message name="TraerUsuarioConFiltroSinEntidad_EscritorioSoapOut">
+    <wsdl:part name="parameters" element="tns:TraerUsuarioConFiltroSinEntidad_EscritorioResponse" />
+  </wsdl:message>
   <wsdl:message name="InsertarUsuarioSinEntidad_EscritorioHttpGetIn">
     <wsdl:part name="_rut_usuario" type="s:string" />
     <wsdl:part name="_primer_nombre" type="s:string" />
@@ -298,10 +319,8 @@
     <wsdl:part name="_primer_apellido" type="s:string" />
     <wsdl:part name="_segundo_apellido" type="s:string" />
     <wsdl:part name="_direccion" type="s:string" />
-    <wsdl:part name="_correo" type="s:string" />
     <wsdl:part name="_telefono_fijp" type="s:string" />
     <wsdl:part name="_telefono_movil" type="s:string" />
-    <wsdl:part name="_estado" type="s:string" />
     <wsdl:part name="_id_comuna" type="s:string" />
   </wsdl:message>
   <wsdl:message name="InsertarUsuarioSinEntidad_EscritorioHttpGetOut">
@@ -314,10 +333,8 @@
     <wsdl:part name="_primer_apellido" type="s:string" />
     <wsdl:part name="_segundo_apellido" type="s:string" />
     <wsdl:part name="_direccion" type="s:string" />
-    <wsdl:part name="_correo" type="s:string" />
     <wsdl:part name="_telefono_fijp" type="s:string" />
     <wsdl:part name="_telefono_movil" type="s:string" />
-    <wsdl:part name="_estado" type="s:string" />
     <wsdl:part name="_id_comuna" type="s:string" />
   </wsdl:message>
   <wsdl:message name="ActualizarUsuarioSinEntidad_EscritorioHttpGetOut">
@@ -356,6 +373,12 @@
   <wsdl:message name="TraerUsuarioConClaveSinEntidad_EscritorioHttpGetOut">
     <wsdl:part name="Body" element="tns:DataSet" />
   </wsdl:message>
+  <wsdl:message name="TraerUsuarioConFiltroSinEntidad_EscritorioHttpGetIn">
+    <wsdl:part name="_palabra_clave" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="TraerUsuarioConFiltroSinEntidad_EscritorioHttpGetOut">
+    <wsdl:part name="Body" element="tns:DataSet" />
+  </wsdl:message>
   <wsdl:message name="InsertarUsuarioSinEntidad_EscritorioHttpPostIn">
     <wsdl:part name="_rut_usuario" type="s:string" />
     <wsdl:part name="_primer_nombre" type="s:string" />
@@ -363,10 +386,8 @@
     <wsdl:part name="_primer_apellido" type="s:string" />
     <wsdl:part name="_segundo_apellido" type="s:string" />
     <wsdl:part name="_direccion" type="s:string" />
-    <wsdl:part name="_correo" type="s:string" />
     <wsdl:part name="_telefono_fijp" type="s:string" />
     <wsdl:part name="_telefono_movil" type="s:string" />
-    <wsdl:part name="_estado" type="s:string" />
     <wsdl:part name="_id_comuna" type="s:string" />
   </wsdl:message>
   <wsdl:message name="InsertarUsuarioSinEntidad_EscritorioHttpPostOut">
@@ -379,10 +400,8 @@
     <wsdl:part name="_primer_apellido" type="s:string" />
     <wsdl:part name="_segundo_apellido" type="s:string" />
     <wsdl:part name="_direccion" type="s:string" />
-    <wsdl:part name="_correo" type="s:string" />
     <wsdl:part name="_telefono_fijp" type="s:string" />
     <wsdl:part name="_telefono_movil" type="s:string" />
-    <wsdl:part name="_estado" type="s:string" />
     <wsdl:part name="_id_comuna" type="s:string" />
   </wsdl:message>
   <wsdl:message name="ActualizarUsuarioSinEntidad_EscritorioHttpPostOut">
@@ -419,6 +438,12 @@
     <wsdl:part name="_palabra_clave" type="s:string" />
   </wsdl:message>
   <wsdl:message name="TraerUsuarioConClaveSinEntidad_EscritorioHttpPostOut">
+    <wsdl:part name="Body" element="tns:DataSet" />
+  </wsdl:message>
+  <wsdl:message name="TraerUsuarioConFiltroSinEntidad_EscritorioHttpPostIn">
+    <wsdl:part name="_palabra_clave" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="TraerUsuarioConFiltroSinEntidad_EscritorioHttpPostOut">
     <wsdl:part name="Body" element="tns:DataSet" />
   </wsdl:message>
   <wsdl:portType name="Process_UsuarioSoap">
@@ -462,6 +487,10 @@
       <wsdl:input message="tns:TraerUsuarioConClaveSinEntidad_EscritorioSoapIn" />
       <wsdl:output message="tns:TraerUsuarioConClaveSinEntidad_EscritorioSoapOut" />
     </wsdl:operation>
+    <wsdl:operation name="TraerUsuarioConFiltroSinEntidad_Escritorio">
+      <wsdl:input message="tns:TraerUsuarioConFiltroSinEntidad_EscritorioSoapIn" />
+      <wsdl:output message="tns:TraerUsuarioConFiltroSinEntidad_EscritorioSoapOut" />
+    </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="Process_UsuarioHttpGet">
     <wsdl:operation name="InsertarUsuarioSinEntidad_Escritorio">
@@ -496,6 +525,10 @@
       <wsdl:input message="tns:TraerUsuarioConClaveSinEntidad_EscritorioHttpGetIn" />
       <wsdl:output message="tns:TraerUsuarioConClaveSinEntidad_EscritorioHttpGetOut" />
     </wsdl:operation>
+    <wsdl:operation name="TraerUsuarioConFiltroSinEntidad_Escritorio">
+      <wsdl:input message="tns:TraerUsuarioConFiltroSinEntidad_EscritorioHttpGetIn" />
+      <wsdl:output message="tns:TraerUsuarioConFiltroSinEntidad_EscritorioHttpGetOut" />
+    </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="Process_UsuarioHttpPost">
     <wsdl:operation name="InsertarUsuarioSinEntidad_Escritorio">
@@ -529,6 +562,10 @@
     <wsdl:operation name="TraerUsuarioConClaveSinEntidad_Escritorio">
       <wsdl:input message="tns:TraerUsuarioConClaveSinEntidad_EscritorioHttpPostIn" />
       <wsdl:output message="tns:TraerUsuarioConClaveSinEntidad_EscritorioHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TraerUsuarioConFiltroSinEntidad_Escritorio">
+      <wsdl:input message="tns:TraerUsuarioConFiltroSinEntidad_EscritorioHttpPostIn" />
+      <wsdl:output message="tns:TraerUsuarioConFiltroSinEntidad_EscritorioHttpPostOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="Process_UsuarioSoap" type="tns:Process_UsuarioSoap">
@@ -616,6 +653,15 @@
     </wsdl:operation>
     <wsdl:operation name="TraerUsuarioConClaveSinEntidad_Escritorio">
       <soap:operation soapAction="http://tempuri.org/TraerUsuarioConClaveSinEntidad_Escritorio" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TraerUsuarioConFiltroSinEntidad_Escritorio">
+      <soap:operation soapAction="http://tempuri.org/TraerUsuarioConFiltroSinEntidad_Escritorio" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -716,6 +762,15 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="TraerUsuarioConFiltroSinEntidad_Escritorio">
+      <soap12:operation soapAction="http://tempuri.org/TraerUsuarioConFiltroSinEntidad_Escritorio" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="Process_UsuarioHttpGet" type="tns:Process_UsuarioHttpGet">
     <http:binding verb="GET" />
@@ -791,6 +846,15 @@
         <mime:mimeXml part="Body" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="TraerUsuarioConFiltroSinEntidad_Escritorio">
+      <http:operation location="/TraerUsuarioConFiltroSinEntidad_Escritorio" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="Process_UsuarioHttpPost" type="tns:Process_UsuarioHttpPost">
     <http:binding verb="POST" />
@@ -859,6 +923,15 @@
     </wsdl:operation>
     <wsdl:operation name="TraerUsuarioConClaveSinEntidad_Escritorio">
       <http:operation location="/TraerUsuarioConClaveSinEntidad_Escritorio" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TraerUsuarioConFiltroSinEntidad_Escritorio">
+      <http:operation location="/TraerUsuarioConFiltroSinEntidad_Escritorio" />
       <wsdl:input>
         <mime:content type="application/x-www-form-urlencoded" />
       </wsdl:input>

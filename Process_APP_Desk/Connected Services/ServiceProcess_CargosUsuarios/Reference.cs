@@ -36,6 +36,13 @@ namespace Process_APP_Desk.ServiceProcess_CargosUsuarios {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/TraerCargosUsuarioPorRutPorCargoSinEntidad_Escritorio", ReplyAction="*")]
         System.Threading.Tasks.Task<System.Data.DataSet> TraerCargosUsuarioPorRutPorCargoSinEntidad_EscritorioAsync(string _rut_usuario, int _id_cargo);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/TraerCargosUsuarioPorRutSinEntidad_Escritorio", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        System.Data.DataSet TraerCargosUsuarioPorRutSinEntidad_Escritorio(string _rut_usuario);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/TraerCargosUsuarioPorRutSinEntidad_Escritorio", ReplyAction="*")]
+        System.Threading.Tasks.Task<System.Data.DataSet> TraerCargosUsuarioPorRutSinEntidad_EscritorioAsync(string _rut_usuario);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -87,6 +94,14 @@ namespace Process_APP_Desk.ServiceProcess_CargosUsuarios {
         
         public System.Threading.Tasks.Task<System.Data.DataSet> TraerCargosUsuarioPorRutPorCargoSinEntidad_EscritorioAsync(string _rut_usuario, int _id_cargo) {
             return base.Channel.TraerCargosUsuarioPorRutPorCargoSinEntidad_EscritorioAsync(_rut_usuario, _id_cargo);
+        }
+        
+        public System.Data.DataSet TraerCargosUsuarioPorRutSinEntidad_Escritorio(string _rut_usuario) {
+            return base.Channel.TraerCargosUsuarioPorRutSinEntidad_Escritorio(_rut_usuario);
+        }
+        
+        public System.Threading.Tasks.Task<System.Data.DataSet> TraerCargosUsuarioPorRutSinEntidad_EscritorioAsync(string _rut_usuario) {
+            return base.Channel.TraerCargosUsuarioPorRutSinEntidad_EscritorioAsync(_rut_usuario);
         }
     }
 }

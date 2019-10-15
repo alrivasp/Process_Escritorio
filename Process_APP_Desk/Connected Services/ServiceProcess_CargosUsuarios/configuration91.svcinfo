@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<SavedWcfConfigurationInformation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="9.1" CheckSum="vb5162lxuqPgxgo2hOJcd7p0/60=">
+<SavedWcfConfigurationInformation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="9.1" CheckSum="8sBRLqYhYd6B3Vsw65g9RqZdQG8=">
   <bindingConfigurations>
     <bindingConfiguration bindingType="basicHttpBinding" name="Process_CargosUsuariosSoap">
       <properties>
@@ -263,10 +263,10 @@
     </bindingConfiguration>
   </bindingConfigurations>
   <endpoints>
-    <endpoint name="Process_CargosUsuariosSoap" contract="ServiceProcess_CargosUsuarios.Process_CargosUsuariosSoap" bindingType="basicHttpBinding" address="http://localhost:52755/Process_CargosUsuarios.asmx" bindingConfiguration="Process_CargosUsuariosSoap">
+    <endpoint name="Process_CargosUsuariosSoap" contract="ServiceProcess_CargosUsuarios.Process_CargosUsuariosSoap" bindingType="basicHttpBinding" address="http://52.67.249.164:8071/Process_CargosUsuarios.asmx" bindingConfiguration="Process_CargosUsuariosSoap">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>http://localhost:52755/Process_CargosUsuarios.asmx</serializedValue>
+          <serializedValue>http://52.67.249.164:8071/Process_CargosUsuarios.asmx</serializedValue>
         </property>
         <property path="/behaviorConfiguration" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />
@@ -348,10 +348,10 @@
         </property>
       </properties>
     </endpoint>
-    <endpoint name="Process_CargosUsuariosSoap12" contract="ServiceProcess_CargosUsuarios.Process_CargosUsuariosSoap" bindingType="customBinding" address="http://localhost:52755/Process_CargosUsuarios.asmx" bindingConfiguration="Process_CargosUsuariosSoap12">
+    <endpoint name="Process_CargosUsuariosSoap12" contract="ServiceProcess_CargosUsuarios.Process_CargosUsuariosSoap" bindingType="customBinding" address="http://52.67.249.164:8071/Process_CargosUsuarios.asmx" bindingConfiguration="Process_CargosUsuariosSoap12">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>http://localhost:52755/Process_CargosUsuarios.asmx</serializedValue>
+          <serializedValue>http://52.67.249.164:8071/Process_CargosUsuarios.asmx</serializedValue>
         </property>
         <property path="/behaviorConfiguration" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />

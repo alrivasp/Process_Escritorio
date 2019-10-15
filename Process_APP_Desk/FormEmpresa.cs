@@ -50,11 +50,12 @@ namespace Process_APP_Desk
                 ServiceProcess_Empresa.Process_EmpresaSoapClient auxServiceEmpresa = new ServiceProcess_Empresa.Process_EmpresaSoapClient();
                 auxServiceEmpresa.ClientCredentials.UserName.UserName = Cuenta.Usuario_iis;
                 auxServiceEmpresa.ClientCredentials.UserName.Password = Cuenta.Clave_iis;
+                ServiceProcess_Empresa.Empresa auxEmpresa = new ServiceProcess_Empresa.Empresa();
+
                 ServiceProcess_Comuna.Process_ComunaSoapClient auxServiceComuna = new ServiceProcess_Comuna.Process_ComunaSoapClient();
                 auxServiceComuna.ClientCredentials.UserName.UserName = Cuenta.Usuario_iis;
                 auxServiceComuna.ClientCredentials.UserName.Password = Cuenta.Clave_iis;
                 ServiceProcess_Comuna.Comuna auxComuna = new ServiceProcess_Comuna.Comuna();
-                ServiceProcess_Empresa.Empresa auxEmpresa = new ServiceProcess_Empresa.Empresa();
                 //capturar dataset
                 DataSet ds = auxServiceEmpresa.TraerTodasEmpresas_Escritorio();
                 //Capturar Tabla

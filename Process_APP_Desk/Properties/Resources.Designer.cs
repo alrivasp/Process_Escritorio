@@ -293,6 +293,16 @@ namespace Process_APP_Desk.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _317_arrow_right2 {
+            get {
+                object obj = ResourceManager.GetObject("317-arrow-right2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap _348_filter {
             get {
                 object obj = ResourceManager.GetObject("348-filter", resourceCulture);
