@@ -31,45 +31,47 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormCuenta));
             this.panelContenedor = new System.Windows.Forms.Panel();
             this.btnModificar = new System.Windows.Forms.Button();
             this.btnNuevo = new System.Windows.Forms.Button();
-            this.dgvCuenta = new System.Windows.Forms.DataGridView();
             this.label8 = new System.Windows.Forms.Label();
             this.txtFiltrar = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnCerrar = new System.Windows.Forms.Label();
-            this.lblTitulo = new System.Windows.Forms.Label();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.btnGuardar = new System.Windows.Forms.Button();
-            this.cbRol = new System.Windows.Forms.ComboBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.cbEstado = new System.Windows.Forms.ComboBox();
-            this.cbRutEmpresa = new System.Windows.Forms.ComboBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.lblTituloCuadro = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.txtPass2 = new System.Windows.Forms.TextBox();
-            this.txtPass = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.cbRutUsuario = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.pbSeleccion = new System.Windows.Forms.PictureBox();
+            this.dgvCuenta = new System.Windows.Forms.DataGridView();
+            this.btnVer = new System.Windows.Forms.Button();
+            this.btnDesactivar = new System.Windows.Forms.Button();
+            this.btnActivar = new System.Windows.Forms.Button();
+            this.btnResetClave = new System.Windows.Forms.Button();
+            this.RUT_USUARIO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.USUARIO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.EMPRESA = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.RUT_EMPRESA = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CORREO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ID_ROL = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ROL = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ESTADO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panelContenedor.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvCuenta)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbSeleccion)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvCuenta)).BeginInit();
             this.SuspendLayout();
             // 
             // panelContenedor
             // 
             this.panelContenedor.BackColor = System.Drawing.Color.White;
+            this.panelContenedor.Controls.Add(this.btnResetClave);
+            this.panelContenedor.Controls.Add(this.btnVer);
+            this.panelContenedor.Controls.Add(this.btnDesactivar);
+            this.panelContenedor.Controls.Add(this.btnActivar);
+            this.panelContenedor.Controls.Add(this.dgvCuenta);
             this.panelContenedor.Controls.Add(this.btnModificar);
             this.panelContenedor.Controls.Add(this.btnNuevo);
-            this.panelContenedor.Controls.Add(this.dgvCuenta);
             this.panelContenedor.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelContenedor.Location = new System.Drawing.Point(0, 0);
             this.panelContenedor.Name = "panelContenedor";
@@ -87,7 +89,7 @@
             this.btnModificar.ForeColor = System.Drawing.Color.White;
             this.btnModificar.Image = global::Process_APP_Desk.Properties.Resources._007_pencil2;
             this.btnModificar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnModificar.Location = new System.Drawing.Point(105, 444);
+            this.btnModificar.Location = new System.Drawing.Point(898, 130);
             this.btnModificar.Name = "btnModificar";
             this.btnModificar.Size = new System.Drawing.Size(130, 33);
             this.btnModificar.TabIndex = 46;
@@ -107,7 +109,7 @@
             this.btnNuevo.ForeColor = System.Drawing.Color.White;
             this.btnNuevo.Image = global::Process_APP_Desk.Properties.Resources._267_plus_White;
             this.btnNuevo.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnNuevo.Location = new System.Drawing.Point(282, 444);
+            this.btnNuevo.Location = new System.Drawing.Point(898, 80);
             this.btnNuevo.Name = "btnNuevo";
             this.btnNuevo.Size = new System.Drawing.Size(130, 33);
             this.btnNuevo.TabIndex = 45;
@@ -116,41 +118,6 @@
             this.btnNuevo.UseVisualStyleBackColor = false;
             this.btnNuevo.Click += new System.EventHandler(this.BtnNuevo_Click);
             // 
-            // dgvCuenta
-            // 
-            this.dgvCuenta.AllowUserToAddRows = false;
-            this.dgvCuenta.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.dgvCuenta.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.dgvCuenta.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.dgvCuenta.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
-            this.dgvCuenta.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
-            this.dgvCuenta.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
-            this.dgvCuenta.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dgvCuenta.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvCuenta.Location = new System.Drawing.Point(25, 143);
-            this.dgvCuenta.Name = "dgvCuenta";
-            this.dgvCuenta.ReadOnly = true;
-            this.dgvCuenta.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.ControlDark;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.ControlDarkDark;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.WhiteSmoke;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvCuenta.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.WhiteSmoke;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.Gray;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.WhiteSmoke;
-            this.dgvCuenta.RowsDefaultCellStyle = dataGridViewCellStyle3;
-            this.dgvCuenta.Size = new System.Drawing.Size(485, 298);
-            this.dgvCuenta.TabIndex = 43;
-            this.dgvCuenta.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvCuenta_CellClick);
-            // 
             // label8
             // 
             this.label8.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -158,19 +125,19 @@
             this.label8.BackColor = System.Drawing.Color.White;
             this.label8.Font = new System.Drawing.Font("Century Gothic", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
-            this.label8.Location = new System.Drawing.Point(3, 12);
+            this.label8.Location = new System.Drawing.Point(13, 12);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(180, 19);
+            this.label8.Size = new System.Drawing.Size(265, 19);
             this.label8.TabIndex = 45;
-            this.label8.Text = "RUT USUARIO O EMPRESA:";
+            this.label8.Text = "FILTRAR POR RUT USUARIO O EMPRESA:";
             // 
             // txtFiltrar
             // 
             this.txtFiltrar.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtFiltrar.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.txtFiltrar.Location = new System.Drawing.Point(189, 12);
+            this.txtFiltrar.Location = new System.Drawing.Point(284, 11);
             this.txtFiltrar.Name = "txtFiltrar";
-            this.txtFiltrar.Size = new System.Drawing.Size(236, 20);
+            this.txtFiltrar.Size = new System.Drawing.Size(460, 20);
             this.txtFiltrar.TabIndex = 42;
             this.txtFiltrar.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TxtFiltrar_KeyUp);
             // 
@@ -179,19 +146,20 @@
             this.panel1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.panel1.BackColor = System.Drawing.Color.White;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.pbSeleccion);
             this.panel1.Controls.Add(this.txtFiltrar);
             this.panel1.Controls.Add(this.label8);
             this.panel1.Controls.Add(this.pictureBox1);
-            this.panel1.Location = new System.Drawing.Point(25, 94);
+            this.panel1.Location = new System.Drawing.Point(12, 31);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(485, 43);
+            this.panel1.Size = new System.Drawing.Size(870, 43);
             this.panel1.TabIndex = 46;
             // 
             // pictureBox1
             // 
             this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.pictureBox1.Image = global::Process_APP_Desk.Properties.Resources._348_filter;
-            this.pictureBox1.Location = new System.Drawing.Point(442, 7);
+            this.pictureBox1.Location = new System.Drawing.Point(768, 6);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(27, 25);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -213,202 +181,202 @@
             this.btnCerrar.Text = "X";
             this.btnCerrar.Click += new System.EventHandler(this.BtnCerrar_Click);
             // 
-            // lblTitulo
+            // pbSeleccion
             // 
-            this.lblTitulo.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.lblTitulo.AutoSize = true;
-            this.lblTitulo.BackColor = System.Drawing.Color.White;
-            this.lblTitulo.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTitulo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
-            this.lblTitulo.Location = new System.Drawing.Point(463, 22);
-            this.lblTitulo.Name = "lblTitulo";
-            this.lblTitulo.Size = new System.Drawing.Size(112, 29);
-            this.lblTitulo.TabIndex = 41;
-            this.lblTitulo.Text = "CUENTA";
+            this.pbSeleccion.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.pbSeleccion.Image = global::Process_APP_Desk.Properties.Resources._071_pushpin;
+            this.pbSeleccion.Location = new System.Drawing.Point(827, 6);
+            this.pbSeleccion.Name = "pbSeleccion";
+            this.pbSeleccion.Size = new System.Drawing.Size(24, 25);
+            this.pbSeleccion.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbSeleccion.TabIndex = 46;
+            this.pbSeleccion.TabStop = false;
+            this.pbSeleccion.Visible = false;
             // 
-            // panel2
+            // dgvCuenta
             // 
-            this.panel2.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.panel2.BackColor = System.Drawing.Color.White;
-            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel2.Controls.Add(this.btnGuardar);
-            this.panel2.Controls.Add(this.cbRol);
-            this.panel2.Controls.Add(this.label6);
-            this.panel2.Controls.Add(this.cbEstado);
-            this.panel2.Controls.Add(this.cbRutEmpresa);
-            this.panel2.Controls.Add(this.label5);
-            this.panel2.Controls.Add(this.lblTituloCuadro);
-            this.panel2.Controls.Add(this.label4);
-            this.panel2.Controls.Add(this.txtPass2);
-            this.panel2.Controls.Add(this.txtPass);
-            this.panel2.Controls.Add(this.label3);
-            this.panel2.Controls.Add(this.label2);
-            this.panel2.Controls.Add(this.cbRutUsuario);
-            this.panel2.Controls.Add(this.label1);
-            this.panel2.Location = new System.Drawing.Point(542, 96);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(485, 345);
-            this.panel2.TabIndex = 47;
+            this.dgvCuenta.AllowUserToAddRows = false;
+            this.dgvCuenta.AllowUserToDeleteRows = false;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.dgvCuenta.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.dgvCuenta.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.dgvCuenta.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvCuenta.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.dgvCuenta.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgvCuenta.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
+            this.dgvCuenta.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvCuenta.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.dgvCuenta.ColumnHeadersHeight = 30;
+            this.dgvCuenta.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.dgvCuenta.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.RUT_USUARIO,
+            this.USUARIO,
+            this.EMPRESA,
+            this.RUT_EMPRESA,
+            this.CORREO,
+            this.ID_ROL,
+            this.ROL,
+            this.ESTADO});
+            this.dgvCuenta.EnableHeadersVisualStyles = false;
+            this.dgvCuenta.GridColor = System.Drawing.Color.White;
+            this.dgvCuenta.Location = new System.Drawing.Point(12, 80);
+            this.dgvCuenta.Name = "dgvCuenta";
+            this.dgvCuenta.ReadOnly = true;
+            this.dgvCuenta.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvCuenta.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.WhiteSmoke;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.WhiteSmoke;
+            this.dgvCuenta.RowsDefaultCellStyle = dataGridViewCellStyle4;
+            this.dgvCuenta.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvCuenta.Size = new System.Drawing.Size(870, 388);
+            this.dgvCuenta.TabIndex = 47;
+            this.dgvCuenta.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvCuenta_CellClick);
             // 
-            // btnGuardar
+            // btnVer
             // 
-            this.btnGuardar.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnGuardar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
-            this.btnGuardar.FlatAppearance.BorderSize = 0;
-            this.btnGuardar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
-            this.btnGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnGuardar.Font = new System.Drawing.Font("Century Gothic", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnGuardar.ForeColor = System.Drawing.Color.White;
-            this.btnGuardar.Image = global::Process_APP_Desk.Properties.Resources._099_floppy_disk;
-            this.btnGuardar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnGuardar.Location = new System.Drawing.Point(53, 280);
-            this.btnGuardar.Name = "btnGuardar";
-            this.btnGuardar.Size = new System.Drawing.Size(364, 33);
-            this.btnGuardar.TabIndex = 43;
-            this.btnGuardar.Text = "GUARDAR";
-            this.btnGuardar.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
-            this.btnGuardar.UseVisualStyleBackColor = false;
-            this.btnGuardar.Visible = false;
-            this.btnGuardar.Click += new System.EventHandler(this.BtnGuardar_Click);
+            this.btnVer.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnVer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.btnVer.FlatAppearance.BorderSize = 0;
+            this.btnVer.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
+            this.btnVer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnVer.Font = new System.Drawing.Font("Century Gothic", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnVer.ForeColor = System.Drawing.Color.White;
+            this.btnVer.Image = global::Process_APP_Desk.Properties.Resources._135_search_white;
+            this.btnVer.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnVer.Location = new System.Drawing.Point(898, 180);
+            this.btnVer.Name = "btnVer";
+            this.btnVer.Size = new System.Drawing.Size(130, 33);
+            this.btnVer.TabIndex = 50;
+            this.btnVer.Text = "MOSTRAR";
+            this.btnVer.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.btnVer.UseVisualStyleBackColor = false;
+            this.btnVer.Click += new System.EventHandler(this.BtnVer_Click);
             // 
-            // cbRol
+            // btnDesactivar
             // 
-            this.cbRol.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.cbRol.FormattingEnabled = true;
-            this.cbRol.Location = new System.Drawing.Point(205, 229);
-            this.cbRol.Name = "cbRol";
-            this.cbRol.Size = new System.Drawing.Size(212, 21);
-            this.cbRol.TabIndex = 42;
+            this.btnDesactivar.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnDesactivar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.btnDesactivar.FlatAppearance.BorderSize = 0;
+            this.btnDesactivar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
+            this.btnDesactivar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDesactivar.Font = new System.Drawing.Font("Century Gothic", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDesactivar.ForeColor = System.Drawing.Color.White;
+            this.btnDesactivar.Image = global::Process_APP_Desk.Properties.Resources._272_cross;
+            this.btnDesactivar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnDesactivar.Location = new System.Drawing.Point(898, 280);
+            this.btnDesactivar.Name = "btnDesactivar";
+            this.btnDesactivar.Size = new System.Drawing.Size(130, 33);
+            this.btnDesactivar.TabIndex = 49;
+            this.btnDesactivar.Text = "DESACTIVAR";
+            this.btnDesactivar.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.btnDesactivar.UseVisualStyleBackColor = false;
+            this.btnDesactivar.Visible = false;
             // 
-            // label6
+            // btnActivar
             // 
-            this.label6.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Century Gothic", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
-            this.label6.Location = new System.Drawing.Point(49, 231);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(40, 19);
-            this.label6.TabIndex = 41;
-            this.label6.Text = "ROL:";
+            this.btnActivar.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnActivar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.btnActivar.FlatAppearance.BorderSize = 0;
+            this.btnActivar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
+            this.btnActivar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnActivar.Font = new System.Drawing.Font("Century Gothic", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnActivar.ForeColor = System.Drawing.Color.White;
+            this.btnActivar.Image = global::Process_APP_Desk.Properties.Resources._273_checkmark;
+            this.btnActivar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnActivar.Location = new System.Drawing.Point(898, 280);
+            this.btnActivar.Name = "btnActivar";
+            this.btnActivar.Size = new System.Drawing.Size(130, 33);
+            this.btnActivar.TabIndex = 48;
+            this.btnActivar.Text = "ACTIVAR";
+            this.btnActivar.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.btnActivar.UseVisualStyleBackColor = false;
+            this.btnActivar.Visible = false;
             // 
-            // cbEstado
+            // btnResetClave
             // 
-            this.cbEstado.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.cbEstado.FormattingEnabled = true;
-            this.cbEstado.Location = new System.Drawing.Point(205, 192);
-            this.cbEstado.Name = "cbEstado";
-            this.cbEstado.Size = new System.Drawing.Size(212, 21);
-            this.cbEstado.TabIndex = 40;
+            this.btnResetClave.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnResetClave.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.btnResetClave.FlatAppearance.BorderSize = 0;
+            this.btnResetClave.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
+            this.btnResetClave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnResetClave.Font = new System.Drawing.Font("Century Gothic", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnResetClave.ForeColor = System.Drawing.Color.White;
+            this.btnResetClave.Image = global::Process_APP_Desk.Properties.Resources._143_key2;
+            this.btnResetClave.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnResetClave.Location = new System.Drawing.Point(898, 230);
+            this.btnResetClave.Name = "btnResetClave";
+            this.btnResetClave.Size = new System.Drawing.Size(130, 33);
+            this.btnResetClave.TabIndex = 51;
+            this.btnResetClave.Text = "RESET CLAVE";
+            this.btnResetClave.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.btnResetClave.UseVisualStyleBackColor = false;
             // 
-            // cbRutEmpresa
+            // RUT_USUARIO
             // 
-            this.cbRutEmpresa.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.cbRutEmpresa.FormattingEnabled = true;
-            this.cbRutEmpresa.Location = new System.Drawing.Point(205, 95);
-            this.cbRutEmpresa.Name = "cbRutEmpresa";
-            this.cbRutEmpresa.Size = new System.Drawing.Size(212, 21);
-            this.cbRutEmpresa.TabIndex = 39;
+            this.RUT_USUARIO.HeaderText = "CUENTA";
+            this.RUT_USUARIO.Name = "RUT_USUARIO";
+            this.RUT_USUARIO.ReadOnly = true;
             // 
-            // label5
+            // USUARIO
             // 
-            this.label5.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Century Gothic", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
-            this.label5.Location = new System.Drawing.Point(49, 97);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(102, 19);
-            this.label5.TabIndex = 38;
-            this.label5.Text = "RUT EMPRESA:";
+            this.USUARIO.HeaderText = "USUARIO";
+            this.USUARIO.Name = "USUARIO";
+            this.USUARIO.ReadOnly = true;
             // 
-            // lblTituloCuadro
+            // EMPRESA
             // 
-            this.lblTituloCuadro.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.lblTituloCuadro.AutoSize = true;
-            this.lblTituloCuadro.BackColor = System.Drawing.Color.White;
-            this.lblTituloCuadro.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTituloCuadro.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
-            this.lblTituloCuadro.Location = new System.Drawing.Point(14, 12);
-            this.lblTituloCuadro.Name = "lblTituloCuadro";
-            this.lblTituloCuadro.Size = new System.Drawing.Size(189, 24);
-            this.lblTituloCuadro.TabIndex = 37;
-            this.lblTituloCuadro.Text = "DATOS DE CUENTA";
+            this.EMPRESA.HeaderText = "EMPRESA";
+            this.EMPRESA.Name = "EMPRESA";
+            this.EMPRESA.ReadOnly = true;
             // 
-            // label4
+            // RUT_EMPRESA
             // 
-            this.label4.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Century Gothic", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
-            this.label4.Location = new System.Drawing.Point(49, 194);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(120, 19);
-            this.label4.TabIndex = 29;
-            this.label4.Text = "ESTADO CUENTA:";
+            this.RUT_EMPRESA.HeaderText = "RUT EMPRESA";
+            this.RUT_EMPRESA.Name = "RUT_EMPRESA";
+            this.RUT_EMPRESA.ReadOnly = true;
             // 
-            // txtPass2
+            // CORREO
             // 
-            this.txtPass2.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.txtPass2.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.txtPass2.Location = new System.Drawing.Point(205, 157);
-            this.txtPass2.Name = "txtPass2";
-            this.txtPass2.Size = new System.Drawing.Size(212, 20);
-            this.txtPass2.TabIndex = 28;
+            this.CORREO.HeaderText = "CORREO";
+            this.CORREO.Name = "CORREO";
+            this.CORREO.ReadOnly = true;
             // 
-            // txtPass
+            // ID_ROL
             // 
-            this.txtPass.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.txtPass.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.txtPass.Location = new System.Drawing.Point(205, 131);
-            this.txtPass.Name = "txtPass";
-            this.txtPass.Size = new System.Drawing.Size(212, 20);
-            this.txtPass.TabIndex = 27;
+            this.ID_ROL.HeaderText = "ID_ROL";
+            this.ID_ROL.Name = "ID_ROL";
+            this.ID_ROL.ReadOnly = true;
+            this.ID_ROL.Visible = false;
             // 
-            // label3
+            // ROL
             // 
-            this.label3.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Century Gothic", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
-            this.label3.Location = new System.Drawing.Point(49, 158);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(149, 19);
-            this.label3.TabIndex = 26;
-            this.label3.Text = "REPITA CONTRASEÑA:";
+            this.ROL.HeaderText = "ROL";
+            this.ROL.Name = "ROL";
+            this.ROL.ReadOnly = true;
             // 
-            // label2
+            // ESTADO
             // 
-            this.label2.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Century Gothic", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
-            this.label2.Location = new System.Drawing.Point(49, 132);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(103, 19);
-            this.label2.TabIndex = 25;
-            this.label2.Text = "CONTRASEÑA:";
-            // 
-            // cbRutUsuario
-            // 
-            this.cbRutUsuario.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.cbRutUsuario.FormattingEnabled = true;
-            this.cbRutUsuario.Location = new System.Drawing.Point(205, 59);
-            this.cbRutUsuario.Name = "cbRutUsuario";
-            this.cbRutUsuario.Size = new System.Drawing.Size(212, 21);
-            this.cbRutUsuario.TabIndex = 24;
-            // 
-            // label1
-            // 
-            this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Century Gothic", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
-            this.label1.Location = new System.Drawing.Point(49, 61);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(98, 19);
-            this.label1.TabIndex = 6;
-            this.label1.Text = "RUT USUARIO:";
+            this.ESTADO.HeaderText = "ESTADO";
+            this.ESTADO.Name = "ESTADO";
+            this.ESTADO.ReadOnly = true;
             // 
             // FormCuenta
             // 
@@ -417,20 +385,17 @@
             this.ClientSize = new System.Drawing.Size(1050, 480);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.btnCerrar);
-            this.Controls.Add(this.lblTitulo);
-            this.Controls.Add(this.panel2);
             this.Controls.Add(this.panelContenedor);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormCuenta";
             this.Text = "PROCESS";
             this.panelContenedor.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvCuenta)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbSeleccion)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvCuenta)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -444,24 +409,21 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label btnCerrar;
-        private System.Windows.Forms.Label lblTitulo;
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ComboBox cbRutUsuario;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox txtPass2;
-        private System.Windows.Forms.TextBox txtPass;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.DataGridView dgvCuenta;
         private System.Windows.Forms.Button btnNuevo;
         private System.Windows.Forms.Button btnModificar;
-        private System.Windows.Forms.Label lblTituloCuadro;
-        private System.Windows.Forms.ComboBox cbRol;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.ComboBox cbEstado;
-        private System.Windows.Forms.ComboBox cbRutEmpresa;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Button btnGuardar;
+        private System.Windows.Forms.PictureBox pbSeleccion;
+        private System.Windows.Forms.DataGridView dgvCuenta;
+        private System.Windows.Forms.Button btnVer;
+        private System.Windows.Forms.Button btnDesactivar;
+        private System.Windows.Forms.Button btnActivar;
+        private System.Windows.Forms.Button btnResetClave;
+        private System.Windows.Forms.DataGridViewTextBoxColumn RUT_USUARIO;
+        private System.Windows.Forms.DataGridViewTextBoxColumn USUARIO;
+        private System.Windows.Forms.DataGridViewTextBoxColumn EMPRESA;
+        private System.Windows.Forms.DataGridViewTextBoxColumn RUT_EMPRESA;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CORREO;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ID_ROL;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ROL;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ESTADO;
     }
 }

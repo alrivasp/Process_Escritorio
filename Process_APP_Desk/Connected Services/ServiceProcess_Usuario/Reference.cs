@@ -72,6 +72,13 @@ namespace Process_APP_Desk.ServiceProcess_Usuario {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/TraerUsuarioPorRutPorEmpresaSinEntidad_Escritorio", ReplyAction="*")]
         System.Threading.Tasks.Task<System.Data.DataSet> TraerUsuarioPorRutPorEmpresaSinEntidad_EscritorioAsync(string _rut_usuario, string _rut_empresa);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/TraerUsuarioPorEmpresaSinEntidad_Escritorio", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        System.Data.DataSet TraerUsuarioPorEmpresaSinEntidad_Escritorio(string _rut_empresa);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/TraerUsuarioPorEmpresaSinEntidad_Escritorio", ReplyAction="*")]
+        System.Threading.Tasks.Task<System.Data.DataSet> TraerUsuarioPorEmpresaSinEntidad_EscritorioAsync(string _rut_empresa);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/TraerTodasUsuariosJoin_Escritorio", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         System.Data.DataSet TraerTodasUsuariosJoin_Escritorio();
@@ -85,6 +92,13 @@ namespace Process_APP_Desk.ServiceProcess_Usuario {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/TraerUsuarioConClaveSinEntidad_Escritorio", ReplyAction="*")]
         System.Threading.Tasks.Task<System.Data.DataSet> TraerUsuarioConClaveSinEntidad_EscritorioAsync(string _palabra_clave);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/TraerUsuarioConClavePorEmpresaSinEntidad_Escritorio", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        System.Data.DataSet TraerUsuarioConClavePorEmpresaSinEntidad_Escritorio(string _rut_empresa, string _palabra_clave);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/TraerUsuarioConClavePorEmpresaSinEntidad_Escritorio", ReplyAction="*")]
+        System.Threading.Tasks.Task<System.Data.DataSet> TraerUsuarioConClavePorEmpresaSinEntidad_EscritorioAsync(string _rut_empresa, string _palabra_clave);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/TraerUsuarioConFiltroSinEntidad_Escritorio", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
@@ -329,6 +343,14 @@ namespace Process_APP_Desk.ServiceProcess_Usuario {
             return base.Channel.TraerUsuarioPorRutPorEmpresaSinEntidad_EscritorioAsync(_rut_usuario, _rut_empresa);
         }
         
+        public System.Data.DataSet TraerUsuarioPorEmpresaSinEntidad_Escritorio(string _rut_empresa) {
+            return base.Channel.TraerUsuarioPorEmpresaSinEntidad_Escritorio(_rut_empresa);
+        }
+        
+        public System.Threading.Tasks.Task<System.Data.DataSet> TraerUsuarioPorEmpresaSinEntidad_EscritorioAsync(string _rut_empresa) {
+            return base.Channel.TraerUsuarioPorEmpresaSinEntidad_EscritorioAsync(_rut_empresa);
+        }
+        
         public System.Data.DataSet TraerTodasUsuariosJoin_Escritorio() {
             return base.Channel.TraerTodasUsuariosJoin_Escritorio();
         }
@@ -343,6 +365,14 @@ namespace Process_APP_Desk.ServiceProcess_Usuario {
         
         public System.Threading.Tasks.Task<System.Data.DataSet> TraerUsuarioConClaveSinEntidad_EscritorioAsync(string _palabra_clave) {
             return base.Channel.TraerUsuarioConClaveSinEntidad_EscritorioAsync(_palabra_clave);
+        }
+        
+        public System.Data.DataSet TraerUsuarioConClavePorEmpresaSinEntidad_Escritorio(string _rut_empresa, string _palabra_clave) {
+            return base.Channel.TraerUsuarioConClavePorEmpresaSinEntidad_Escritorio(_rut_empresa, _palabra_clave);
+        }
+        
+        public System.Threading.Tasks.Task<System.Data.DataSet> TraerUsuarioConClavePorEmpresaSinEntidad_EscritorioAsync(string _rut_empresa, string _palabra_clave) {
+            return base.Channel.TraerUsuarioConClavePorEmpresaSinEntidad_EscritorioAsync(_rut_empresa, _palabra_clave);
         }
         
         public System.Data.DataSet TraerUsuarioConFiltroSinEntidad_Escritorio(string _palabra_clave) {

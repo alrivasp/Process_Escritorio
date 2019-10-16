@@ -18,6 +18,9 @@ namespace Process_APP_Desk
         public static string _contrasena;
         public static string _estado;
         public static string _id_rol;
+        public static string _correo;
+        //
+        public static string _titulo_modal = string.Empty;
         //Variable para interaccion de botones (0 = ninguno) (1 = modificar) - (2 = guardar)
         public static int _guardar = 0;
         public FormCuenta()
@@ -28,139 +31,98 @@ namespace Process_APP_Desk
             this.DoubleBuffered = true;
             //Metodo Carga de GridView
             cargarDataGridViewPpal();
-            //Metodo Carga Cuadro de Datos en Blanco
-            cargarDatosEnBlanco();
+            btnActivar.Visible = false;
+            btnDesactivar.Visible = false;
+            pbSeleccion.Visible = false;
+            //Vaciar variables
+            _rut_usuario = null;
+            _rut_empresa = string.Empty;
+            _contrasena = string.Empty;
+            _estado = string.Empty;
+            _id_rol = string.Empty;
+            _correo = string.Empty;
         }
 
-        private void cargarDatosEnBlanco()
-        {
-            //CAMBIO DE TITULO DE CUADRO DE DATOS
-            lblTituloCuadro.Text = "DATOS DE CUENTA";
-            //bloquear cajas de texto
-            txtPass.ReadOnly = true;
-            txtPass2.ReadOnly = true;
-            //vaciar cajas de texto
-            txtPass.Text = string.Empty;
-            txtPass2.Text = string.Empty;
-            //bloquear combobox
-            cbRutUsuario.DropDownStyle = ComboBoxStyle.DropDownList;
-            cbRutEmpresa.DropDownStyle = ComboBoxStyle.DropDownList;
-            cbRol.DropDownStyle = ComboBoxStyle.DropDownList;
-            cbEstado.DropDownStyle = ComboBoxStyle.DropDownList;
-            cbRol.DropDownStyle = ComboBoxStyle.DropDownList;
-            //vaciar combobox
-            cbRutUsuario.DataSource = null;
-            cbRutUsuario.Items.Clear();
-            cbRutEmpresa.DataSource = null;
-            cbRutEmpresa.Items.Clear();
-            cbEstado.DataSource = null;
-            cbEstado.Items.Clear();
-            cbRol.DataSource = null;
-            cbRol.Items.Clear();
-            //inactivar boton guardar
-            btnGuardar.Visible = false;
-            //Variable para interaccion de botones (0 = ninguno) (1 = modificar) - (2 = guardar)
-            _guardar = 0;
-        }
 
         private void cargarDataGridViewPpal()
         {
-            ServiceProcess_Cuenta.Process_CuentaSoapClient auxServiceCuenta = new ServiceProcess_Cuenta.Process_CuentaSoapClient();
-            DataSet ds = auxServiceCuenta.TraerTodasCuentas_Escritorio();
-            DataTable dt = ds.Tables[0];
-            dgvCuenta.DataSource = dt;
-        }
-        //Metodo Carga ComboBox Estado
-        private void cargarComboEstado()
-        {
-            DataTable dtEstado = new DataTable();
-            DataRow dr = dtEstado.NewRow();
-            dtEstado.TableName = "Estado";
-            dtEstado.Columns.Add(new DataColumn("ID"));
-            dtEstado.Columns.Add(new DataColumn("Nombre"));
-            dr["ID"] = "";
-            dr["Nombre"] = "SELECCIONE ESTADO";
-            dtEstado.Rows.Add(dr);
-            DataRow dr1 = dtEstado.NewRow();
-            dr1["ID"] = 0;
-            dr1["Nombre"] = "INACTIVO";
-            dtEstado.Rows.Add(dr1);
-            DataRow dr2 = dtEstado.NewRow();
-            dr2["ID"] = 1;
-            dr2["Nombre"] = "ACTIVO";
-            dtEstado.Rows.Add(dr2);
+            try
+            {
+                //instansear web service con seguridad
+                ServiceProcess_Empresa.Process_EmpresaSoapClient auxServiceEmpresa = new ServiceProcess_Empresa.Process_EmpresaSoapClient();
+                auxServiceEmpresa.ClientCredentials.UserName.UserName = Cuenta.Usuario_iis;
+                auxServiceEmpresa.ClientCredentials.UserName.Password = Cuenta.Clave_iis;
+                ServiceProcess_Empresa.Empresa auxEmpresa = new ServiceProcess_Empresa.Empresa();
 
+                ServiceProcess_Cuenta.Process_CuentaSoapClient auxServiceCuenta = new ServiceProcess_Cuenta.Process_CuentaSoapClient();
+                auxServiceCuenta.ClientCredentials.UserName.UserName = Cuenta.Usuario_iis;
+                auxServiceCuenta.ClientCredentials.UserName.Password = Cuenta.Clave_iis;
+                ServiceProcess_Cuenta.Cuenta auxCuenta = new ServiceProcess_Cuenta.Cuenta();
 
-            cbEstado.DropDownStyle = ComboBoxStyle.DropDownList;
-            cbEstado.DataSource = dtEstado;
-            cbEstado.DisplayMember = "Nombre";
-            cbEstado.ValueMember = "ID";
+                ServiceProcess_Rol.Process_RolSoapClient auxServiceRol = new ServiceProcess_Rol.Process_RolSoapClient();
+                auxServiceRol.ClientCredentials.UserName.UserName = Cuenta.Usuario_iis;
+                auxServiceRol.ClientCredentials.UserName.Password = Cuenta.Clave_iis;
+                ServiceProcess_Rol.Rol auxRol = new ServiceProcess_Rol.Rol();
+
+                ServiceProcess_Usuario.Process_UsuarioSoapClient auxServiceUsuario = new ServiceProcess_Usuario.Process_UsuarioSoapClient();
+                auxServiceUsuario.ClientCredentials.UserName.UserName = Cuenta.Usuario_iis;
+                auxServiceUsuario.ClientCredentials.UserName.Password = Cuenta.Clave_iis;
+                ServiceProcess_Usuario.Usuario auxUsuario = new ServiceProcess_Usuario.Usuario();
+
+                //capturar dataset
+                DataSet ds = auxServiceCuenta.TraerTodasCuentas_Escritorio();
+                //Capturar Tabla
+                DataTable dt = ds.Tables[0];
+                //contar cantidad de empresas
+                int _cantidad_Cuentas = dt.Rows.Count;
+                //crear array bidimencional
+                string[,] ListaCuenta = new string[_cantidad_Cuentas, 8];
+                //Recorrer data table
+                int _fila = 0;
+                for (int i = 0; i < dt.Rows.Count; i++)
+                {
+                    //Capturar datos de la fila recorridad en objeto empresa
+                    auxCuenta.Rut_usuario = (String)dt.Rows[i]["Rut_usuario"];
+                    auxCuenta.Rut_empresa = (String)dt.Rows[i]["Rut_empresa"];
+                    auxCuenta.Contrasena = (String)dt.Rows[i]["Contrasena"];
+                    auxCuenta.Estado = Convert.ToInt32(dt.Rows[i]["Estado"]);
+                    auxCuenta.Id_rol = Convert.ToInt32(dt.Rows[i]["Id_rol"]);
+                    auxCuenta.Correo = (String)dt.Rows[i]["Correo"];
+                    //variables temporales de apoyo
+                    string _estado_iteracion = string.Empty;
+                    //cargar array con datos de fila
+                    ListaCuenta[_fila, 0] = auxCuenta.Rut_usuario;
+                    auxUsuario = auxServiceUsuario.TraerUsuarioConEntidad_Escritorio(auxCuenta.Rut_usuario);
+                    ListaCuenta[_fila, 1] = auxUsuario.Primer_nombre + " " + auxUsuario.Primer_apellido;
+                    auxEmpresa = auxServiceEmpresa.TraerEmpresaConEntidad_Escritorio(auxCuenta.Rut_empresa);
+                    ListaCuenta[_fila, 2] = auxEmpresa.Nombre;
+                    ListaCuenta[_fila, 3] = auxCuenta.Rut_empresa;
+                    ListaCuenta[_fila, 4] = auxCuenta.Correo;
+                    auxRol = auxServiceRol.TraerRolConEntidad_Escritorio(auxCuenta.Id_rol);
+                    ListaCuenta[_fila, 5] = auxCuenta.Id_rol.ToString();
+                    ListaCuenta[_fila, 6] = auxRol.Nombre;
+                    if (auxCuenta.Estado == 0)
+                    {
+                        _estado_iteracion = "DESACTIVADO";
+                    }
+                    else
+                    {
+                        _estado_iteracion = "ACTIVADO";
+                    }
+                    ListaCuenta[_fila, 7] = _estado_iteracion;
+                    //agregar lista a gridview
+                    dgvCuenta.Rows.Add(ListaCuenta[_fila, 0], ListaCuenta[_fila, 1], ListaCuenta[_fila, 2], ListaCuenta[_fila, 3], ListaCuenta[_fila, 4], ListaCuenta[_fila, 5],ListaCuenta[_fila, 6], ListaCuenta[_fila, 7]);
+                    _fila++;
+
+                }
+                pbSeleccion.Visible = false;
         }
-        //Metodo Carga ComboBox Empresa
-        private void cargarComboEmpresa()
-        {
-            ServiceProcess_Empresa.Process_EmpresaSoapClient auxServiceEmpresa = new ServiceProcess_Empresa.Process_EmpresaSoapClient();
-            DataSet ds = new DataSet();
-            DataTable dt = new DataTable();
-            ds = auxServiceEmpresa.TraerTodasEmpresas_Escritorio();
-            dt = ds.Tables[0];
-            DataRow fila = dt.NewRow();
-            fila["RUT_EMPRESA"] = 0;
-            fila["NOMBRE"] = "SELECCIONE EMPRESA";
-            fila["GIRO"] = " ";
-            fila["DIRECCION"] = " ";
-            fila["ESTADO"] = 0;
-            fila["ID_COMUNA"] = 0;
-            dt.Rows.InsertAt(fila, 0);
-            cbRutEmpresa.DropDownStyle = ComboBoxStyle.DropDownList;
-            cbRutEmpresa.DataSource = dt;
-            cbRutEmpresa.DisplayMember = "NOMBRE";
-            cbRutEmpresa.ValueMember = "RUT_EMPRESA";
-        }
-        //Metodo Carga ComboBox Usuario
-        private void cargarComboUsuario()
-        {
-            ServiceProcess_Usuario.Process_UsuarioSoapClient auxServiceUsuario= new ServiceProcess_Usuario.Process_UsuarioSoapClient();
-            DataSet ds = new DataSet();
-            DataTable dt = new DataTable();
-            ds = auxServiceUsuario.TraerTodasUsuarios_Escritorio();
-            dt = ds.Tables[0];
-            DataRow fila = dt.NewRow();
-            fila["RUT_USUARIO"] = "USUARIO";
-            fila["PRIMER_NOMBRE"] = "0";
-            fila["SEGUNDO_NOMBRE"] = "0";
-            fila["PRIMER_APELLIDO"] = "0";
-            fila["SEGUNDO_APELLIDO"] = "0";
-            fila["DIRECCION"] = " ";
-            fila["CORREO"] = " ";
-            fila["TELEFONO_FIJO"] = 0;
-            fila["TELEFONO_MOVIL"] = 0;
-            fila["ESTADO"] = 0;
-            fila["ID_COMUNA"] = 0;
-            dt.Rows.InsertAt(fila, 0);
-            cbRutUsuario.DropDownStyle = ComboBoxStyle.DropDownList;
-            cbRutUsuario.DataSource = dt;
-            cbRutUsuario.DisplayMember = "RUT_USUARIO";
-            cbRutUsuario.ValueMember = "RUT_USUARIO";
-        }
-        //Metodo Carga ComboBox Empresa
-        private void cargarComboRol()
-        {
-            ServiceProcess_Rol.Process_RolSoapClient auxServiceRol = new ServiceProcess_Rol.Process_RolSoapClient();
-            DataSet ds = new DataSet();
-            DataTable dt = new DataTable();
-            ds = auxServiceRol.TraerTodasRoles_Escritorio();
-            dt = ds.Tables[0];
-            DataRow fila = dt.NewRow();
-            fila["ID_ROL"] = 0;
-            fila["NOMBRE"] = "SELECCIONE ROL";
-            fila["ESTADO"] = 0;            
-            dt.Rows.InsertAt(fila, 0);
-            cbRol.DropDownStyle = ComboBoxStyle.DropDownList;
-            cbRol.DataSource = dt;
-            cbRol.DisplayMember = "NOMBRE";
-            cbRol.ValueMember = "ID_ROL";
-        }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error en metodo cargarDataGridViewPpal, Contactese con el Administrador Detalle de Error: " + ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+}
+
         private void BtnCerrar_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -171,298 +133,259 @@ namespace Process_APP_Desk
         {
             try
             {
+                dgvCuenta.Rows.Clear();
+                dgvCuenta.Refresh();
+                //instansear web service con seguridad
+                ServiceProcess_Empresa.Process_EmpresaSoapClient auxServiceEmpresa = new ServiceProcess_Empresa.Process_EmpresaSoapClient();
+                auxServiceEmpresa.ClientCredentials.UserName.UserName = Cuenta.Usuario_iis;
+                auxServiceEmpresa.ClientCredentials.UserName.Password = Cuenta.Clave_iis;
+                ServiceProcess_Empresa.Empresa auxEmpresa = new ServiceProcess_Empresa.Empresa();
+
                 ServiceProcess_Cuenta.Process_CuentaSoapClient auxServiceCuenta = new ServiceProcess_Cuenta.Process_CuentaSoapClient();
+                auxServiceCuenta.ClientCredentials.UserName.UserName = Cuenta.Usuario_iis;
+                auxServiceCuenta.ClientCredentials.UserName.Password = Cuenta.Clave_iis;
+                ServiceProcess_Cuenta.Cuenta auxCuenta = new ServiceProcess_Cuenta.Cuenta();
+
+                ServiceProcess_Rol.Process_RolSoapClient auxServiceRol = new ServiceProcess_Rol.Process_RolSoapClient();
+                auxServiceRol.ClientCredentials.UserName.UserName = Cuenta.Usuario_iis;
+                auxServiceRol.ClientCredentials.UserName.Password = Cuenta.Clave_iis;
+                ServiceProcess_Rol.Rol auxRol = new ServiceProcess_Rol.Rol();
+
+                ServiceProcess_Usuario.Process_UsuarioSoapClient auxServiceUsuario = new ServiceProcess_Usuario.Process_UsuarioSoapClient();
+                auxServiceUsuario.ClientCredentials.UserName.UserName = Cuenta.Usuario_iis;
+                auxServiceUsuario.ClientCredentials.UserName.Password = Cuenta.Clave_iis;
+                ServiceProcess_Usuario.Usuario auxUsuario = new ServiceProcess_Usuario.Usuario();
+                //capturar dataset
                 DataSet ds = auxServiceCuenta.TraerCuentaConClaveSinEntidad_Escritorio(txtFiltrar.Text.ToUpper());
-                DataTable dt = ds.Tables[0];
-                dgvCuenta.DataSource = dt;
+                if ((ds.Tables.Count != 0) && (ds.Tables[0].Rows.Count > 0))
+                {
+                    //Capturar Tabla
+                    DataTable dt = ds.Tables[0];
+                    //contar cantidad de empresas
+                    int _cantidad_Cuentas = dt.Rows.Count;
+                    //crear array bidimencional
+                    string[,] ListaCuenta = new string[_cantidad_Cuentas, 8];
+                    //Recorrer data table
+                    int _fila = 0;
+                    for (int i = 0; i < dt.Rows.Count; i++)
+                    {
+                        //Capturar datos de la fila recorridad en objeto empresa
+                        auxCuenta.Rut_usuario = (String)dt.Rows[i]["Rut_usuario"];
+                        auxCuenta.Rut_empresa = (String)dt.Rows[i]["Rut_empresa"];
+                        auxCuenta.Contrasena = (String)dt.Rows[i]["Contrasena"];
+                        auxCuenta.Estado = Convert.ToInt32(dt.Rows[i]["Estado"]);
+                        auxCuenta.Id_rol = Convert.ToInt32(dt.Rows[i]["Id_rol"]);
+                        auxCuenta.Correo = (String)dt.Rows[i]["Correo"];
+                        //variables temporales de apoyo
+                        string _estado_iteracion = string.Empty;
+                        //cargar array con datos de fila
+                        ListaCuenta[_fila, 0] = auxCuenta.Rut_usuario;
+                        auxUsuario = auxServiceUsuario.TraerUsuarioConEntidad_Escritorio(auxCuenta.Rut_usuario);
+                        ListaCuenta[_fila, 1] = auxUsuario.Primer_nombre + " " + auxUsuario.Primer_apellido;
+                        auxEmpresa = auxServiceEmpresa.TraerEmpresaConEntidad_Escritorio(auxCuenta.Rut_empresa);
+                        ListaCuenta[_fila, 2] = auxEmpresa.Nombre;
+                        ListaCuenta[_fila, 3] = auxCuenta.Rut_empresa;
+                        ListaCuenta[_fila, 4] = auxCuenta.Correo;
+                        auxRol = auxServiceRol.TraerRolConEntidad_Escritorio(auxCuenta.Id_rol);
+                        ListaCuenta[_fila, 5] = auxCuenta.Id_rol.ToString();
+                        ListaCuenta[_fila, 6] = auxRol.Nombre;
+                        if (auxCuenta.Estado == 0)
+                        {
+                            _estado_iteracion = "DESACTIVADO";
+                        }
+                        else
+                        {
+                            _estado_iteracion = "ACTIVADO";
+                        }
+                        ListaCuenta[_fila, 7] = _estado_iteracion;
+                        //agregar lista a gridview
+                        dgvCuenta.Rows.Add(ListaCuenta[_fila, 0], ListaCuenta[_fila, 1], ListaCuenta[_fila, 2], ListaCuenta[_fila, 3], ListaCuenta[_fila, 4], ListaCuenta[_fila, 5], ListaCuenta[_fila, 6], ListaCuenta[_fila, 7]);
+                        _fila++;
+
+                    }
+                    //Vaciar variables
+                    _rut_usuario = null;
+                    _rut_empresa = string.Empty;
+                    _contrasena = string.Empty;
+                    _estado = string.Empty;
+                    _id_rol = string.Empty;
+                    _correo = string.Empty;
+                    //deseleccionar
+                    pbSeleccion.Visible = false;
+                    btnActivar.Visible = false;
+                    btnDesactivar.Visible = false;
+                }
+                else
+                {
+                    //Vaciar variables
+                    _rut_usuario = null;
+                    _rut_empresa = string.Empty;
+                    _contrasena = string.Empty;
+                    _estado = string.Empty;
+                    _id_rol = string.Empty;
+                    _correo = string.Empty;
+                    //deseleccionar
+                    pbSeleccion.Visible = false;
+                    btnActivar.Visible = false;
+                    btnDesactivar.Visible = false;
+                }
             }
             catch (Exception ex)
             {
-                DataTable dt = new DataTable();
-                DataSet ds = new DataSet();
-                DataRow dr = dt.NewRow();
-                dt.TableName = "CUENTA";
-                dt.Columns.Add(new DataColumn("RUT_USUARIO"));
-                dt.Columns.Add(new DataColumn("RUT_EMPRESA"));
-                dt.Columns.Add(new DataColumn("CONTRASENA"));
-                dt.Columns.Add(new DataColumn("ESTADO"));
-                dt.Columns.Add(new DataColumn("ID_ROL"));
-                dr["RUT_USUARIO"] = "SIN REGISTRO";
-                dr["RUT_EMPRESA"] = "SIN REGISTRO";
-                dr["CONTRASENA"] = "SIN REGISTRO";
-                dr["ESTADO"] = "SIN REGISTRO";
-                dr["ID_ROL"] = "SIN REGISTRO";
-                dt.Rows.Add(dr);
-                ds.Tables.Add(dt);
-
-                dgvCuenta.DataSource = ds;
-
+                MessageBox.Show("Error en metodo de accion TxtFiltrar_KeyUp, Contactese con el Administrador Detalle de Error: " + ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
         private void BtnModificar_Click(object sender, EventArgs e)
         {
-            if (_rut_usuario == null)//validador que se seleccione un fila de CUENTA
-            {
-                MessageBox.Show("Seleccione una Fila a Modificar", "ATENCION", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            else
-            {
-                //Se edita titulo de cuadro de datos
-                lblTituloCuadro.Text = "MODIFICAR CUENTA";
-                //Se habilita Boton
-                btnGuardar.Visible = true;
-                //Se cargam comnbos de estado y empresa
-                cargarComboEstado();
-                cargarComboEmpresa();
-                cargarComboRol();
-                cargarComboUsuario();
-                //bloquear combobox
-                cbEstado.DropDownStyle = ComboBoxStyle.DropDownList;
-                cbRutEmpresa.DropDownStyle = ComboBoxStyle.DropDownList;
-                cbRol.DropDownStyle = ComboBoxStyle.DropDownList;
-                cbRutUsuario.DropDownStyle = ComboBoxStyle.DropDownList;
-                //combo solo lectura
-                cbRutEmpresa.Enabled = false;
-                cbRutUsuario.Enabled = false;
-                cbRol.Enabled = true;
-                cbEstado.Enabled = true;
-                //desbloquear cajas de texto                 
-                txtPass.ReadOnly = false;
-                txtPass2.ReadOnly = false;
-                //se pasan datos a cajas de texto de cuadro de datos
-                txtPass.Text = _contrasena;
-                txtPass2.Text = _contrasena;
-                cbRutUsuario.SelectedValue = _rut_usuario;
-                cbRutEmpresa.SelectedValue = _rut_empresa;
-                cbEstado.SelectedValue = _estado;
-                cbRol.SelectedValue = _id_rol;
-                //se vacian variables para que no queden con informacion
-                _rut_usuario = null;
-                _rut_empresa = null;
-                _contrasena = null;
-                _estado = null;
-                _id_rol = null;
-                //Variable para interaccion de botones (0 = ninguno) (1 = modificar) - (2 = guardar)
-                _guardar = 1;
-
-            }
-        }
-
-        private void DgvCuenta_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            _rut_usuario = dgvCuenta.Rows[e.RowIndex].Cells["RUT_USUARIO"].Value.ToString();
-            _rut_empresa = dgvCuenta.Rows[e.RowIndex].Cells["RUT_EMPRESA"].Value.ToString();
-            _contrasena = dgvCuenta.Rows[e.RowIndex].Cells["CONTRASENA"].Value.ToString();
-            _estado = dgvCuenta.Rows[e.RowIndex].Cells["ESTADO"].Value.ToString();
-            _id_rol = dgvCuenta.Rows[e.RowIndex].Cells["ID_ROL"].Value.ToString();
-        }
-
-        private void BtnNuevo_Click(object sender, EventArgs e)
-        {
-            //cambiar titulo
-            lblTituloCuadro.Text = "NUEVA CUENTA";
-            //habilitar boton guardar
-            btnGuardar.Visible = true;
-            //desbloquear cajas de texto
-            txtPass.ReadOnly = false;
-            txtPass2.ReadOnly = false;
-            //Cargar comobox de empresa y estado
-            cargarComboEstado();
-            cargarComboEmpresa();
-            cargarComboRol();
-            cargarComboUsuario();
-            //combo solo lectura
-            cbRutEmpresa.Enabled = true;
-            cbRutUsuario.Enabled = true;
-            cbRol.Enabled = true;
-            cbEstado.Enabled = true;
-            //vaciar textbox
-            txtPass.Text = string.Empty;
-            txtPass2.Text = string.Empty;
-            //bloquear combobox
-            cbEstado.DropDownStyle = ComboBoxStyle.DropDownList;
-            cbRol.DropDownStyle = ComboBoxStyle.DropDownList;
-            cbRutEmpresa.DropDownStyle = ComboBoxStyle.DropDownList;
-            cbRutUsuario.DropDownStyle = ComboBoxStyle.DropDownList;
-            //Variable para interaccion de botones (0 = ninguno) (1 = modificar) - (2 = Nuevo)
-            _guardar = 2;
-        }
-
-        private void BtnGuardar_Click(object sender, EventArgs e)
-        {
             try
-            {                
-                //Instancia de Web service Usuario
-                ServiceProcess_Usuario.Process_UsuarioSoapClient auxServiceUsuario = new ServiceProcess_Usuario.Process_UsuarioSoapClient();
-                //Instancia de Web service Empresa
-                ServiceProcess_Empresa.Process_EmpresaSoapClient auxServiceEmpresa = new ServiceProcess_Empresa.Process_EmpresaSoapClient();
-                //Instancia de Web Service Cuenta
-                ServiceProcess_Cuenta.Process_CuentaSoapClient auxServiceCuenta = new ServiceProcess_Cuenta.Process_CuentaSoapClient();
-                if (_guardar == 1)//Modificar Cuenta
+            {
+                if (_rut_usuario == null)//validador que se seleccione un fila de CUENTA
                 {
-                    //Validacion espacio en blanco y seleccion de combobox
-                    if (txtPass.Text.Trim().Equals("") || txtPass2.Text.Trim().Equals("") 
-                        || Convert.ToInt32(cbRutEmpresa.SelectedIndex) == 0 || Convert.ToInt32(cbRutUsuario.SelectedIndex) == 0
-                        || Convert.ToInt32(cbRol.SelectedIndex) == 0 || Convert.ToInt32(cbEstado.SelectedIndex) == 0)
-                    {
-                        if (txtPass.Text.Trim().Equals(""))//Mensaje Para contraseña Vacio
-                        {
-                            MessageBox.Show("El campo Constraseña No puede estar Vacio.", "ATENCION", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        }
-                        else if (txtPass2.Text.Trim().Equals(""))//Mensaje Para confirmacion de contraseña Vacio
-                        {
-                            MessageBox.Show("EEl campo Confirmar Constraseña No puede estar Vacio.", "ATENCION", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        }
-                        else if (Convert.ToInt32(cbRutEmpresa.SelectedIndex) == 0)//Mensaje Para Combo Empresa Sin seleccionar
-                        {
-                            MessageBox.Show("Debe seleccionar una Empresa .", "ATENCION", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        }
-                        else if (Convert.ToInt32(cbRutUsuario.SelectedIndex) == 0)//Mensaje Para Combo Usuario Sin seleccionar
-                        {
-                            MessageBox.Show("Debe seleccionar una Usuario .", "ATENCION", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        }
-                        else if (Convert.ToInt32(cbRol.SelectedIndex) == 0)//Mensaje Para Combo Rol Sin seleccionar
-                        {
-                            MessageBox.Show("Debe seleccionar un Rol .", "ATENCION", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        }
-                        else if (Convert.ToInt32(cbEstado.SelectedIndex) == 0)//Mensaje Para Combo Estado Sin seleccionar
-                        {
-                            MessageBox.Show("Debe seleccionar un Estado .", "ATENCION", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        }
-
-                    }
-                    else
-                    {
-                        //Validar longitud de caracteres
-                        if (txtPass.Text.Trim().Length < 5 || txtPass.Text.Trim().Length > 25)
-                        {
-                            if (txtPass.Text.Trim().Length < 5 || txtPass.Text.Trim().Length > 25)//Mensaje longitud fuera de rango contraeña
-                            {
-                                MessageBox.Show("La Contraseña, debe tener un minimo de 5 Caracteres.", "ATENCION", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                            }
-                        }
-                        else
-                        {
-                            //Validacion de Contraseña
-                            if (!txtPass.Text.Equals(txtPass2.Text))
-                            {
-                                MessageBox.Show("Las Contraseñas No Coinciden.", "ATENCION", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                            }
-                            else
-                            {
-                                //confirmacion de Actualizar  usuario
-                                if (MessageBox.Show("Confirmar La Actualizacion de la Cuenta.", "CONFIRMAR", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-                                {
-                                    //Insertar datos via web service tabla usuario
-                                    auxServiceCuenta.ActualizarCuentaSinEntidad_Escritorio(cbRutUsuario.SelectedValue.ToString(), cbRutEmpresa.SelectedValue.ToString(),
-                                                                                            txtPass2.Text, Convert.ToInt32(cbEstado.SelectedValue.ToString()), Convert.ToInt32(cbRol.SelectedValue.ToString()));
-                                    //Metodo Carga de cuadro de datos
-                                    cargarDatosEnBlanco();
-                                    ////Metodo Carga de GridView
-                                    cargarDataGridViewPpal();
-                                    MessageBox.Show("Cuenta Actualizada Correctamente.", "ACTUALIZACION DE CUENTA", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                }
-                                else
-                                {
-                                    //se devuelve al Cuadro de datos
-                                    MessageBox.Show("NO se Actualizo Cuenta.", "ACTUALIZACION DE CUENTA", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                }
-                            }
-                        }
-
-                    }
+                    MessageBox.Show("Seleccione una Cuenta a Modificar", "ATENCION", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
-                else//Nueva Cuenta
+                else
                 {
-                    //Validacion espacio en blanco y seleccion de combobox
-                    if (txtPass.Text.Trim().Equals("") || txtPass2.Text.Trim().Equals("")
-                        || Convert.ToInt32(cbRutEmpresa.SelectedIndex) == 0 || Convert.ToInt32(cbRutUsuario.SelectedIndex) == 0
-                        || Convert.ToInt32(cbRol.SelectedIndex) == 0 || Convert.ToInt32(cbEstado.SelectedIndex) == 0)
+                    _titulo_modal = "MODIFICAR CUENTA";
+                    _guardar = 1;
+                    FormCuentaModal frmModal = new FormCuentaModal(_titulo_modal, _guardar.ToString(), _rut_usuario, _rut_empresa, _contrasena,
+                                        _estado, _id_rol, _correo);
+                    if (frmModal.ShowDialog() == DialogResult.OK)
                     {
-                        if (txtPass.Text.Trim().Equals(""))//Mensaje Para contraseña Vacio
-                        {
-                            MessageBox.Show("El campo Constraseña No puede estar Vacio.", "ATENCION", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        }
-                        else if (txtPass2.Text.Trim().Equals(""))//Mensaje Para confirmacion de contraseña Vacio
-                        {
-                            MessageBox.Show("EEl campo Confirmar Constraseña No puede estar Vacio.", "ATENCION", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        }
-                        else if (Convert.ToInt32(cbRutEmpresa.SelectedIndex) == 0)//Mensaje Para Combo Empresa Sin seleccionar
-                        {
-                            MessageBox.Show("Debe seleccionar una Empresa .", "ATENCION", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        }
-                        else if (Convert.ToInt32(cbRutUsuario.SelectedIndex) == 0)//Mensaje Para Combo Usuario Sin seleccionar
-                        {
-                            MessageBox.Show("Debe seleccionar una Usuario .", "ATENCION", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        }
-                        else if (Convert.ToInt32(cbRol.SelectedIndex) == 0)//Mensaje Para Combo Rol Sin seleccionar
-                        {
-                            MessageBox.Show("Debe seleccionar un Rol .", "ATENCION", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        }
-                        else if (Convert.ToInt32(cbEstado.SelectedIndex) == 0)//Mensaje Para Combo Estado Sin seleccionar
-                        {
-                            MessageBox.Show("Debe seleccionar un Estado .", "ATENCION", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        }
-
-                    }
-                    else
-                    {
-                        //Validar longitud de caracteres
-                        if (txtPass.Text.Trim().Length < 5 || txtPass.Text.Trim().Length > 25)
-                        {
-                            if (txtPass.Text.Trim().Length < 5 || txtPass.Text.Trim().Length > 25)//Mensaje longitud fuera de rango contraeña
-                            {
-                                MessageBox.Show("La Contraseña, debe tener un minimo de 5 Caracteres.", "ATENCION", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                            }
-                        }
-                        else
-                        {
-                            //Validacion de Contraseña
-                            if (!txtPass.Text.Equals(txtPass2.Text))
-                            {
-                                MessageBox.Show("Las Contraseñas No Coinciden.", "ATENCION", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                            }
-                            else
-                            {
-                                DataSet ds = auxServiceCuenta.TraerCuentaConEmpresaSinEntidad_Escritorio(cbRutUsuario.SelectedValue.ToString(), cbRutEmpresa.SelectedValue.ToString());
-                                if (ds.Tables.Count == 0)
-                                {
-                                    //confirmacion de Crecion  de cuenta
-                                    if (MessageBox.Show("Confirmar La Creacion de la Cuenta.", "CONFIRMAR", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-                                    {
-                                        //Insertar datos via web service tabla usuario
-                                        auxServiceCuenta.InsertarCuentaSinEntidad_Escritorio(cbRutUsuario.SelectedValue.ToString(), cbRutEmpresa.SelectedValue.ToString(),
-                                                                                                txtPass2.Text, Convert.ToInt32(cbEstado.SelectedValue.ToString()), Convert.ToInt32(cbRol.SelectedValue.ToString()));
-                                        //Metodo Carga de cuadro de datos
-                                        cargarDatosEnBlanco();
-                                        ////Metodo Carga de GridView
-                                        cargarDataGridViewPpal();
-                                        MessageBox.Show("Cuenta Creada Correctamente.", "CREACION DE CUENTA", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                    }
-                                    else
-                                    {
-                                        //se devuelve al Cuadro de datos
-                                        MessageBox.Show("NO se Actualizo Cuenta.", "CREACION DE CUENTA", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                    }
-                                }
-                                else
-                                {
-                                    MessageBox.Show("La Cuenta Ya existe.", "ATENCION", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                                }
-                               
-                            }
-                        }
-
+                        MessageBox.Show("Cuenta Modificado Correctamente.", "MODIFICACION DE USUARIO", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        btnActivar.Visible = false;
+                        btnDesactivar.Visible = false;
+                        //Vaciar variables                        
+                        _rut_usuario = null;
+                        _rut_empresa = string.Empty;
+                        _contrasena = string.Empty;
+                        _estado = string.Empty;
+                        _id_rol = string.Empty;
+                        _correo = string.Empty;
+                        //
+                        dgvCuenta.Rows.Clear();
+                        dgvCuenta.Refresh();
+                        //cargar gridview
+                        cargarDataGridViewPpal();
+                        pbSeleccion.Visible = false;
                     }
                 }
             }
             catch (Exception ex)
             {
+                MessageBox.Show("Error en metodo BtnModificar_Click, Contactese con el Administrador Detalle de Error: " + ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }     
 
-                MessageBox.Show("Web Service Process Fuera de Linea, Contactese con el Administrador Detalle de Error: " + ex.Message, "Mensaje de sistema");
-
-            }//fin try catch
+        private void BtnNuevo_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                _titulo_modal = "NUEVA CUENTA";
+                _guardar = 3;
+                FormCuentaModalNuevo frmModal = new FormCuentaModalNuevo();
+                if (frmModal.ShowDialog() == DialogResult.OK)
+                {
+                    MessageBox.Show("Cuenta Creada Correctamente.", "CREACION DE USUARIO", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    btnActivar.Visible = false;
+                    btnDesactivar.Visible = false;
+                    //Vaciar variables
+                    _rut_usuario = null;
+                    _rut_empresa = string.Empty;
+                    _contrasena = string.Empty;
+                    _estado = string.Empty;
+                    _id_rol = string.Empty;
+                    _correo = string.Empty;
+                    //
+                    dgvCuenta.Rows.Clear();
+                    dgvCuenta.Refresh();
+                    //cargar gridview
+                    cargarDataGridViewPpal();
+                    pbSeleccion.Visible = false;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error en metodo BtnNuevo_Click, Contactese con el Administrador Detalle de Error: " + ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
+
+        private void DgvCuenta_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                ServiceProcess_Cuenta.Process_CuentaSoapClient auxServiceCuenta = new ServiceProcess_Cuenta.Process_CuentaSoapClient();
+                auxServiceCuenta.ClientCredentials.UserName.UserName = Cuenta.Usuario_iis;
+                auxServiceCuenta.ClientCredentials.UserName.Password = Cuenta.Clave_iis;
+                ServiceProcess_Cuenta.Cuenta auxCuenta = new ServiceProcess_Cuenta.Cuenta();
+
+                if (e.RowIndex < 0)
+                    return;
+
+                _rut_usuario = dgvCuenta.Rows[e.RowIndex].Cells["RUT_USUARIO"].Value.ToString();
+                _rut_empresa = dgvCuenta.Rows[e.RowIndex].Cells["RUT_EMPRESA"].Value.ToString();                
+                _estado = dgvCuenta.Rows[e.RowIndex].Cells["ESTADO"].Value.ToString();
+                _id_rol = dgvCuenta.Rows[e.RowIndex].Cells["ID_ROL"].Value.ToString();
+                _correo = dgvCuenta.Rows[e.RowIndex].Cells["CORREO"].Value.ToString();
+
+                auxCuenta = auxServiceCuenta.TraerCuentaConEntidad_Escritorio(_rut_usuario);
+
+                _contrasena = auxCuenta.Contrasena;
+
+                pbSeleccion.Visible = true;
+
+                if (_estado.Equals("DESACTIVADO"))
+                {
+                    btnActivar.Visible = true;
+                    btnDesactivar.Visible = false;
+                }
+                else
+                {
+                    btnDesactivar.Visible = true;
+                    btnActivar.Visible = false;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error en metodo de accion DgvCuenta_CellClick, Contactese con el Administrador Detalle de Error: " + ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void BtnVer_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (_rut_usuario == null)//validador que se seleccione un fila de CUENTA
+                {
+                    MessageBox.Show("Seleccione una Cuenta a Modificar", "ATENCION", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    _titulo_modal = "MOSTRAR CUENTA";
+                    _guardar = 3;
+                    FormCuentaModal frmModal = new FormCuentaModal(_titulo_modal, _guardar.ToString(), _rut_usuario, _rut_empresa, _contrasena,
+                                        _estado, _id_rol, _correo);
+                    if (frmModal.ShowDialog() == DialogResult.OK)
+                    {                        
+                        btnActivar.Visible = false;
+                        btnDesactivar.Visible = false;
+                        pbSeleccion.Visible = false;
+                        //Vaciar variables
+                        _rut_usuario = null;
+                        _rut_empresa = string.Empty;
+                        _contrasena = string.Empty;
+                        _estado = string.Empty;
+                        _id_rol = string.Empty;
+                        _correo = string.Empty;
+
+                    }
+                }
+        }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error en metodo BtnVer_Click, Contactese con el Administrador Detalle de Error: " + ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+}
+        
     }
 }

@@ -18,6 +18,7 @@ namespace Process_APP_Desk
             Application.SetCompatibleTextRenderingDefault(false);
             //Application.Run(new PantallaLogin());
             Application.Run(new PantallaMenuPrincipal());
+            //Application.Run(new FormCuentaModalNuevo());
         }
     }
 }
