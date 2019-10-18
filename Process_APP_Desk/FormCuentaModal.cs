@@ -192,7 +192,7 @@ namespace Process_APP_Desk
                             if (MessageBox.Show("Confirmar La Modificacion de la Cuenta", "Confirmar", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                             {
                                 //Insertar datos via web service
-                                auxServiceCuenta.ActualizarCuentaSinEntidad_Escritorio(_rut_usuario, _rut_empresa, _contrasena,  Convert.ToInt32(_estado), Convert.ToInt32(cbRol.SelectedIndex), txtCorreo.Text.Trim().ToUpper());
+                                auxServiceCuenta.ActualizarCuentaSinEntidad_Escritorio(_rut_usuario, _rut_empresa, Convert.ToInt32(_estado), Convert.ToInt32(cbRol.SelectedIndex), txtCorreo.Text.Trim().ToUpper());
                                 //Metodo Carga de GridView
                                 this.DialogResult = DialogResult.OK;
                                 this.Close();

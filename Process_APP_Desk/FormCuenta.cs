@@ -391,51 +391,58 @@ namespace Process_APP_Desk
         {
             try
             {
-                //Instancia de Web service con credenciales NT
-                ServiceProcess_Cuenta.Process_CuentaSoapClient auxServiceCuenta = new ServiceProcess_Cuenta.Process_CuentaSoapClient();
-                auxServiceCuenta.ClientCredentials.UserName.UserName = Cuenta.Usuario_iis;
-                auxServiceCuenta.ClientCredentials.UserName.Password = Cuenta.Clave_iis;
-
-                ServiceProcess_Usuario.Process_UsuarioSoapClient auxServiceUsuario = new ServiceProcess_Usuario.Process_UsuarioSoapClient();
-                auxServiceUsuario.ClientCredentials.UserName.UserName = Cuenta.Usuario_iis;
-                auxServiceUsuario.ClientCredentials.UserName.Password = Cuenta.Clave_iis;
-
-                ServiceProcess_Empresa.Process_EmpresaSoapClient auxServiceEmpresa = new ServiceProcess_Empresa.Process_EmpresaSoapClient();
-                auxServiceEmpresa.ClientCredentials.UserName.UserName = Cuenta.Usuario_iis;
-                auxServiceEmpresa.ClientCredentials.UserName.Password = Cuenta.Clave_iis;
-
-                ServiceProcess_Usuario.Usuario auxUsuario = new ServiceProcess_Usuario.Usuario();
-                ServiceProcess_Cuenta.Cuenta auxCuenta = new ServiceProcess_Cuenta.Cuenta();
-                auxCuenta = auxServiceCuenta.TraerCuentaConEmpresaConEntidad_Escritorio(_rut_usuario, _rut_empresa);
-                ServiceProcess_Empresa.Empresa auxEmpresa = new ServiceProcess_Empresa.Empresa();
-                auxEmpresa = auxServiceEmpresa.TraerEmpresaConEntidad_Escritorio(_rut_empresa);
-
-                if (MessageBox.Show("¿Esta Seguro de Desactivar Cuenta " + _rut_usuario + "  Para la Empresa " + auxEmpresa.Nombre + "?", "CONFIRMAR", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                if (_rut_usuario == null)
                 {
-
-
-                    //Insertar datos via web service
-                    auxServiceCuenta.ActualizarCuentaSinEntidad_Escritorio(auxCuenta.Rut_usuario, auxCuenta.Rut_empresa, auxCuenta.Contrasena, 0, auxCuenta.Id_rol, auxCuenta.Correo);
-                    btnActivar.Visible = false;
-                    btnDesactivar.Visible = false;
-                    //Vaciar variables
-                    _rut_usuario = null;
-                    _rut_empresa = string.Empty;
-                    _contrasena = string.Empty;
-                    _estado = string.Empty;
-                    _id_rol = string.Empty;
-                    _correo = string.Empty;
-                    pbSeleccion.Visible = false;
-                    //limpiar GridView
-                    dgvCuenta.Rows.Clear();
-                    dgvCuenta.Refresh();
-                    //Metodo Carga de GridView
-                    cargarDataGridViewPpal();
-                    MessageBox.Show("Cuenta Desactivada Para Empresa " + auxEmpresa.Nombre + " .", "ATENCION", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                    MessageBox.Show("Debe Seleccionar una Cuenta Antes de Desactivar.", "ATENCION", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                 }
                 else
                 {
-                    //continua CON LA VISTA ACTUAL
+                    //Instancia de Web service con credenciales NT
+                    ServiceProcess_Cuenta.Process_CuentaSoapClient auxServiceCuenta = new ServiceProcess_Cuenta.Process_CuentaSoapClient();
+                    auxServiceCuenta.ClientCredentials.UserName.UserName = Cuenta.Usuario_iis;
+                    auxServiceCuenta.ClientCredentials.UserName.Password = Cuenta.Clave_iis;
+
+                    ServiceProcess_Usuario.Process_UsuarioSoapClient auxServiceUsuario = new ServiceProcess_Usuario.Process_UsuarioSoapClient();
+                    auxServiceUsuario.ClientCredentials.UserName.UserName = Cuenta.Usuario_iis;
+                    auxServiceUsuario.ClientCredentials.UserName.Password = Cuenta.Clave_iis;
+
+                    ServiceProcess_Empresa.Process_EmpresaSoapClient auxServiceEmpresa = new ServiceProcess_Empresa.Process_EmpresaSoapClient();
+                    auxServiceEmpresa.ClientCredentials.UserName.UserName = Cuenta.Usuario_iis;
+                    auxServiceEmpresa.ClientCredentials.UserName.Password = Cuenta.Clave_iis;
+
+                    ServiceProcess_Usuario.Usuario auxUsuario = new ServiceProcess_Usuario.Usuario();
+                    ServiceProcess_Cuenta.Cuenta auxCuenta = new ServiceProcess_Cuenta.Cuenta();
+                    auxCuenta = auxServiceCuenta.TraerCuentaConEmpresaConEntidad_Escritorio(_rut_usuario, _rut_empresa);
+                    ServiceProcess_Empresa.Empresa auxEmpresa = new ServiceProcess_Empresa.Empresa();
+                    auxEmpresa = auxServiceEmpresa.TraerEmpresaConEntidad_Escritorio(_rut_empresa);
+
+                    if (MessageBox.Show("¿Esta Seguro de Desactivar Cuenta " + _rut_usuario + "  Para la Empresa " + auxEmpresa.Nombre + "?", "CONFIRMAR", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    {
+
+
+                        //Insertar datos via web service
+                        auxServiceCuenta.ActualizarCuentaSinEntidad_Escritorio(auxCuenta.Rut_usuario, auxCuenta.Rut_empresa, 0, auxCuenta.Id_rol, auxCuenta.Correo);
+                        btnActivar.Visible = false;
+                        btnDesactivar.Visible = false;
+                        //Vaciar variables
+                        _rut_usuario = null;
+                        _rut_empresa = string.Empty;
+                        _contrasena = string.Empty;
+                        _estado = string.Empty;
+                        _id_rol = string.Empty;
+                        _correo = string.Empty;
+                        pbSeleccion.Visible = false;
+                        //limpiar GridView
+                        dgvCuenta.Rows.Clear();
+                        dgvCuenta.Refresh();
+                        //Metodo Carga de GridView
+                        cargarDataGridViewPpal();
+                        MessageBox.Show("Cuenta Desactivada Para Empresa " + auxEmpresa.Nombre + " .", "ATENCION", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                    }
+                    else
+                    {
+                        //continua CON LA VISTA ACTUAL
+                    }
                 }
             }
             catch (Exception ex)
@@ -448,26 +455,33 @@ namespace Process_APP_Desk
         {
             try
             {
-                ServiceProcess_Cuenta.Process_CuentaSoapClient auxServiceCuenta = new ServiceProcess_Cuenta.Process_CuentaSoapClient();
-                auxServiceCuenta.ClientCredentials.UserName.UserName = Cuenta.Usuario_iis;
-                auxServiceCuenta.ClientCredentials.UserName.Password = Cuenta.Clave_iis;
-
-                ServiceProcess_Cuenta.Cuenta auxCuenta = new ServiceProcess_Cuenta.Cuenta();
-                auxCuenta = auxServiceCuenta.TraerCuentaConEmpresaConEntidad_Escritorio(_rut_usuario, _rut_empresa);
-
-                if (MessageBox.Show("¿Esta Seguro de Resetear Contaseña de Cuenta de Acceso?", "CONFIRMAR", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                if (_rut_usuario == null)
                 {
-
-                    auxCuenta = auxServiceCuenta.TraerCuentaConEmpresaConEntidad_Escritorio(_rut_usuario, _rut_empresa);
-
-                    string contrasena = _rut_usuario.Substring(0, 5);
-                    //Insertar datos via web service
-                    auxServiceCuenta.ActualizarCuentaSinEntidad_Escritorio(auxCuenta.Rut_usuario, auxCuenta.Rut_empresa, contrasena, auxCuenta.Estado, auxCuenta.Id_rol, auxCuenta.Correo);
-                    MessageBox.Show("Contraseña Reseteada con los primeros 5 Digitos del RUT.", "ATENCION", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                    MessageBox.Show("Debe Seleccionar una Cuenta Antes de solicitar Resetear.", "ATENCION", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                 }
                 else
                 {
-                    //vuleve a pantalla 
+                    ServiceProcess_Cuenta.Process_CuentaSoapClient auxServiceCuenta = new ServiceProcess_Cuenta.Process_CuentaSoapClient();
+                    auxServiceCuenta.ClientCredentials.UserName.UserName = Cuenta.Usuario_iis;
+                    auxServiceCuenta.ClientCredentials.UserName.Password = Cuenta.Clave_iis;
+
+                    ServiceProcess_Cuenta.Cuenta auxCuenta = new ServiceProcess_Cuenta.Cuenta();
+                    auxCuenta = auxServiceCuenta.TraerCuentaConEmpresaConEntidad_Escritorio(_rut_usuario, _rut_empresa);
+
+                    if (MessageBox.Show("¿Esta Seguro de Resetear Contaseña de Cuenta de Acceso?", "CONFIRMAR", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    {
+
+                        auxCuenta = auxServiceCuenta.TraerCuentaConEmpresaConEntidad_Escritorio(_rut_usuario, _rut_empresa);
+
+                        string contrasena = _rut_usuario.Substring(0, 5);
+                        //Insertar datos via web service
+                        auxServiceCuenta.ActualizarCuentaSoloContrasenaSinEntidad_Escritorio(auxCuenta.Rut_usuario, auxCuenta.Rut_empresa, contrasena);
+                        MessageBox.Show("Contraseña Reseteada con los primeros 5 Digitos del RUT.", "ATENCION", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                    }
+                    else
+                    {
+                        //vuleve a pantalla 
+                    }
                 }
             }
             catch (Exception ex)
@@ -480,51 +494,58 @@ namespace Process_APP_Desk
         {
             try
             {
-                //Instancia de Web service con credenciales NT
-                ServiceProcess_Cuenta.Process_CuentaSoapClient auxServiceCuenta = new ServiceProcess_Cuenta.Process_CuentaSoapClient();
-                auxServiceCuenta.ClientCredentials.UserName.UserName = Cuenta.Usuario_iis;
-                auxServiceCuenta.ClientCredentials.UserName.Password = Cuenta.Clave_iis;
-
-                ServiceProcess_Usuario.Process_UsuarioSoapClient auxServiceUsuario = new ServiceProcess_Usuario.Process_UsuarioSoapClient();
-                auxServiceUsuario.ClientCredentials.UserName.UserName = Cuenta.Usuario_iis;
-                auxServiceUsuario.ClientCredentials.UserName.Password = Cuenta.Clave_iis;
-
-                ServiceProcess_Empresa.Process_EmpresaSoapClient auxServiceEmpresa = new ServiceProcess_Empresa.Process_EmpresaSoapClient();
-                auxServiceEmpresa.ClientCredentials.UserName.UserName = Cuenta.Usuario_iis;
-                auxServiceEmpresa.ClientCredentials.UserName.Password = Cuenta.Clave_iis;
-
-                ServiceProcess_Usuario.Usuario auxUsuario = new ServiceProcess_Usuario.Usuario();
-                ServiceProcess_Cuenta.Cuenta auxCuenta = new ServiceProcess_Cuenta.Cuenta();
-                auxCuenta = auxServiceCuenta.TraerCuentaConEmpresaConEntidad_Escritorio(_rut_usuario, _rut_empresa);
-                ServiceProcess_Empresa.Empresa auxEmpresa = new ServiceProcess_Empresa.Empresa();
-                auxEmpresa = auxServiceEmpresa.TraerEmpresaConEntidad_Escritorio(_rut_empresa);
-
-                if (MessageBox.Show("¿Esta Seguro de Activar Cuenta " + _rut_usuario + "  Para la Empresa " + auxEmpresa.Nombre + "?", "CONFIRMAR", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                if (_rut_usuario == null)
                 {
-
-
-                    //Insertar datos via web service
-                    auxServiceCuenta.ActualizarCuentaSinEntidad_Escritorio(auxCuenta.Rut_usuario, auxCuenta.Rut_empresa, auxCuenta.Contrasena,1, auxCuenta.Id_rol, auxCuenta.Correo);
-                    btnActivar.Visible = false;
-                    btnDesactivar.Visible = false;
-                    //Vaciar variables
-                    _rut_usuario = null;
-                    _rut_empresa = string.Empty;
-                    _contrasena = string.Empty;
-                    _estado = string.Empty;
-                    _id_rol = string.Empty;
-                    _correo = string.Empty;
-                    pbSeleccion.Visible = false;
-                    //limpiar GridView
-                    dgvCuenta.Rows.Clear();
-                    dgvCuenta.Refresh();
-                    //Metodo Carga de GridView
-                    cargarDataGridViewPpal();
-                    MessageBox.Show("Cuenta Activada Para Empresa " + auxEmpresa.Nombre + " .", "ATENCION", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                    MessageBox.Show("Debe Seleccionar una Cuenta Antes de Activar cuenta.", "ATENCION", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                 }
                 else
-                {
-                    //continua CON LA VISTA ACTUAL
+                { 
+                    //Instancia de Web service con credenciales NT
+                    ServiceProcess_Cuenta.Process_CuentaSoapClient auxServiceCuenta = new ServiceProcess_Cuenta.Process_CuentaSoapClient();
+                    auxServiceCuenta.ClientCredentials.UserName.UserName = Cuenta.Usuario_iis;
+                    auxServiceCuenta.ClientCredentials.UserName.Password = Cuenta.Clave_iis;
+
+                    ServiceProcess_Usuario.Process_UsuarioSoapClient auxServiceUsuario = new ServiceProcess_Usuario.Process_UsuarioSoapClient();
+                    auxServiceUsuario.ClientCredentials.UserName.UserName = Cuenta.Usuario_iis;
+                    auxServiceUsuario.ClientCredentials.UserName.Password = Cuenta.Clave_iis;
+
+                    ServiceProcess_Empresa.Process_EmpresaSoapClient auxServiceEmpresa = new ServiceProcess_Empresa.Process_EmpresaSoapClient();
+                    auxServiceEmpresa.ClientCredentials.UserName.UserName = Cuenta.Usuario_iis;
+                    auxServiceEmpresa.ClientCredentials.UserName.Password = Cuenta.Clave_iis;
+
+                    ServiceProcess_Usuario.Usuario auxUsuario = new ServiceProcess_Usuario.Usuario();
+                    ServiceProcess_Cuenta.Cuenta auxCuenta = new ServiceProcess_Cuenta.Cuenta();
+                    auxCuenta = auxServiceCuenta.TraerCuentaConEmpresaConEntidad_Escritorio(_rut_usuario, _rut_empresa);
+                    ServiceProcess_Empresa.Empresa auxEmpresa = new ServiceProcess_Empresa.Empresa();
+                    auxEmpresa = auxServiceEmpresa.TraerEmpresaConEntidad_Escritorio(_rut_empresa);
+
+                    if (MessageBox.Show("¿Esta Seguro de Activar Cuenta " + _rut_usuario + "  Para la Empresa " + auxEmpresa.Nombre + "?", "CONFIRMAR", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    {
+
+
+                        //Insertar datos via web service
+                        auxServiceCuenta.ActualizarCuentaSinEntidad_Escritorio(auxCuenta.Rut_usuario, auxCuenta.Rut_empresa, 1, auxCuenta.Id_rol, auxCuenta.Correo);
+                        btnActivar.Visible = false;
+                        btnDesactivar.Visible = false;
+                        //Vaciar variables
+                        _rut_usuario = null;
+                        _rut_empresa = string.Empty;
+                        _contrasena = string.Empty;
+                        _estado = string.Empty;
+                        _id_rol = string.Empty;
+                        _correo = string.Empty;
+                        pbSeleccion.Visible = false;
+                        //limpiar GridView
+                        dgvCuenta.Rows.Clear();
+                        dgvCuenta.Refresh();
+                        //Metodo Carga de GridView
+                        cargarDataGridViewPpal();
+                        MessageBox.Show("Cuenta Activada Para Empresa " + auxEmpresa.Nombre + " .", "ATENCION", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                    }
+                    else
+                    {
+                        //continua CON LA VISTA ACTUAL
+                    }
                 }
             }
             catch (Exception ex)

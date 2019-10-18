@@ -39,10 +39,17 @@ namespace Process_APP_Desk.ServiceProcess_Cuenta {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ActualizarCuentaSinEntidad_Escritorio", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        int ActualizarCuentaSinEntidad_Escritorio(string _rut_usuario, string _rut_empresa, string _contrasena, int _estado, int _id_rol, string _correo);
+        int ActualizarCuentaSinEntidad_Escritorio(string _rut_usuario, string _rut_empresa, int _estado, int _id_rol, string _correo);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ActualizarCuentaSinEntidad_Escritorio", ReplyAction="*")]
-        System.Threading.Tasks.Task<int> ActualizarCuentaSinEntidad_EscritorioAsync(string _rut_usuario, string _rut_empresa, string _contrasena, int _estado, int _id_rol, string _correo);
+        System.Threading.Tasks.Task<int> ActualizarCuentaSinEntidad_EscritorioAsync(string _rut_usuario, string _rut_empresa, int _estado, int _id_rol, string _correo);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ActualizarCuentaSoloContrasenaSinEntidad_Escritorio", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        int ActualizarCuentaSoloContrasenaSinEntidad_Escritorio(string _rut_usuario, string _rut_empresa, string _contrasena);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ActualizarCuentaSoloContrasenaSinEntidad_Escritorio", ReplyAction="*")]
+        System.Threading.Tasks.Task<int> ActualizarCuentaSoloContrasenaSinEntidad_EscritorioAsync(string _rut_usuario, string _rut_empresa, string _contrasena);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/TraerCuentaSinEntidad_Escritorio", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
@@ -240,12 +247,20 @@ namespace Process_APP_Desk.ServiceProcess_Cuenta {
             return base.Channel.ActualizarCuentaConEntidad_EscritorioAsync(_unidad);
         }
         
-        public int ActualizarCuentaSinEntidad_Escritorio(string _rut_usuario, string _rut_empresa, string _contrasena, int _estado, int _id_rol, string _correo) {
-            return base.Channel.ActualizarCuentaSinEntidad_Escritorio(_rut_usuario, _rut_empresa, _contrasena, _estado, _id_rol, _correo);
+        public int ActualizarCuentaSinEntidad_Escritorio(string _rut_usuario, string _rut_empresa, int _estado, int _id_rol, string _correo) {
+            return base.Channel.ActualizarCuentaSinEntidad_Escritorio(_rut_usuario, _rut_empresa, _estado, _id_rol, _correo);
         }
         
-        public System.Threading.Tasks.Task<int> ActualizarCuentaSinEntidad_EscritorioAsync(string _rut_usuario, string _rut_empresa, string _contrasena, int _estado, int _id_rol, string _correo) {
-            return base.Channel.ActualizarCuentaSinEntidad_EscritorioAsync(_rut_usuario, _rut_empresa, _contrasena, _estado, _id_rol, _correo);
+        public System.Threading.Tasks.Task<int> ActualizarCuentaSinEntidad_EscritorioAsync(string _rut_usuario, string _rut_empresa, int _estado, int _id_rol, string _correo) {
+            return base.Channel.ActualizarCuentaSinEntidad_EscritorioAsync(_rut_usuario, _rut_empresa, _estado, _id_rol, _correo);
+        }
+        
+        public int ActualizarCuentaSoloContrasenaSinEntidad_Escritorio(string _rut_usuario, string _rut_empresa, string _contrasena) {
+            return base.Channel.ActualizarCuentaSoloContrasenaSinEntidad_Escritorio(_rut_usuario, _rut_empresa, _contrasena);
+        }
+        
+        public System.Threading.Tasks.Task<int> ActualizarCuentaSoloContrasenaSinEntidad_EscritorioAsync(string _rut_usuario, string _rut_empresa, string _contrasena) {
+            return base.Channel.ActualizarCuentaSoloContrasenaSinEntidad_EscritorioAsync(_rut_usuario, _rut_empresa, _contrasena);
         }
         
         public System.Data.DataSet TraerCuentaSinEntidad_Escritorio(string _rut_usuario) {
