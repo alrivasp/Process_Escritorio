@@ -133,9 +133,29 @@ namespace Process_APP_Desk.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _114_user {
+            get {
+                object obj = ResourceManager.GetObject("114-user", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap _115_users {
             get {
                 object obj = ResourceManager.GetObject("115-users", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _119_user_tie {
+            get {
+                object obj = ResourceManager.GetObject("119-user-tie", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

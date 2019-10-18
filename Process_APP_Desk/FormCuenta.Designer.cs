@@ -34,19 +34,11 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormCuenta));
             this.panelContenedor = new System.Windows.Forms.Panel();
-            this.btnModificar = new System.Windows.Forms.Button();
-            this.btnNuevo = new System.Windows.Forms.Button();
-            this.label8 = new System.Windows.Forms.Label();
-            this.txtFiltrar = new System.Windows.Forms.TextBox();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.btnCerrar = new System.Windows.Forms.Label();
-            this.pbSeleccion = new System.Windows.Forms.PictureBox();
-            this.dgvCuenta = new System.Windows.Forms.DataGridView();
+            this.btnResetClave = new System.Windows.Forms.Button();
             this.btnVer = new System.Windows.Forms.Button();
             this.btnDesactivar = new System.Windows.Forms.Button();
             this.btnActivar = new System.Windows.Forms.Button();
-            this.btnResetClave = new System.Windows.Forms.Button();
+            this.dgvCuenta = new System.Windows.Forms.DataGridView();
             this.RUT_USUARIO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.USUARIO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.EMPRESA = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -55,11 +47,19 @@
             this.ID_ROL = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ROL = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ESTADO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnModificar = new System.Windows.Forms.Button();
+            this.btnNuevo = new System.Windows.Forms.Button();
+            this.label8 = new System.Windows.Forms.Label();
+            this.txtFiltrar = new System.Windows.Forms.TextBox();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.pbSeleccion = new System.Windows.Forms.PictureBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.btnCerrar = new System.Windows.Forms.Label();
             this.panelContenedor.SuspendLayout();
-            this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbSeleccion)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCuenta)).BeginInit();
+            this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbSeleccion)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // panelContenedor
@@ -77,6 +77,194 @@
             this.panelContenedor.Name = "panelContenedor";
             this.panelContenedor.Size = new System.Drawing.Size(1050, 480);
             this.panelContenedor.TabIndex = 0;
+            // 
+            // btnResetClave
+            // 
+            this.btnResetClave.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnResetClave.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.btnResetClave.FlatAppearance.BorderSize = 0;
+            this.btnResetClave.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
+            this.btnResetClave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnResetClave.Font = new System.Drawing.Font("Century Gothic", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnResetClave.ForeColor = System.Drawing.Color.White;
+            this.btnResetClave.Image = global::Process_APP_Desk.Properties.Resources._143_key2;
+            this.btnResetClave.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnResetClave.Location = new System.Drawing.Point(898, 230);
+            this.btnResetClave.Name = "btnResetClave";
+            this.btnResetClave.Size = new System.Drawing.Size(130, 33);
+            this.btnResetClave.TabIndex = 51;
+            this.btnResetClave.Text = "RESET CLAVE";
+            this.btnResetClave.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.btnResetClave.UseVisualStyleBackColor = false;
+            this.btnResetClave.Click += new System.EventHandler(this.BtnResetClave_Click);
+            // 
+            // btnVer
+            // 
+            this.btnVer.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnVer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.btnVer.FlatAppearance.BorderSize = 0;
+            this.btnVer.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
+            this.btnVer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnVer.Font = new System.Drawing.Font("Century Gothic", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnVer.ForeColor = System.Drawing.Color.White;
+            this.btnVer.Image = global::Process_APP_Desk.Properties.Resources._135_search_white;
+            this.btnVer.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnVer.Location = new System.Drawing.Point(898, 180);
+            this.btnVer.Name = "btnVer";
+            this.btnVer.Size = new System.Drawing.Size(130, 33);
+            this.btnVer.TabIndex = 50;
+            this.btnVer.Text = "MOSTRAR";
+            this.btnVer.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.btnVer.UseVisualStyleBackColor = false;
+            this.btnVer.Click += new System.EventHandler(this.BtnVer_Click);
+            // 
+            // btnDesactivar
+            // 
+            this.btnDesactivar.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnDesactivar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.btnDesactivar.FlatAppearance.BorderSize = 0;
+            this.btnDesactivar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
+            this.btnDesactivar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDesactivar.Font = new System.Drawing.Font("Century Gothic", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDesactivar.ForeColor = System.Drawing.Color.White;
+            this.btnDesactivar.Image = global::Process_APP_Desk.Properties.Resources._272_cross;
+            this.btnDesactivar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnDesactivar.Location = new System.Drawing.Point(898, 280);
+            this.btnDesactivar.Name = "btnDesactivar";
+            this.btnDesactivar.Size = new System.Drawing.Size(130, 33);
+            this.btnDesactivar.TabIndex = 49;
+            this.btnDesactivar.Text = "DESACTIVAR";
+            this.btnDesactivar.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.btnDesactivar.UseVisualStyleBackColor = false;
+            this.btnDesactivar.Visible = false;
+            this.btnDesactivar.Click += new System.EventHandler(this.BtnDesactivar_Click);
+            // 
+            // btnActivar
+            // 
+            this.btnActivar.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnActivar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.btnActivar.FlatAppearance.BorderSize = 0;
+            this.btnActivar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
+            this.btnActivar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnActivar.Font = new System.Drawing.Font("Century Gothic", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnActivar.ForeColor = System.Drawing.Color.White;
+            this.btnActivar.Image = global::Process_APP_Desk.Properties.Resources._273_checkmark;
+            this.btnActivar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnActivar.Location = new System.Drawing.Point(898, 280);
+            this.btnActivar.Name = "btnActivar";
+            this.btnActivar.Size = new System.Drawing.Size(130, 33);
+            this.btnActivar.TabIndex = 48;
+            this.btnActivar.Text = "ACTIVAR";
+            this.btnActivar.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.btnActivar.UseVisualStyleBackColor = false;
+            this.btnActivar.Visible = false;
+            this.btnActivar.Click += new System.EventHandler(this.BtnActivar_Click);
+            // 
+            // dgvCuenta
+            // 
+            this.dgvCuenta.AllowUserToAddRows = false;
+            this.dgvCuenta.AllowUserToDeleteRows = false;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.dgvCuenta.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.dgvCuenta.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.dgvCuenta.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvCuenta.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.dgvCuenta.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgvCuenta.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
+            this.dgvCuenta.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvCuenta.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.dgvCuenta.ColumnHeadersHeight = 30;
+            this.dgvCuenta.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.dgvCuenta.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.RUT_USUARIO,
+            this.USUARIO,
+            this.EMPRESA,
+            this.RUT_EMPRESA,
+            this.CORREO,
+            this.ID_ROL,
+            this.ROL,
+            this.ESTADO});
+            this.dgvCuenta.EnableHeadersVisualStyles = false;
+            this.dgvCuenta.GridColor = System.Drawing.Color.White;
+            this.dgvCuenta.Location = new System.Drawing.Point(12, 80);
+            this.dgvCuenta.Name = "dgvCuenta";
+            this.dgvCuenta.ReadOnly = true;
+            this.dgvCuenta.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvCuenta.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.WhiteSmoke;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.WhiteSmoke;
+            this.dgvCuenta.RowsDefaultCellStyle = dataGridViewCellStyle4;
+            this.dgvCuenta.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvCuenta.Size = new System.Drawing.Size(870, 388);
+            this.dgvCuenta.TabIndex = 47;
+            this.dgvCuenta.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvCuenta_CellClick);
+            // 
+            // RUT_USUARIO
+            // 
+            this.RUT_USUARIO.HeaderText = "CUENTA";
+            this.RUT_USUARIO.Name = "RUT_USUARIO";
+            this.RUT_USUARIO.ReadOnly = true;
+            // 
+            // USUARIO
+            // 
+            this.USUARIO.HeaderText = "USUARIO";
+            this.USUARIO.Name = "USUARIO";
+            this.USUARIO.ReadOnly = true;
+            // 
+            // EMPRESA
+            // 
+            this.EMPRESA.HeaderText = "EMPRESA";
+            this.EMPRESA.Name = "EMPRESA";
+            this.EMPRESA.ReadOnly = true;
+            // 
+            // RUT_EMPRESA
+            // 
+            this.RUT_EMPRESA.HeaderText = "RUT EMPRESA";
+            this.RUT_EMPRESA.Name = "RUT_EMPRESA";
+            this.RUT_EMPRESA.ReadOnly = true;
+            // 
+            // CORREO
+            // 
+            this.CORREO.HeaderText = "CORREO";
+            this.CORREO.Name = "CORREO";
+            this.CORREO.ReadOnly = true;
+            // 
+            // ID_ROL
+            // 
+            this.ID_ROL.HeaderText = "ID_ROL";
+            this.ID_ROL.Name = "ID_ROL";
+            this.ID_ROL.ReadOnly = true;
+            this.ID_ROL.Visible = false;
+            // 
+            // ROL
+            // 
+            this.ROL.HeaderText = "ROL";
+            this.ROL.Name = "ROL";
+            this.ROL.ReadOnly = true;
+            // 
+            // ESTADO
+            // 
+            this.ESTADO.HeaderText = "ESTADO";
+            this.ESTADO.Name = "ESTADO";
+            this.ESTADO.ReadOnly = true;
             // 
             // btnModificar
             // 
@@ -155,6 +343,18 @@
             this.panel1.Size = new System.Drawing.Size(870, 43);
             this.panel1.TabIndex = 46;
             // 
+            // pbSeleccion
+            // 
+            this.pbSeleccion.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.pbSeleccion.Image = global::Process_APP_Desk.Properties.Resources._071_pushpin;
+            this.pbSeleccion.Location = new System.Drawing.Point(827, 6);
+            this.pbSeleccion.Name = "pbSeleccion";
+            this.pbSeleccion.Size = new System.Drawing.Size(24, 25);
+            this.pbSeleccion.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbSeleccion.TabIndex = 46;
+            this.pbSeleccion.TabStop = false;
+            this.pbSeleccion.Visible = false;
+            // 
             // pictureBox1
             // 
             this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -181,203 +381,6 @@
             this.btnCerrar.Text = "X";
             this.btnCerrar.Click += new System.EventHandler(this.BtnCerrar_Click);
             // 
-            // pbSeleccion
-            // 
-            this.pbSeleccion.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.pbSeleccion.Image = global::Process_APP_Desk.Properties.Resources._071_pushpin;
-            this.pbSeleccion.Location = new System.Drawing.Point(827, 6);
-            this.pbSeleccion.Name = "pbSeleccion";
-            this.pbSeleccion.Size = new System.Drawing.Size(24, 25);
-            this.pbSeleccion.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pbSeleccion.TabIndex = 46;
-            this.pbSeleccion.TabStop = false;
-            this.pbSeleccion.Visible = false;
-            // 
-            // dgvCuenta
-            // 
-            this.dgvCuenta.AllowUserToAddRows = false;
-            this.dgvCuenta.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.dgvCuenta.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.dgvCuenta.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.dgvCuenta.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvCuenta.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
-            this.dgvCuenta.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dgvCuenta.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
-            this.dgvCuenta.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvCuenta.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            this.dgvCuenta.ColumnHeadersHeight = 30;
-            this.dgvCuenta.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            this.dgvCuenta.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.RUT_USUARIO,
-            this.USUARIO,
-            this.EMPRESA,
-            this.RUT_EMPRESA,
-            this.CORREO,
-            this.ID_ROL,
-            this.ROL,
-            this.ESTADO});
-            this.dgvCuenta.EnableHeadersVisualStyles = false;
-            this.dgvCuenta.GridColor = System.Drawing.Color.White;
-            this.dgvCuenta.Location = new System.Drawing.Point(12, 80);
-            this.dgvCuenta.Name = "dgvCuenta";
-            this.dgvCuenta.ReadOnly = true;
-            this.dgvCuenta.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvCuenta.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.WhiteSmoke;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.WhiteSmoke;
-            this.dgvCuenta.RowsDefaultCellStyle = dataGridViewCellStyle4;
-            this.dgvCuenta.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvCuenta.Size = new System.Drawing.Size(870, 388);
-            this.dgvCuenta.TabIndex = 47;
-            this.dgvCuenta.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvCuenta_CellClick);
-            // 
-            // btnVer
-            // 
-            this.btnVer.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnVer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
-            this.btnVer.FlatAppearance.BorderSize = 0;
-            this.btnVer.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
-            this.btnVer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnVer.Font = new System.Drawing.Font("Century Gothic", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnVer.ForeColor = System.Drawing.Color.White;
-            this.btnVer.Image = global::Process_APP_Desk.Properties.Resources._135_search_white;
-            this.btnVer.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnVer.Location = new System.Drawing.Point(898, 180);
-            this.btnVer.Name = "btnVer";
-            this.btnVer.Size = new System.Drawing.Size(130, 33);
-            this.btnVer.TabIndex = 50;
-            this.btnVer.Text = "MOSTRAR";
-            this.btnVer.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
-            this.btnVer.UseVisualStyleBackColor = false;
-            this.btnVer.Click += new System.EventHandler(this.BtnVer_Click);
-            // 
-            // btnDesactivar
-            // 
-            this.btnDesactivar.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnDesactivar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
-            this.btnDesactivar.FlatAppearance.BorderSize = 0;
-            this.btnDesactivar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
-            this.btnDesactivar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDesactivar.Font = new System.Drawing.Font("Century Gothic", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDesactivar.ForeColor = System.Drawing.Color.White;
-            this.btnDesactivar.Image = global::Process_APP_Desk.Properties.Resources._272_cross;
-            this.btnDesactivar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnDesactivar.Location = new System.Drawing.Point(898, 280);
-            this.btnDesactivar.Name = "btnDesactivar";
-            this.btnDesactivar.Size = new System.Drawing.Size(130, 33);
-            this.btnDesactivar.TabIndex = 49;
-            this.btnDesactivar.Text = "DESACTIVAR";
-            this.btnDesactivar.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
-            this.btnDesactivar.UseVisualStyleBackColor = false;
-            this.btnDesactivar.Visible = false;
-            // 
-            // btnActivar
-            // 
-            this.btnActivar.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnActivar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
-            this.btnActivar.FlatAppearance.BorderSize = 0;
-            this.btnActivar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
-            this.btnActivar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnActivar.Font = new System.Drawing.Font("Century Gothic", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnActivar.ForeColor = System.Drawing.Color.White;
-            this.btnActivar.Image = global::Process_APP_Desk.Properties.Resources._273_checkmark;
-            this.btnActivar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnActivar.Location = new System.Drawing.Point(898, 280);
-            this.btnActivar.Name = "btnActivar";
-            this.btnActivar.Size = new System.Drawing.Size(130, 33);
-            this.btnActivar.TabIndex = 48;
-            this.btnActivar.Text = "ACTIVAR";
-            this.btnActivar.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
-            this.btnActivar.UseVisualStyleBackColor = false;
-            this.btnActivar.Visible = false;
-            // 
-            // btnResetClave
-            // 
-            this.btnResetClave.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnResetClave.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
-            this.btnResetClave.FlatAppearance.BorderSize = 0;
-            this.btnResetClave.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
-            this.btnResetClave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnResetClave.Font = new System.Drawing.Font("Century Gothic", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnResetClave.ForeColor = System.Drawing.Color.White;
-            this.btnResetClave.Image = global::Process_APP_Desk.Properties.Resources._143_key2;
-            this.btnResetClave.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnResetClave.Location = new System.Drawing.Point(898, 230);
-            this.btnResetClave.Name = "btnResetClave";
-            this.btnResetClave.Size = new System.Drawing.Size(130, 33);
-            this.btnResetClave.TabIndex = 51;
-            this.btnResetClave.Text = "RESET CLAVE";
-            this.btnResetClave.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
-            this.btnResetClave.UseVisualStyleBackColor = false;
-            // 
-            // RUT_USUARIO
-            // 
-            this.RUT_USUARIO.HeaderText = "CUENTA";
-            this.RUT_USUARIO.Name = "RUT_USUARIO";
-            this.RUT_USUARIO.ReadOnly = true;
-            // 
-            // USUARIO
-            // 
-            this.USUARIO.HeaderText = "USUARIO";
-            this.USUARIO.Name = "USUARIO";
-            this.USUARIO.ReadOnly = true;
-            // 
-            // EMPRESA
-            // 
-            this.EMPRESA.HeaderText = "EMPRESA";
-            this.EMPRESA.Name = "EMPRESA";
-            this.EMPRESA.ReadOnly = true;
-            // 
-            // RUT_EMPRESA
-            // 
-            this.RUT_EMPRESA.HeaderText = "RUT EMPRESA";
-            this.RUT_EMPRESA.Name = "RUT_EMPRESA";
-            this.RUT_EMPRESA.ReadOnly = true;
-            // 
-            // CORREO
-            // 
-            this.CORREO.HeaderText = "CORREO";
-            this.CORREO.Name = "CORREO";
-            this.CORREO.ReadOnly = true;
-            // 
-            // ID_ROL
-            // 
-            this.ID_ROL.HeaderText = "ID_ROL";
-            this.ID_ROL.Name = "ID_ROL";
-            this.ID_ROL.ReadOnly = true;
-            this.ID_ROL.Visible = false;
-            // 
-            // ROL
-            // 
-            this.ROL.HeaderText = "ROL";
-            this.ROL.Name = "ROL";
-            this.ROL.ReadOnly = true;
-            // 
-            // ESTADO
-            // 
-            this.ESTADO.HeaderText = "ESTADO";
-            this.ESTADO.Name = "ESTADO";
-            this.ESTADO.ReadOnly = true;
-            // 
             // FormCuenta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -391,11 +394,11 @@
             this.Name = "FormCuenta";
             this.Text = "PROCESS";
             this.panelContenedor.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvCuenta)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbSeleccion)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvCuenta)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

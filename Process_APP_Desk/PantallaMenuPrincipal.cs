@@ -207,6 +207,9 @@ namespace Process_APP_Desk
         private void BtnEquipo_Click(object sender, EventArgs e)
         {
             lblTituloMenu.Text = "MANTENCION EQUIPO";
+            FormEquipo frm = new FormEquipo();
+            frm.FormClosed += new FormClosedEventHandler(mostrarLogoAlCerrarPantalla);
+            AbrirFormEnPanel(frm);
         }
 
         private void mostrarLogo()

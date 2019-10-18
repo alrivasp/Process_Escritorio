@@ -133,9 +133,9 @@ namespace Process_APP_Desk
 
         private void CbEmpresa_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //try
-            //{
-            ServiceProcess_Empresa.Process_EmpresaSoapClient auxServiceEmpresa = new ServiceProcess_Empresa.Process_EmpresaSoapClient();
+            try
+            {
+                ServiceProcess_Empresa.Process_EmpresaSoapClient auxServiceEmpresa = new ServiceProcess_Empresa.Process_EmpresaSoapClient();
             auxServiceEmpresa.ClientCredentials.UserName.UserName = Cuenta.Usuario_iis;
             auxServiceEmpresa.ClientCredentials.UserName.Password = Cuenta.Clave_iis;
             ServiceProcess_Empresa.Empresa auxEmpresa = new ServiceProcess_Empresa.Empresa();
@@ -190,12 +190,12 @@ namespace Process_APP_Desk
                 cargarComboRol();
 
             }
-            //}
-            //catch (Exception ex)
-            //{
-            //    MessageBox.Show("Error al cargar Informacion CbEmpresa_SelectedIndexChanged, Contactese con el Administrador Detalle de Error: " + ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //}
         }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al cargar Informacion CbEmpresa_SelectedIndexChanged, Contactese con el Administrador Detalle de Error: " + ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+}
 
         private void cargarComboRol()
         {

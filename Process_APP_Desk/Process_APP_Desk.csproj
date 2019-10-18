@@ -102,6 +102,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Connected Services\ServiceProcess_Equipo\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Connected Services\ServiceProcess_Permisos\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -123,6 +128,11 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
     <Compile Include="Connected Services\ServiceProcess_Unidad\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Connected Services\ServiceProcess_UsuarioEquipo\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -185,6 +195,24 @@
     </Compile>
     <Compile Include="FormEmpresaModal.Designer.cs">
       <DependentUpon>FormEmpresaModal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormEquipo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormEquipo.Designer.cs">
+      <DependentUpon>FormEquipo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormEquipoModal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormEquipoModal.Designer.cs">
+      <DependentUpon>FormEquipoModal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormEquipoModalMiembros.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormEquipoModalMiembros.Designer.cs">
+      <DependentUpon>FormEquipoModalMiembros.cs</DependentUpon>
     </Compile>
     <Compile Include="FormRol.cs">
       <SubType>Form</SubType>
@@ -290,6 +318,15 @@
     <EmbeddedResource Include="FormEmpresaModal.resx">
       <DependentUpon>FormEmpresaModal.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormEquipo.resx">
+      <DependentUpon>FormEquipo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormEquipoModal.resx">
+      <DependentUpon>FormEquipoModal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormEquipoModalMiembros.resx">
+      <DependentUpon>FormEquipoModalMiembros.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormRol.resx">
       <DependentUpon>FormRol.cs</DependentUpon>
     </EmbeddedResource>
@@ -361,6 +398,10 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\ServiceProcess_Empresa\Process_Empresa1.wsdl" />
+    <None Include="Connected Services\ServiceProcess_Equipo\Process_APP_Desk.ServiceProcess_Equipo.Equipo.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceProcess_Equipo\Process_Equipo.wsdl" />
     <None Include="Connected Services\ServiceProcess_Permisos\Process_APP_Desk.ServiceProcess_Permisos.Permisos.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
@@ -381,6 +422,10 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\ServiceProcess_Unidad\Process_Unidad1.wsdl" />
+    <None Include="Connected Services\ServiceProcess_UsuarioEquipo\Process_APP_Desk.ServiceProcess_UsuarioEquipo.UsuarioEquipo.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceProcess_UsuarioEquipo\Process_UsuarioEquipo.wsdl" />
     <None Include="Connected Services\ServiceProcess_Usuario\Process_APP_Desk.ServiceProcess_Usuario.Usuario.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
@@ -481,11 +526,13 @@
     <WCFMetadataStorage Include="Connected Services\ServiceProcess_Comuna\" />
     <WCFMetadataStorage Include="Connected Services\ServiceProcess_Cuenta\" />
     <WCFMetadataStorage Include="Connected Services\ServiceProcess_Empresa\" />
+    <WCFMetadataStorage Include="Connected Services\ServiceProcess_Equipo\" />
     <WCFMetadataStorage Include="Connected Services\ServiceProcess_Permisos\" />
     <WCFMetadataStorage Include="Connected Services\ServiceProcess_Provincia\" />
     <WCFMetadataStorage Include="Connected Services\ServiceProcess_Region\" />
     <WCFMetadataStorage Include="Connected Services\ServiceProcess_Rol\" />
     <WCFMetadataStorage Include="Connected Services\ServiceProcess_Unidad\" />
+    <WCFMetadataStorage Include="Connected Services\ServiceProcess_UsuarioEquipo\" />
     <WCFMetadataStorage Include="Connected Services\ServiceProcess_Usuario\" />
     <WCFMetadataStorage Include="Connected Services\ServiceProcess_Validadores\" />
   </ItemGroup>
@@ -731,6 +778,42 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\317-arrow-right2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\ServiceProcess_Equipo\Process_Equipo.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\ServiceProcess_Equipo\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\ServiceProcess_Equipo\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\ServiceProcess_Equipo\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\ServiceProcess_UsuarioEquipo\Process_UsuarioEquipo.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\ServiceProcess_UsuarioEquipo\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\ServiceProcess_UsuarioEquipo\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\ServiceProcess_UsuarioEquipo\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\119-user-tie.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\114-user.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -51,6 +51,13 @@ namespace Process_APP_Desk.ServiceProcess_Unidad {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/TraerUnidadSinEntidad_Escritorio", ReplyAction="*")]
         System.Threading.Tasks.Task<System.Data.DataSet> TraerUnidadSinEntidad_EscritorioAsync(int _id_unidad, string _rut_empresa);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/TraerUnidadPorEmpresaSinEntidad_Escritorio", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        System.Data.DataSet TraerUnidadPorEmpresaSinEntidad_Escritorio(string _rut_empresa);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/TraerUnidadPorEmpresaSinEntidad_Escritorio", ReplyAction="*")]
+        System.Threading.Tasks.Task<System.Data.DataSet> TraerUnidadPorEmpresaSinEntidad_EscritorioAsync(string _rut_empresa);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/TraerUnidadConEntidad_Escritorio", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         Process_APP_Desk.ServiceProcess_Unidad.Unidad TraerUnidadConEntidad_Escritorio(int _id_unidad, string _rut_empresa);
@@ -233,6 +240,14 @@ namespace Process_APP_Desk.ServiceProcess_Unidad {
         
         public System.Threading.Tasks.Task<System.Data.DataSet> TraerUnidadSinEntidad_EscritorioAsync(int _id_unidad, string _rut_empresa) {
             return base.Channel.TraerUnidadSinEntidad_EscritorioAsync(_id_unidad, _rut_empresa);
+        }
+        
+        public System.Data.DataSet TraerUnidadPorEmpresaSinEntidad_Escritorio(string _rut_empresa) {
+            return base.Channel.TraerUnidadPorEmpresaSinEntidad_Escritorio(_rut_empresa);
+        }
+        
+        public System.Threading.Tasks.Task<System.Data.DataSet> TraerUnidadPorEmpresaSinEntidad_EscritorioAsync(string _rut_empresa) {
+            return base.Channel.TraerUnidadPorEmpresaSinEntidad_EscritorioAsync(_rut_empresa);
         }
         
         public Process_APP_Desk.ServiceProcess_Unidad.Unidad TraerUnidadConEntidad_Escritorio(int _id_unidad, string _rut_empresa) {
