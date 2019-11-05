@@ -285,26 +285,35 @@ namespace Process_APP_Desk
                 //capturar dataset
                 DataSet ds = auxServicePermisos.TraerPermisosPorRolSinEntidad_Escritorio(Convert.ToInt32(_id_rol));
                 //Capturar Tabla
-                DataTable dt = ds.Tables[0];
-                //contar cantidad de empresas
-                int _cantidad_permisos = dt.Rows.Count;
-                //crear array bidimencional
-                string[,] ListaPermisos = new string[_cantidad_permisos, 1];
-                //Recorrer data table
-                int _fila = 0;
-                for (int i = 0; i < dt.Rows.Count; i++)
+                if ((ds.Tables.Count != 0) && (ds.Tables[0].Rows.Count > 0))
                 {
-                    //Capturar datos de la fila recorridad en objeto rol
-                    auxPermisos.Id_acceso = Convert.ToInt32(dt.Rows[i]["Id_acceso"]);
-                    auxPermisos.Id_rol = Convert.ToInt32(dt.Rows[i]["Id_rol"]);
+                    DataTable dt = ds.Tables[0];
+                    //contar cantidad de empresas
+                    int _cantidad_permisos = dt.Rows.Count;
+                    //crear array bidimencional
+                    string[,] ListaPermisos = new string[_cantidad_permisos, 1];
+                    //Recorrer data table
+                    int _fila = 0;
+                    for (int i = 0; i < dt.Rows.Count; i++)
+                    {
+                        //Capturar datos de la fila recorridad en objeto rol
+                        auxPermisos.Id_acceso = Convert.ToInt32(dt.Rows[i]["Id_acceso"]);
+                        auxPermisos.Id_rol = Convert.ToInt32(dt.Rows[i]["Id_rol"]);
 
-                    auxAcceso = auxServiceAcceso.TraerAccesoConEntidad_Escritorio(auxPermisos.Id_acceso);
-                    //cargar array con datos de fila
-                    ListaPermisos[_fila, 0] = auxAcceso.Nombre.ToString();
-                    //agregar lista a gridview
-                    dgvAccesos.Rows.Add(ListaPermisos[_fila, 0]);
-                    _fila++;
+                        auxAcceso = auxServiceAcceso.TraerAccesoConEntidad_Escritorio(auxPermisos.Id_acceso);
+                        //cargar array con datos de fila
+                        ListaPermisos[_fila, 0] = auxAcceso.Nombre.ToString();
+                        //agregar lista a gridview
+                        dgvAccesos.Rows.Add(ListaPermisos[_fila, 0]);
+                        _fila++;
+                    }
                 }
+                else
+                {
+                    MessageBox.Show("El ROL seleccionado no tiene permisos Asignados .", "ATENCION", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    pbSeleccion.Visible = false;
+                }
+                
             }
             catch (Exception ex)
             {

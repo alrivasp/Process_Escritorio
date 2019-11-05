@@ -16,8 +16,8 @@ namespace Process_APP_Desk
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            //Application.Run(new PantallaLogin());
-            Application.Run(new PantallaMenuPrincipal());
+            Application.Run(new PantallaLogin());
+            //Application.Run(new PantallaMenuPrincipal());
             //Application.Run(new FormCuentaModalNuevo());
         }
     }

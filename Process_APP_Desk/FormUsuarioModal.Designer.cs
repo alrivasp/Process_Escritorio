@@ -392,6 +392,7 @@
             this.txtTelefonoMovil.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtTelefonoMovil.BackColor = System.Drawing.Color.WhiteSmoke;
             this.txtTelefonoMovil.Location = new System.Drawing.Point(528, 168);
+            this.txtTelefonoMovil.MaxLength = 20;
             this.txtTelefonoMovil.Name = "txtTelefonoMovil";
             this.txtTelefonoMovil.Size = new System.Drawing.Size(159, 20);
             this.txtTelefonoMovil.TabIndex = 10;
@@ -434,6 +435,7 @@
             this.txtTelefonoFijo.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtTelefonoFijo.BackColor = System.Drawing.Color.WhiteSmoke;
             this.txtTelefonoFijo.Location = new System.Drawing.Point(528, 142);
+            this.txtTelefonoFijo.MaxLength = 20;
             this.txtTelefonoFijo.Name = "txtTelefonoFijo";
             this.txtTelefonoFijo.Size = new System.Drawing.Size(159, 20);
             this.txtTelefonoFijo.TabIndex = 9;

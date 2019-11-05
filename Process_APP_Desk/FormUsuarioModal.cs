@@ -476,8 +476,8 @@ namespace Process_APP_Desk
                         || txtPrimerApellido.Text.Trim().Length < 2 || txtPrimerApellido.Text.Trim().Length > 70
                         || txtSegundoApellido.Text.Trim().Length < 2 || txtSegundoApellido.Text.Trim().Length > 70
                         || txtDireccion.Text.Trim().Length < 5 || txtDireccion.Text.Trim().Length > 70
-                        || txtTelefonoFijo.Text.Trim().Length < 9 || txtTelefonoFijo.Text.Trim().Length > 12
-                        || txtTelefonoMovil.Text.Trim().Length < 8 || txtTelefonoMovil.Text.Trim().Length > 12)
+                        || txtTelefonoFijo.Text.Trim().Length < 9 || txtTelefonoFijo.Text.Trim().Length > 10
+                        || txtTelefonoMovil.Text.Trim().Length < 8 || txtTelefonoMovil.Text.Trim().Length > 10)
                     {
                         if (txtRutUsuario.Text.Trim().Length < 10 || txtRutUsuario.Text.Trim().Length > 12)//Mensaje longitud fuera de rango rut usuario
                         {
@@ -503,13 +503,13 @@ namespace Process_APP_Desk
                         {
                             MessageBox.Show("La Direccion, debe tener un minimo de 5 Caracteres.", "ATENCION", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         }
-                        else if (txtTelefonoFijo.Text.Trim().Length < 9 || txtTelefonoFijo.Text.Trim().Length > 12) //Mensaje longitud fuera de rango telefono fijo
+                        else if (txtTelefonoFijo.Text.Trim().Length < 9 || txtTelefonoFijo.Text.Trim().Length > 10) //Mensaje longitud fuera de rango telefono fijo
                         {
-                            MessageBox.Show("El Telefono Fijo, debe tener un minimo de 9 Caracteres.", "ATENCION", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            MessageBox.Show("El Telefono Fijo, debe tener un minimo de 9 Caracteres y Maximo de 10.", "ATENCION", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         }
-                        else if (txtTelefonoMovil.Text.Trim().Length < 8 || txtTelefonoMovil.Text.Trim().Length > 12) //Mensaje longitud fuera de rango telefono movil
+                        else if (txtTelefonoMovil.Text.Trim().Length < 8 || txtTelefonoMovil.Text.Trim().Length > 10) //Mensaje longitud fuera de rango telefono movil
                         {
-                            MessageBox.Show("El Telefono Movil, debe tener un minimo de 8 Caracteres.", "ATENCION", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            MessageBox.Show("El Telefono Movil, debe tener un minimo de 8 Caracteres y Maximo de 10.", "ATENCION", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         }
 
 

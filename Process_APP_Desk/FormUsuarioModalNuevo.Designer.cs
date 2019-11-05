@@ -35,6 +35,9 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormUsuarioModalNuevo));
             this.panel1 = new System.Windows.Forms.Panel();
             this.panelCuerpo = new System.Windows.Forms.Panel();
+            this.pbSeleccionCargo = new System.Windows.Forms.PictureBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.txtCargo = new System.Windows.Forms.TextBox();
             this.pbSeleccion = new System.Windows.Forms.PictureBox();
             this.cbEmpresa = new System.Windows.Forms.ComboBox();
             this.label15 = new System.Windows.Forms.Label();
@@ -67,15 +70,12 @@
             this.btnCancelar = new System.Windows.Forms.Button();
             this.panelTitulo = new System.Windows.Forms.Panel();
             this.lblTitulo = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.txtCargo = new System.Windows.Forms.TextBox();
-            this.pbSeleccionCargo = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
             this.panelCuerpo.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbSeleccionCargo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbSeleccion)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCargo)).BeginInit();
             this.panelTitulo.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbSeleccionCargo)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -127,6 +127,39 @@
             this.panelCuerpo.Name = "panelCuerpo";
             this.panelCuerpo.Size = new System.Drawing.Size(948, 392);
             this.panelCuerpo.TabIndex = 1;
+            // 
+            // pbSeleccionCargo
+            // 
+            this.pbSeleccionCargo.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.pbSeleccionCargo.Image = global::Process_APP_Desk.Properties.Resources._273_checkmark_black;
+            this.pbSeleccionCargo.Location = new System.Drawing.Point(925, 224);
+            this.pbSeleccionCargo.Name = "pbSeleccionCargo";
+            this.pbSeleccionCargo.Size = new System.Drawing.Size(14, 14);
+            this.pbSeleccionCargo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbSeleccionCargo.TabIndex = 78;
+            this.pbSeleccionCargo.TabStop = false;
+            this.pbSeleccionCargo.Visible = false;
+            // 
+            // label8
+            // 
+            this.label8.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Century Gothic", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.label8.Location = new System.Drawing.Point(613, 222);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(66, 19);
+            this.label8.TabIndex = 77;
+            this.label8.Text = "CARGO:";
+            // 
+            // txtCargo
+            // 
+            this.txtCargo.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.txtCargo.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.txtCargo.Location = new System.Drawing.Point(764, 221);
+            this.txtCargo.Name = "txtCargo";
+            this.txtCargo.Size = new System.Drawing.Size(159, 20);
+            this.txtCargo.TabIndex = 76;
             // 
             // pbSeleccion
             // 
@@ -274,6 +307,7 @@
             this.txtTelefonoMovil.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtTelefonoMovil.BackColor = System.Drawing.Color.WhiteSmoke;
             this.txtTelefonoMovil.Location = new System.Drawing.Point(764, 194);
+            this.txtTelefonoMovil.MaxLength = 9;
             this.txtTelefonoMovil.Name = "txtTelefonoMovil";
             this.txtTelefonoMovil.Size = new System.Drawing.Size(159, 20);
             this.txtTelefonoMovil.TabIndex = 11;
@@ -295,6 +329,7 @@
             this.txtTelefonoFijo.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtTelefonoFijo.BackColor = System.Drawing.Color.WhiteSmoke;
             this.txtTelefonoFijo.Location = new System.Drawing.Point(764, 168);
+            this.txtTelefonoFijo.MaxLength = 9;
             this.txtTelefonoFijo.Name = "txtTelefonoFijo";
             this.txtTelefonoFijo.Size = new System.Drawing.Size(159, 20);
             this.txtTelefonoFijo.TabIndex = 10;
@@ -538,39 +573,6 @@
             this.lblTitulo.Text = "USUARIO";
             this.lblTitulo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // label8
-            // 
-            this.label8.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Century Gothic", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
-            this.label8.Location = new System.Drawing.Point(613, 222);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(66, 19);
-            this.label8.TabIndex = 77;
-            this.label8.Text = "CARGO:";
-            // 
-            // txtCargo
-            // 
-            this.txtCargo.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.txtCargo.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.txtCargo.Location = new System.Drawing.Point(764, 221);
-            this.txtCargo.Name = "txtCargo";
-            this.txtCargo.Size = new System.Drawing.Size(159, 20);
-            this.txtCargo.TabIndex = 76;
-            // 
-            // pbSeleccionCargo
-            // 
-            this.pbSeleccionCargo.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.pbSeleccionCargo.Image = global::Process_APP_Desk.Properties.Resources._273_checkmark_black;
-            this.pbSeleccionCargo.Location = new System.Drawing.Point(925, 224);
-            this.pbSeleccionCargo.Name = "pbSeleccionCargo";
-            this.pbSeleccionCargo.Size = new System.Drawing.Size(14, 14);
-            this.pbSeleccionCargo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pbSeleccionCargo.TabIndex = 78;
-            this.pbSeleccionCargo.TabStop = false;
-            this.pbSeleccionCargo.Visible = false;
-            // 
             // FormUsuarioModalNuevo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -585,10 +587,10 @@
             this.panel1.ResumeLayout(false);
             this.panelCuerpo.ResumeLayout(false);
             this.panelCuerpo.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbSeleccionCargo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbSeleccion)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCargo)).EndInit();
             this.panelTitulo.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pbSeleccionCargo)).EndInit();
             this.ResumeLayout(false);
 
         }
