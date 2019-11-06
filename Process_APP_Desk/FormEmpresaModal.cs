@@ -465,7 +465,8 @@ namespace Process_APP_Desk
                     //Validacion espacion en blanco y combobox vacios
                     if (txtRutEmpresa.Text.Equals("") || txtNombreEmpresa.Text.Equals("") || txtGiro.Text.Equals("")
                         || txtDireccion.Text.Equals("") || Convert.ToInt32(cbRegion.SelectedIndex) == 0
-                        || cbProvincia.SelectedValue == null || cbComuna.SelectedValue == null)
+                        || cbProvincia.SelectedValue == null || cbComuna.SelectedValue == null
+                        || Convert.ToInt32(cbProvincia.SelectedIndex) == 0 || Convert.ToInt32(cbComuna.SelectedIndex) ==0)
                     {
                         if (txtRutEmpresa.Text.Equals(""))
                         {
@@ -488,6 +489,14 @@ namespace Process_APP_Desk
                             MessageBox.Show("Debe seleccionar una Provincia.", "ATENCION", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
                         else if (cbComuna.SelectedValue == null)
+                        {
+                            MessageBox.Show("Debe seleccionar una Comuna.", "ATENCION", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        else if (Convert.ToInt32(cbProvincia.SelectedIndex) == 0)
+                        {
+                            MessageBox.Show("Debe seleccionar una Provincia.", "ATENCION", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        else if (Convert.ToInt32(cbComuna.SelectedIndex) == 0)
                         {
                             MessageBox.Show("Debe seleccionar una Comuna.", "ATENCION", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
