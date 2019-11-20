@@ -108,9 +108,14 @@ namespace Process_APP_Desk
 
         private void BtnCerrarSesion_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("¿Esta seguro de Salir del Sistema Process?", "Confirmar", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            if (MessageBox.Show("¿Esta seguro de Cerrar la Sesion del Sistema?", "Confirmar", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                Application.Exit();
+                //Application.Exit();
+                this.Close();
+                System.GC.Collect();
+
+                PantallaLogin mainPantallaLogin = new PantallaLogin();
+                mainPantallaLogin.Show();
             }
             else
             {
