@@ -142,12 +142,12 @@ namespace Process_APP_Desk
                 else
                 {
                     //Validacion de longitud de caracteres
-                    if (txtNombre.Text.Trim().Length < 3 || txtNombre.Text.Trim().Length > 99
+                    if (txtNombre.Text.Trim().Length < 4 || txtNombre.Text.Trim().Length > 99
                         || txtDescripcion.Text.Trim().Length < 10 || txtDescripcion.Text.Trim().Length > 250)
                     {
-                        if (txtNombre.Text.Trim().Length < 3 || txtNombre.Text.Trim().Length > 99)
+                        if (txtNombre.Text.Trim().Length < 4 || txtNombre.Text.Trim().Length > 99)
                         {
-                            MessageBox.Show("El Nombre del Cargo debe tener Minimo 3 caracteres y Maximo 99 .", "ATENCION", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            MessageBox.Show("El Nombre del Cargo debe tener Minimo 4 caracteres y Maximo 99 .", "ATENCION", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
                         else if (txtDescripcion.Text.Trim().Length < 10 || txtDescripcion.Text.Trim().Length > 250)
                         {

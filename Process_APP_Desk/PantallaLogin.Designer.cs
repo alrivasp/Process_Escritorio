@@ -74,7 +74,7 @@
             this.lblVersion.Name = "lblVersion";
             this.lblVersion.Size = new System.Drawing.Size(33, 15);
             this.lblVersion.TabIndex = 10;
-            this.lblVersion.Text = "V 2.0";
+            this.lblVersion.Text = "V 1.3";
             // 
             // pbNombreEmpresa
             // 

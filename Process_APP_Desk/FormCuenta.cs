@@ -474,6 +474,7 @@ namespace Process_APP_Desk
                         auxCuenta = auxServiceCuenta.TraerCuentaConEmpresaConEntidad_Escritorio(_rut_usuario, _rut_empresa);
 
                         string contrasena = _rut_usuario.Substring(0, 5);
+                        notificacionCorreo(auxCuenta.Correo, contrasena, auxCuenta.Rut_usuario);
                         //Insertar datos via web service
                         auxServiceCuenta.ActualizarCuentaSoloContrasenaSinEntidad_Escritorio(auxCuenta.Rut_usuario, auxCuenta.Rut_empresa, contrasena);
                         MessageBox.Show("Contraseña Reseteada con los primeros 5 Digitos del RUT.", "ATENCION", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
@@ -488,6 +489,46 @@ namespace Process_APP_Desk
             {
                 MessageBox.Show("Error en metodo de accion BtnResetClave_Click, Contactese con el Administrador Detalle de Error: " + ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void notificacionCorreo(string _correo, string _clave, string _cuenta)
+        {
+            //Instancia de libreria Mail
+            System.Net.Mail.MailMessage auxCorreo = new System.Net.Mail.MailMessage();
+
+            //Asunto Correo
+            string _asunto_correo = "ATENCION su Clave de ingreso a la plataforma PROCESS fue modificada";
+            //Cuerpo Correo
+            string _cuerpo_correo = "Estimado Usuario Cuenta"+ _cuenta + "\n\r" +
+                                    "Le notificamos que se acaba de modificar su clave de acceso a nuestra Plataforma Process " + "\n\r" +
+                                    "su nueva clave de acceso es " + _clave.ToUpper() + ", esta clave fue modificada por el administrador del Sistema. " + "\n\r" +
+                                    "Le agradecemos contactar con el administrador del sistema en caso de tener algun inconveniente. " + "\n\r" +                                    
+                                    "\n\r" +
+                                    "\n\r" +
+                                    "Saludos" + "\n\r" +
+                                    "Atentamente Plataforma PROCESS.";
+
+            //Creacion de formato correo
+            //Agregar Destinatario funcionario asignado
+            auxCorreo.To.Add(_correo);
+            //Agregar asunto
+            auxCorreo.Subject = _asunto_correo;
+            auxCorreo.SubjectEncoding = System.Text.Encoding.UTF8;
+            //Agregar Cuerpo de Mensaje
+            auxCorreo.Body = _cuerpo_correo;
+            auxCorreo.BodyEncoding = System.Text.Encoding.UTF8;
+            auxCorreo.IsBodyHtml = false;
+            //Agregar Remitente de Correo
+            auxCorreo.From = new System.Net.Mail.MailAddress("CONTACTO.PROCESS@gmail.com");
+            //Crear cliente correo
+            System.Net.Mail.SmtpClient cliente = new System.Net.Mail.SmtpClient();
+            cliente.Credentials = new System.Net.NetworkCredential("CONTACTO.PROCESS@gmail.com", "Portafolio.2019");
+            cliente.Port = 587;
+            cliente.EnableSsl = true;
+            cliente.Host = "smtp.gmail.com";// mail.dominio.com
+                                            //Enviar correo
+            cliente.Send(auxCorreo);
+
         }
 
         private void BtnActivar_Click(object sender, EventArgs e)

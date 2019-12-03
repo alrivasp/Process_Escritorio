@@ -469,11 +469,17 @@ namespace Process_APP_Desk
                     _rut_empresa = string.Empty;
                     btnColaborador.Visible = false;
                     btnLider.Visible = false;
+                    //vaciar combobox
+                    cbUnidad.DataSource = null;
+                    cbUnidad.Items.Clear();
+                    pbSeleccionEmpresa.Visible = false;
                     //limpiar GridView
                     dgvEquipo.Rows.Clear();
                     dgvEquipo.Refresh();
                     dgvMiembros.Rows.Clear();
                     dgvMiembros.Refresh();
+                    //cargar combo unidad
+                    cargarComboEmpresa();
                     //cargar gridview                    
                     MessageBox.Show("Equipo Creado Correctamente.", "ATENCION", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                 }

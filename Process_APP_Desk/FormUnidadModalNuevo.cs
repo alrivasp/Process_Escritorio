@@ -225,7 +225,7 @@ namespace Process_APP_Desk
                         {
                             MessageBox.Show("El Nombre de la Unidad debe tener Minimo 4 caracteres y Maximo 99 .", "ATENCION", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
-                        else if (txtDescripcion.Text.Trim().Length < 4 || txtDescripcion.Text.Trim().Length > 250)
+                        else if (txtDescripcion.Text.Trim().Length < 10 || txtDescripcion.Text.Trim().Length > 250)
                         {
                             MessageBox.Show("La Descripcion de la Unidad debe tener Minimo 10 caracteres y Maximo 250 .", "ATENCION", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
